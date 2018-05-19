@@ -1,0 +1,1044 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QEfdUsKGngysYFQKsFYv-tWMu3Dt9XAUXYbLHg0a5gg" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Neural Network TutorialThis note introduce the basic concept of neural network in machine learning, plus the python realization. this note is intended to tell beginners the cornerstone of the neural n">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neural Network">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2016/03/21/nueral_network1/index.html">
+<meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
+<meta property="og:description" content="Neural Network TutorialThis note introduce the basic concept of neural network in machine learning, plus the python realization. this note is intended to tell beginners the cornerstone of the neural n">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://iamtrask.github.io/img/sigmoid.png">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/neuron.png">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/neuron_model.jpeg">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/neural_net.jpeg">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/neural_net2.jpeg">
+<meta property="og:updated_time" content="2018-05-19T01:15:28.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neural Network">
+<meta name="twitter:description" content="Neural Network TutorialThis note introduce the basic concept of neural network in machine learning, plus the python realization. this note is intended to tell beginners the cornerstone of the neural n">
+<meta name="twitter:image" content="https://iamtrask.github.io/img/sigmoid.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Neural Network | Guoxuan Ma | Stay Hard Stay Foolish </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Guoxuan Ma | Stay Hard Stay Foolish</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-research">
+          <a href="/categories/research" rel="section">
+            
+              <i class="menu-item-icon fa fa-laptop fa-fw"></i> <br />
+            
+            Research
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-economics">
+          <a href="/categories/economics" rel="section">
+            
+              <i class="menu-item-icon fa fa-university fa-fw"></i> <br />
+            
+            Economics
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-data_science">
+          <a href="/categories/Data-Science" rel="section">
+            
+              <i class="menu-item-icon fa fa-line-chart fa-fw"></i> <br />
+            
+            Data-Science
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-develop">
+          <a href="/categories/develop" rel="section">
+            
+              <i class="menu-item-icon fa fa-keyboard-o fa-fw"></i> <br />
+            
+            Develop
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iFjLUhsrtLPdUBH3P_UK','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Neural Network
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2016-03-21T10:05:09-04:00" content="2016-03-21">
+              2016-03-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/03/21/nueral_network1/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/21/nueral_network1/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="Neural-Network-Tutorial"><a href="#Neural-Network-Tutorial" class="headerlink" title="Neural Network Tutorial"></a>Neural Network Tutorial</h1><p>This note introduce the basic concept of neural network in machine learning, plus the python realization. this note is intended to tell beginners the cornerstone of the neural network and help anyone who is interested in neural network can build their own application easily. </p>
+<p>The notes contains the following part: </p>
+<ul>
+<li>Toy example of Neural Network </li>
+<li>The Defination of Neural Network</li>
+<li>Bsic element in Neural Network and Backprogation</li>
+<li>constuct the Neural Network</li>
+</ul>
+<a id="more"></a>
+<h2 id="Toy-example"><a href="#Toy-example" class="headerlink" title="Toy example"></a>Toy example</h2><h3 id="First-Case"><a href="#First-Case" class="headerlink" title="First Case"></a>First Case</h3><p>The example comes from @iamtrask, <a href="http://iamtrask.github.io/2015/07/12/basic-python-network/" target="_blank" rel="noopener">link blog</a></p>
+<p>the toy example is neural network trained with backpropagation is attempting to use input to predict output.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Inputs</th>
+<th style="text-align:center">Inputs</th>
+<th style="text-align:center">Inputs</th>
+<th style="text-align:center">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>we would see that the leftmost input column is perfectly correlated with the output. Backpropagation, in its simplest form. </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>Input dataset matrix where each row is a training example</td>
+</tr>
+<tr>
+<td>y</td>
+<td>Output dataset matrix where each row is a training example</td>
+</tr>
+<tr>
+<td>l0</td>
+<td>First Layer of the Network, specified by the input data</td>
+</tr>
+<tr>
+<td>l1</td>
+<td>Second Layer of the Network, otherwise known as the hidden layer</td>
+</tr>
+<tr>
+<td>syn0</td>
+<td>First layer of weights, Synapse 0, connecting l0 to l1.</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Elementwise multiplication, so two vectors of equal size are multiplying corresponding values 1-to-1 to generate a final vector of identical size.</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Elementwise subtraction, so two vectors of equal size are subtracting corresponding values 1-to-1 to generate a final vector of identical size.</td>
+</tr>
+<tr>
+<td>x.dot(y)</td>
+<td>If x and y are vectors, this is a dot product. If both are matrices, it’s a matrix-matrix multiplication. If only one is a matrix, then it’s vector matrix multiplication.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># sigmoid function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nonlin</span><span class="params">(x,deriv=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(deriv==<span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> x*(<span class="number">1</span>-x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>+np.exp(-x))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># input dataset</span></span><br><span class="line">X = np.array([  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>] ])</span><br><span class="line">    </span><br><span class="line"><span class="comment"># output dataset            </span></span><br><span class="line">y = np.array([[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>]]).T</span><br><span class="line"></span><br><span class="line"><span class="comment"># seed random numbers to make calculation</span></span><br><span class="line"><span class="comment"># deterministic (just a good practice)</span></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># initialize weights randomly with mean 0</span></span><br><span class="line">syn0 = <span class="number">2</span>*np.random.random((<span class="number">3</span>,<span class="number">1</span>)) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> iter <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10000</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># forward propagation</span></span><br><span class="line">    l0 = X</span><br><span class="line">    l1 = nonlin(np.dot(l0,syn0))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># how much did we miss?</span></span><br><span class="line">    l1_error = y - l1</span><br><span class="line"></span><br><span class="line">    <span class="comment"># multiply how much we missed by the </span></span><br><span class="line">    <span class="comment"># slope of the sigmoid at the values in l1</span></span><br><span class="line">    l1_delta = l1_error * nonlin(l1,<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># update weights</span></span><br><span class="line">    syn0 += np.dot(l0.T,l1_delta)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Output After Training:"</span>)</span><br><span class="line">print(l1)</span><br></pre></td></tr></table></figure>
+<pre><code>Output After Training:
+[[ 0.00966498]
+ [ 0.00786546]
+ [ 0.99358866]
+ [ 0.99211917]]
+</code></pre><p>A <a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="noopener">sigmoid function</a> maps any value to a value between 0 and 1. We use it to convert numbers to probabilities. It also has several other desirable properties for training neural networks.<br>A <a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="noopener">sigmoid function</a> maps any value to a value between 0 and 1. We use it to convert numbers to probabilities. It also has several other desirable properties for training neural networks.</p>
+<p><img class="img-responsive" width="80%" src="https://iamtrask.github.io/img/sigmoid.png" alt=""></p>
+<h3 id="A-Harder-Problem-XOR"><a href="#A-Harder-Problem-XOR" class="headerlink" title="A Harder Problem  XOR"></a>A Harder Problem  XOR</h3><p>The problem can be described in the following table :</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Inputs</th>
+<th style="text-align:center">Inputs</th>
+<th style="text-align:center">Inputs</th>
+<th style="text-align:center">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The realized code is in the following and the definations of each variables are : </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Inputs (l0)</th>
+<th>Inputs (l0)</th>
+<th>Inputs (l0)</th>
+<th>Hidden Weights (l1)</th>
+<th>Hidden Weights (l1)</th>
+<th>Hidden Weights (l1)</th>
+<th>Hidden Weights (l1)</th>
+<th>Output (l2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>0.7</td>
+<td>0.1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0.3</td>
+<td>0.2</td>
+<td>0.3</td>
+<td>0.9</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.8</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nonlin</span><span class="params">(x,deriv=False)</span>:</span></span><br><span class="line">	<span class="keyword">if</span>(deriv==<span class="keyword">True</span>):</span><br><span class="line">	    <span class="keyword">return</span> x*(<span class="number">1</span>-x)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>+np.exp(-x))</span><br><span class="line">    </span><br><span class="line">X = np.array([[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">            [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">            [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">            [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]])</span><br><span class="line">                </span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">			[<span class="number">1</span>],</span><br><span class="line">			[<span class="number">1</span>],</span><br><span class="line">			[<span class="number">0</span>]])</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># randomly initialize our weights with mean 0</span></span><br><span class="line">syn0 = <span class="number">2</span>*np.random.random((<span class="number">3</span>,<span class="number">4</span>)) - <span class="number">1</span></span><br><span class="line">syn1 = <span class="number">2</span>*np.random.random((<span class="number">4</span>,<span class="number">1</span>)) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">60001</span>):</span><br><span class="line"></span><br><span class="line">	<span class="comment"># Feed forward through layers 0, 1, and 2</span></span><br><span class="line">    l0 = X</span><br><span class="line">    l1 = nonlin(np.dot(l0,syn0))</span><br><span class="line">    l2 = nonlin(np.dot(l1,syn1))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># how much did we miss the target value?</span></span><br><span class="line">    l2_error = y - l2</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (j% <span class="number">10000</span>) == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">"Error:"</span> + str(np.mean(np.abs(l2_error))))</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># in what direction is the target value?</span></span><br><span class="line">    <span class="comment"># were we really sure? if so, don't change too much.</span></span><br><span class="line">    <span class="comment"># l2_delta means how the l2 layer weight (syn1) affect the estimated error change </span></span><br><span class="line">    l2_delta = l2_error*nonlin(l2,deriv=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># how much did each l1 value contribute to the l2 error (according to the weights)?</span></span><br><span class="line">    <span class="comment"># this is actually backprogation chain rule of l2_error . </span></span><br><span class="line">    <span class="comment"># for l1 value x to measure 1 unit change to the l2_error , we need the derivates of f(wx),right?! is f(wx)*w, </span></span><br><span class="line">    <span class="comment"># so to know the l1_error, we have 1*w*f(wx)*l2_error   </span></span><br><span class="line">    l1_error = l2_delta.dot(syn1.T)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># in what direction is the target l1?</span></span><br><span class="line">    <span class="comment"># were we really sure? if so, don't change too much.</span></span><br><span class="line">    <span class="comment"># l1_delta means how the l1 layer weight (syn0) affect the estimated error change </span></span><br><span class="line">    l1_delta = l1_error * nonlin(l1,deriv=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    syn1 += l1.T.dot(l2_delta)</span><br><span class="line">    syn0 += l0.T.dot(l1_delta)</span><br></pre></td></tr></table></figure>
+<pre><code>Error:0.0085850250975
+Error:0.00578962106435
+Error:0.00462926115218
+Error:0.0039588188244
+Error:0.0035101602766
+Error:0.00318353073559
+</code></pre><h4 id="decode-the-above-program"><a href="#decode-the-above-program" class="headerlink" title="decode the above program"></a>decode the above program</h4><p> The above progam is acutally three nodes for input layer, four nodes for hidden layer (only 1 hidden layer) and 1 node output layer. we have four observational data. the number of weights (Synapses) need to calcualte is 3*4 + 1*4. For fiting the data, the code use traditional backprogation method to update the weightings and raise the prediction precise. When the code calculate the result, it needs to know the error to the training data.  <code>l2_error = y - l2</code> Then, based on the error distance, we can make the correction. Firstly, the last node, we want to know how to update the weights in the last layer. this is <code>l2_delta = l2_error*nonlin(l2,deriv=True)</code>. After that, we need to know the how the error contribution contributed to the weights in the upper layer. Then, we need the backprogation method to calculate <strong>the extent of one unit change of the weights in the upper layer to final error</strong>. This can use derivates to express, </p>
+<script type="math/tex; mode=display">error \times f(wx)'\times (wx)'</script><p> So we have <code>l1_error = l2_delta.dot(syn1.T)</code>. In addition, we have <code>l1_delta = l1_error * nonlin(l1,deriv=True)</code></p>
+<p> The <code>l1_delta</code> and <code>l1_delta</code> indicate the update coefficients that weights should concern, multiplied by input value we can get the update amount of different weights in the Neural Network, which is the last two lines:</p>
+<p> <code>syn1 += l1.T.dot(l2_delta)</code></p>
+<p> <code>syn0 += l0.T.dot(l1_delta)</code></p>
+<h2 id="The-Defination-of-Neural-Network"><a href="#The-Defination-of-Neural-Network" class="headerlink" title="The Defination of Neural Network"></a>The Defination of Neural Network</h2><h3 id="Biological-motivation"><a href="#Biological-motivation" class="headerlink" title="Biological motivation"></a>Biological motivation</h3><p>the online lecture notes have very clearly introduce to the neural network .(see <a href="http://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener">note1</a>)<br>Here I briefly mention the basic ideas of eural network. The neural Network mimick human brain neurons performance. different neurons connect with each other by <strong>synapses</strong>, and receives the input signals from <strong>dendrites</strong>. In the nucleus, it applies activation function to produce the output singals, and then send the singal to the next neurons through its <strong>axon</strong> and <strong>synapses</strong></p>
+<p>The above description illustrate the functioning procedures of the very basic neural network. </p>
+<div class="fig figcenter fighighlight">
+  <img src="/pic/neuron.png" width="49%">
+  <img src="/pic/neuron_model.jpeg" width="49%" style="border-left: 1px solid black;">
+  <div class="figcaption">A cartoon drawing of a biological neuron (left) and its mathematical model (right).</div>
+</div>
+
+
+<h3 id="Neural-Network-architectures"><a href="#Neural-Network-architectures" class="headerlink" title="Neural Network architectures"></a>Neural Network architectures</h3><p>Instead of an amorphous blobs of connected neurons, Neural Network models are often organized into distinct layers of neurons. </p>
+<div class="fig figcenter fighighlight">
+  <img src="/pic/neural_net.jpeg" width="40%">
+  <img src="/pic/neural_net2.jpeg" width="55%" style="border-left: 1px solid black;">
+  <div class="figcaption"><b>Left:</b> A 2-layer Neural Network (one hidden layer of 4 neurons (or units) and one output layer with 2 neurons), and three inputs. <b>Right:</b> A 3-layer neural network with three inputs, two hidden layers of 4 neurons each and one output layer. Notice that in both cases there are connections (synapses) between neurons across layers, but not within a layer.</div>
+</div>
+
+<h2 id="Self-Understanding"><a href="#Self-Understanding" class="headerlink" title="Self Understanding"></a>Self Understanding</h2><p>As far as I learned in neural network, it can be seen as weighting different analysis core to produce the final judgement. for example, in one specific node at jth layer, it can receive all or part of input signal from upper layer. when it receive those signals, there are many ways to organzie them. the simplest way is liner form, multiplying them with weightings (synapses)(eg $w1<em>x1+w2</em>x2+w3<em>x3$). But we could also apply other forms such as polynomial, quardatic form, max, … And when we do like this, we need to remember that we need to output <strong>singal</strong>. So we need to apply <em>*activation function</em></em> (usually sigmoid) to swith the numerical result into the singal. By combing many nodes and many layers, we can deal with many complex issues and get the desired results. I think this is the power of Neural Network. In Big Data era, Neural Network must have wider and wider applications.</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="http://karpathy.github.io/neuralnets/" target="_blank" rel="noopener">http://karpathy.github.io/neuralnets/</a></li>
+<li><a href="http://cs231n.github.io/" target="_blank" rel="noopener">http://cs231n.github.io/</a></li>
+<li><a href="https://iamtrask.github.io/2015/07/12/basic-python-network/" target="_blank" rel="noopener">https://iamtrask.github.io/2015/07/12/basic-python-network/</a></li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/21/matlab-technique/" rel="next" title="Matlab Technique">
+                <i class="fa fa-chevron-left"></i> Matlab Technique
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/11/python-function-decorated/" rel="prev" title="Python For @static Method">
+                Python For @static Method <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/pic/mgx2.png" alt="Guoxuan Ma" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Guoxuan Ma</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaofeima1990/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100011710272689" target="_blank">
+                  
+                    <i class="fa fa-facebook"></i> Facebook
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Neural-Network-Tutorial"><span class="nav-number">1.</span> <span class="nav-text">Neural Network Tutorial</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Toy-example"><span class="nav-number">1.1.</span> <span class="nav-text">Toy example</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Case"><span class="nav-number">1.1.1.</span> <span class="nav-text">First Case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Harder-Problem-XOR"><span class="nav-number">1.1.2.</span> <span class="nav-text">A Harder Problem  XOR</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#decode-the-above-program"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">decode the above program</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Defination-of-Neural-Network"><span class="nav-number">1.2.</span> <span class="nav-text">The Defination of Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Biological-motivation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Biological motivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Network-architectures"><span class="nav-number">1.2.2.</span> <span class="nav-text">Neural Network architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Understanding"><span class="nav-number">1.3.</span> <span class="nav-text">Self Understanding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.4.</span> <span class="nav-text">reference</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guoxuan Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaofeima';
+      var disqus_identifier = '2016/03/21/nueral_network1/';
+      var disqus_title = 'Neural Network';
+      var disqus_url = 'http://xiaofeima1990.github.io/2016/03/21/nueral_network1/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

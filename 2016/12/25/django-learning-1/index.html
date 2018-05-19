@@ -1,0 +1,1025 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QEfdUsKGngysYFQKsFYv-tWMu3Dt9XAUXYbLHg0a5gg" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,Django," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="These series of article record my learning process of Django Web Development">
+<meta name="keywords" content="python,Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Learning -1">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2016/12/25/django-learning-1/index.html">
+<meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
+<meta property="og:description" content="These series of article record my learning process of Django Web Development">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/django-1mvc.png">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/django-1request.jpg">
+<meta property="og:updated_time" content="2018-05-19T00:13:37.283Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Learning -1">
+<meta name="twitter:description" content="These series of article record my learning process of Django Web Development">
+<meta name="twitter:image" content="http://xiaofeima1990.github.io/pic/django-1mvc.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Django Learning -1 | Guoxuan Ma | Stay Hard Stay Foolish </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Guoxuan Ma | Stay Hard Stay Foolish</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-research">
+          <a href="/categories/research" rel="section">
+            
+              <i class="menu-item-icon fa fa-laptop fa-fw"></i> <br />
+            
+            Research
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-economics">
+          <a href="/categories/economics" rel="section">
+            
+              <i class="menu-item-icon fa fa-university fa-fw"></i> <br />
+            
+            Economics
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-data_science">
+          <a href="/categories/Data-Science" rel="section">
+            
+              <i class="menu-item-icon fa fa-line-chart fa-fw"></i> <br />
+            
+            Data-Science
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-develop">
+          <a href="/categories/develop" rel="section">
+            
+              <i class="menu-item-icon fa fa-keyboard-o fa-fw"></i> <br />
+            
+            Develop
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iFjLUhsrtLPdUBH3P_UK','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Django Learning -1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2016-12-25T21:24:15-05:00" content="2016-12-25">
+              2016-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/12/25/django-learning-1/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/25/django-learning-1/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>These series of article record my learning process of Django Web Development</p>
+<a id="more"></a>
+<h1 id="Introduction-to-Django"><a href="#Introduction-to-Django" class="headerlink" title="Introduction to Django"></a>Introduction to Django</h1><p>Django loosely follows a model-viewcontroller design pattern,which greatly helps in building clean and maintainable web applications</p>
+<h2 id="MVC-pattern-in-Web-Development"><a href="#MVC-pattern-in-Web-Development" class="headerlink" title="MVC pattern in Web Development"></a>MVC pattern in Web Development</h2><p>A few years ago, the <strong>model-view-controller</strong> pattern came for web-based applications was introduced. This software engineering pattern separates data (model), user interface (view), and data handling logic (controller), so that one can be changed without affecting the others. </p>
+<p><img src="/pic/django-1mvc.png" alt="mvc"></p>
+<h2 id="advantages-of-Django"><a href="#advantages-of-Django" class="headerlink" title="advantages of Django"></a>advantages of Django</h2><p>The standard features expected of a web framework are all available in Django, which include:</p>
+<ul>
+<li>supporting MVC </li>
+<li>A template and text filtering engine with simple but extensible syntax.</li>
+<li>A form generation and validation API.</li>
+<li>An extensible authentication system.</li>
+<li>A caching system for speeding up the performance of applications.</li>
+<li>A feed framework for generating RSS feeds.</li>
+</ul>
+<p>Apart from those above features, Django also have the following advantages:</p>
+<p><strong>Tight Integration between Components</strong> </p>
+<p>First of all, Django provides a set of tightly integrated components; all of these components have been developed by the Django team themselves. Django was originally developed as an in-house framework for managing a series of news-oriented websites. Later its code was released on the Internet and the Django team continued its development using the Open Source model. Because of its roots, Django’s components were designed for integration, reusability and speed from the start.</p>
+<p><strong>Object-Relational Mapper</strong></p>
+<p>Django’s database component, the Object-Relational Mapper (ORM), provides a bridge between the data model and the database engine. It supports a large set of database systems, and switching from one engine to another is a matter of changing a configuration file. This gives the developer great flexibility if a decision is made to change from one database engine to another.</p>
+<p><strong>Clean URL Design</strong></p>
+<p>The URL system in Django is very flexible and powerful; it lets you define patterns for the URLs in your application, and define Python functions to handle each pattern. This enables developers to create URLs that are both user and search engine friendly.</p>
+<p><strong>Automatic Administration Interface</strong> </p>
+<p>Django comes with an administration interface that is ready to be used. This interface makes the management of your application’s data a breeze. It is also highly flexible and customizable.</p>
+<p><strong>Advanced Development Environment</strong></p>
+<p>In addition, Django provides a very nice development environment. It comes with a lightweight web server for development and testing. When the debugging mode is enabled, Django provides very thorough and detailed error messages with a lot of debugging information. All of this makes isolating and fixing bugs very easy.</p>
+<p><strong>Multi-Lingual Support</strong></p>
+<p>Django supports multi-lingual websites through its built-in internationalization system. This can be very valuable for those working on websites with more than one language. The system makes translating the interface a very simple task</p>
+<h1 id="start-a-new-Django-Project"><a href="#start-a-new-Django-Project" class="headerlink" title="start a new Django Project"></a>start a new Django Project</h1><p>open a terminal (or command prompt for Windows users), type the following command, and hit enter:<br><code>django-admin.py startproject new_project</code></p>
+<p>This command will make a folder named django_bookmarksin the current directory, and create the initial directory structure inside it. Let’s see what kinds of files are created:</p>
+<pre><code>new_project/
+    __init__.py
+    manage.py
+    setting.py
+    urls.py
+</code></pre><p>The explanation of the four main files are :</p>
+<ul>
+<li><p><strong><strong>init</strong>.py</strong> Django projects are Python packages, and this file is required to tell<br>Python that the folder is to be treated as a package. A package in Python’s terminology is a collection of modules, and they are used to group similar files together and prevent naming conflicts.</p>
+</li>
+<li><p><strong>manage.py</strong> This is another utility script used to manage your project. You can think of it as your project’s version of django-admin.py. Actually, both django-admin.pyand manage.pyshare the same back-end code. manage.py is used to control the demand of Django.</p>
+</li>
+<li><p><strong>settings.py</strong> This is the main configuration file for your Django project. In this file you can specify a variety of options, including the database settings, site languages, which Django features are to be enabled, and so on. Various sections of this file will be explained as we build our application during the next chapters, but in this chapter, we will only see how to enter the database settings. </p>
+</li>
+<li><p><strong>url.py</strong> This is another configuration file. You can think of it as a mapping between URLs and Python functions that handle them. This file is one of Django’s powerful features, and we will see how to utilize it in the next chapter.</p>
+</li>
+</ul>
+<p>When we start writing code for our application, we will create new files inside the project’s folder. So the folder also serves as a container for our code.</p>
+<p>In the following case, I try to use the soical bookmark to illustrate how to ceate a simple webapp from scratch. This include the setup of database(qulite3), setup MVC framework, establishment of Registration, tag Voting,Commenting functions, be familar with the User Interface with Ajax,  the setup of Administration Interface, searching, user network and finally Deploying the web app.  </p>
+<h2 id="setup-the-database"><a href="#setup-the-database" class="headerlink" title="setup the database"></a>setup the database</h2><p>open the <strong>settings.py</strong> file, we can see that the following information for the setup of database:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="keyword">True</span></span><br><span class="line">TEMPLATE_DEBUG = DEBUG</span><br><span class="line"></span><br><span class="line">ADMINS = (</span><br><span class="line">    <span class="comment"># ('Your Name', 'your_email@example.com'),</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">MANAGERS = ADMINS</span><br><span class="line"></span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.'</span>, <span class="comment"># Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">''</span>,                      <span class="comment"># Or path to database file if using sqlite3.</span></span><br><span class="line">        <span class="comment"># The following settings are not used with sqlite3:</span></span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">''</span>,                      <span class="comment"># Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.</span></span><br><span class="line">        <span class="string">'PORT'</span>: <span class="string">''</span>,                      <span class="comment"># Set to empty string for default.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here we use the sqlite3 as the default database to implement the app. So it is simple to just setup the “ENGINE” and “NAME” :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">DEBUG = <span class="keyword">True</span></span><br><span class="line">TEMPLATE_DEBUG = DEBUG</span><br><span class="line"></span><br><span class="line">MANAGERS = ADMINS</span><br><span class="line"></span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.sqlite3'</span>, <span class="comment"># Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'book_markdb'</span>,                      <span class="comment"># Or path to database file if using sqlite3.</span></span><br><span class="line">        <span class="comment"># The following settings are not used with sqlite3:</span></span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">''</span>,                      <span class="comment"># Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.</span></span><br><span class="line">        <span class="string">'PORT'</span>: <span class="string">''</span>,                      <span class="comment"># Set to empty string for default.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>To create the database and initialize the tables in the database, we can use the following command:<br><code>$ python manage.py syncdb</code></p>
+<pre><code>Note: there maybe an error **No module named &#39;sqlite3.base&#39;**
+</code></pre><h2 id="Launching-the-Development-Server"><a href="#Launching-the-Development-Server" class="headerlink" title="Launching the Development Server"></a>Launching the Development Server</h2><h2 id="Launching-the-Development-Server-1"><a href="#Launching-the-Development-Server-1" class="headerlink" title="Launching the Development Server"></a>Launching the Development Server</h2><p>As discussed before, Django comes with a lightweight web server for developing and testing applications. This server is pre-configured to work with Django, and more importantly, it restarts whenever you modify the code.<br>To start the server, run the following command:<br><code>$ python manage.py runserver</code><br>according to the instruction of the server, we can open the browser to see our web app.</p>
+<h2 id="build-the-basic-web-application"><a href="#build-the-basic-web-application" class="headerlink" title="build the basic web application"></a>build the basic web application</h2><p>In this part, I am intended to learn MVC framework and templates. First of all, we need to create our own main page(index) </p>
+<h3 id="URLs-and-Views-Creating-the-Main-Page"><a href="#URLs-and-Views-Creating-the-Main-Page" class="headerlink" title="URLs and Views: Creating the Main Page"></a>URLs and Views: Creating the Main Page</h3><p>To create our own welcome page, we need to define an entry point to our application in the form of a URL (URL), and tell Django to call a particular Python function when a visitor accesses this URL. (VIEW)</p>
+<h4 id="VIEW"><a href="#VIEW" class="headerlink" title="VIEW"></a>VIEW</h4><p>A view in Django terminology is a regular Python function that responds to a page request by generating the corresponding page. To write the main page (any functions of Django), we we first need to create a <strong>Django application</strong> inside our project.</p>
+<p>To create it, issue the following command within our folder: </p>
+<p><code>$ python manage.py startapp bookmarks</code></p>
+<p>After running this command, Django will create a folder named bookmarksinside the project folder with these three files:</p>
+<ul>
+<li><strong><strong>init</strong>.py</strong>: This file tells Python that bookmarksis a Python package. </li>
+<li><strong>views.py</strong>: This file will contain our views.</li>
+<li><strong>models.py</strong>: This file will contain our data models.</li>
+</ul>
+<p>Open the file bookmarks/views.pyin your code editor and enter the following:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main_page</span><span class="params">(request)</span>:</span></span><br><span class="line">    output = <span class="string">'''</span></span><br><span class="line"><span class="string">    &lt;html&gt;</span></span><br><span class="line"><span class="string">    &lt;head&gt;&lt;title&gt;%s&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;h1&gt;%s&lt;/h1&gt;&lt;p&gt;%s&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">    &lt;/html&gt;</span></span><br><span class="line"><span class="string">    '''</span> % (</span><br><span class="line">    <span class="string">'Django Bookmarks'</span>,</span><br><span class="line">    <span class="string">'Welcome to Django Bookmarks'</span>,</span><br><span class="line">    <span class="string">'Where you can store and share bookmarks!'</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(output)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>We import the class HttpResponsefrom django.http. We need this class in order to generate our response page.</li>
+<li>We define a Python function that takes one parameter named request; this parameter contains user input and other information. For example, request. GET, request.POSTand request.COOKIESare dictionaries that contain get, post and cookie data respectively.</li>
+<li>We build the HTML code of the response page, wrap it within an HttpResponseobject and return it.</li>
+</ul>
+<p><em>relation about request and response</em><br><img src="/pic/django-1request.jpg" alt="request and response"></p>
+<p>httprequest 表示来自某客户端的一个单独的HTTP请求。HttpRequest对象是Django自动创建的。</p>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>As you may recall from the previous chapter, a file named urls.pywas created when we started our project. This file contains valid URLs for our application, and maps each URL to a view that is a Python function.<br>As you can probably tell, the file contains a table of URLs and their corresponding Python functions (or views). The table is called urlpatterns, and it initially contains example entries that are commented out. Each entry is a Python tuple that consists of a URL and its view.</p>
+<p>The Django use <em>URL</em> to allocate each url address to each view and do different tasks. </p>
+<p>Let’s start by removing the comments and adding an entry for the main page:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> patterns, include, url</span><br><span class="line"><span class="keyword">from</span> bookmarks.views <span class="keyword">import</span> *</span><br><span class="line">urlpatterns = patterns(<span class="string">''</span>,</span><br><span class="line">(<span class="string">r'^$'</span>, main_page),</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>The file imports patterns, include, url from the module django.conf.urls. This module provides the necessary * functions to define URLs.</li>
+<li>We import everything from bookmarks.views. This is necessary to access our views, and connect them to URLs.<br>The patterns function is used to define the URL table. It contains only one mapping for now — from r’^$’to our view main_page.</li>
+</ul>
+<p>the synax in URL expression need some knowledge from regix. For more detail, please see the documentation online at: <a href="http://docs.python.org/lib/module-re.html" target="_blank" rel="noopener">http://docs.python.org/lib/module-re.html</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Symbol / Expression</th>
+<th>Matched String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>. (Dot)</td>
+<td>Any character.</td>
+</tr>
+<tr>
+<td>^ (Caret)</td>
+<td>Start of string.</td>
+</tr>
+<tr>
+<td>$</td>
+<td>End of string.</td>
+</tr>
+<tr>
+<td>*</td>
+<td>0 or more repetitions.</td>
+</tr>
+<tr>
+<td>+</td>
+<td>1 or more repetitions.</td>
+</tr>
+<tr>
+<td>?</td>
+<td>0 or 1 repetitions.</td>
+</tr>
+<tr>
+<td>A \ B</td>
+<td>means A or B.</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>Any lowercase character.</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>Any alphanumeric character or _.</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>Any digit.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="the-Database-and-Models"><a href="#the-Database-and-Models" class="headerlink" title="the Database and Models"></a>the Database and Models</h3><p>If you are used to dealing with the database directly through SQL queries, then you may find Django’s approach to database access a bit different. Loosely speaking, Django abstracts access to database tables through Python classes. To store, manipulate and retrieve objects from the database, the developer uses a Python-based<br>API. In order to do this, SQL knowledge is useful but not required.</p>
+<p>This technique is best explained by example. For our bookmarking application, we need to store three types of data in the database:</p>
+<ul>
+<li>Users (ID, username, password, email)</li>
+<li>Links (ID, URL)</li>
+<li>Bookmarks (ID, title, user_id, link_id)</li>
+</ul>
+<p>Each user will have their own entry in the Users table. This entry stores the username, password and email. Similarly, each link will have a corresponding entry in the links table. We will only store the link’s URL for now.<br>As for the Bookmarks table, you can think of it as the joining table between Users and Links. When a user adds a bookmark, an entry for the bookmark’s URL is added to the links table if it doesn’t already exist, and then a joining entry is added to the Bookmarks table. This entry connects the user with the link, and stores the title that the user entered for their bookmark.</p>
+<p>To use and define the model,  we first need to activate it in our Django project. This is done by<br>editing settings.py, looking for the INSTALLED_APPSvariable, and adding our<br>application name (django_bookmarks.bookmarks) to it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line"><span class="string">'django.contrib.auth'</span>,</span><br><span class="line"><span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line"><span class="string">'django.contrib.sessions'</span>,</span><br><span class="line"><span class="string">'django.contrib.sites'</span>,</span><br><span class="line"><span class="string">'django_bookmarks.bookmarks'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>For all three database:</p>
+<p><strong>Link Data Model</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Link</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    url = models.URLField(unique=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>User Data Model</strong></p>
+<p><code>from django.contrib.auth.models import User</code></p>
+<p>use the default user model in django</p>
+<p><strong>Bookmark Data Model</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bookmark</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    title = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    user = models.ForeignKey(User)</span><br><span class="line">    link = models.ForeignKey(Link)</span><br></pre></td></tr></table></figure>
+<pre><code>**many to many relation**
+
+A bookmark belongs to one user and one link. However, one user may have many bookmarks, and one link may be 
+bookmarked by many users. In database language we say there is a many-to-many relationship between users and links. However, there is no way to actually represent a many-to-many relationship such as this one using a standard database system. In our particular case, we will invent the concept of a bookmark to break up this 
+many-to-many relationship into its constituent one-to-many relationships.
+
+The first of these is the one-to-many relationship between the user and their bookmarks. One user can have many bookmarks, but each bookmark is associated with only one user. That is to say, each user can bookmark a particular link once.
+
+The second of these is the one-to-many relationship between a link and its bookmarks. One link can have many bookmarks associated with it if multiple users have bookmarked it, but each bookmark is associated with only one link.
+</code></pre><p>as we set up the Model.py and then, run the following command <strong>manage.py syncdb</strong> in order to create its corresponding table.</p>
+<p>Let’s examine the SQL query generated by Django to see how it automatically<br>handles foreign keys. Again, issue the following command:</p>
+<p><code>$ python manage.py sql bookmarks</code></p>
+<p>And the result is :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">CREATE TABLE &quot;bookmarks_link&quot; (</span><br><span class="line">    &quot;id&quot; integer NOT NULL PRIMARY KEY,</span><br><span class="line">    &quot;url&quot; varchar(200) NOT NULL UNIQUE</span><br><span class="line">)</span><br><span class="line">;</span><br><span class="line">CREATE TABLE &quot;bookmarks_bookmark&quot; (</span><br><span class="line">    &quot;id&quot; integer NOT NULL PRIMARY KEY,</span><br><span class="line">    &quot;title&quot; varchar(200) NOT NULL,</span><br><span class="line">    &quot;user_id&quot; integer NOT NULL REFERENCES &quot;auth_user&quot; (&quot;id&quot;),</span><br><span class="line">    &quot;link_id&quot; integer NOT NULL REFERENCES &quot;bookmarks_link&quot; (&quot;id&quot;)</span><br><span class="line">)</span><br><span class="line">;</span><br><span class="line"></span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure>
+<p>Now that the data models are ready, we have the facilities to store and manage our data. Django offers an elegant and straightforward Python API to store Python objects in the database, thus sparing the developer the burden of working with SQL and converting between SQL and Python types and idioms.</p>
+<h3 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h3><p>The next thing we need concern is the templates. It is a very important part in Django and all web app for python. Because handling the html code directly in python may have many disadvantages: </p>
+<ul>
+<li>Good software engineering practices always emphasize the separation between UI and business logic, because it enhances reusability. However, embedding HTML within Python code clearly violates this rule.</li>
+<li>Editing HTML embedded within Python requires Python knowledge, but this is impractical for many development teams whose web designers do not know Python.</li>
+<li>Handling HTML code within Python code is a tedious and error-prone task. For example, quotation marks in HTML may need to be escaped in Python string literals, and the overall result may be unclean and unreadable code.</li>
+</ul>
+<h4 id="some-synax-for-the-templates"><a href="#some-synax-for-the-templates" class="headerlink" title="some synax for the templates"></a>some synax for the templates</h4><p>Checking whether a variable is empty or not in a template is done using the following syntax:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if variable %&#125;</span><br><span class="line">&lt;p&gt;variable contains data.&lt;/p&gt;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&lt;p&gt;variable is empty&lt;/p&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>This ‘if’ condition works as expected. If the variable contains data, only the first line is printed to the browser. On the other hand, if the variable is indeed empty, only the second line is printed.</p>
+<p>To iterate through a list and print its items, we use the following syntax:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for item in list %&#125;</span><br><span class="line">&#123;&#123; item &#125;&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally, if a variable has attributes, you can access them in a way similar to Python:</p>
+<p><code></code></p>
+<h3 id="Combining-Templates-and-View"><a href="#Combining-Templates-and-View" class="headerlink" title="Combining Templates and View"></a>Combining Templates and View</h3><p>If we want tansfer some variable or character from URL to the web server (eg: into View), how do we do it? For example, an URL of a User page will have such form : <em>user/username</em>，where usernameis the owner of the bookmarks that we want to see.where usernameis the owner of the bookmarks that we want to see.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = patterns(<span class="string">''</span>,</span><br><span class="line">(<span class="string">r'^$'</span>, main_page),</span><br><span class="line">(<span class="string">r'^user/(\w+)/$'</span>, user_page),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>We have surrounded this portion of the regular expression with parentheses; this will cause Django to capture the string that matches this portion, and pass it to the view, as we will see later.</p>
+<p>and we modify the View.py for <strong>user_page</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse, Http404</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_page</span><span class="params">(request, username)</span>:</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">user = User.objects.get(username=username)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line"><span class="keyword">raise</span> Http404(<span class="string">'Requested user not found.'</span>)</span><br><span class="line">bookmarks = user.bookmark_set.all()</span><br><span class="line">template = get_template(<span class="string">'user_page.html'</span>)</span><br><span class="line">variables = Context(&#123;</span><br><span class="line"><span class="string">'username'</span>: username,</span><br><span class="line"><span class="string">'bookmarks'</span>: bookmarks</span><br><span class="line">&#125;)</span><br><span class="line">output = template.render(variables)</span><br><span class="line"><span class="keyword">return</span> HttpResponse(output)</span><br></pre></td></tr></table></figure>
+<p>There are several features need to be mentioned here:</p>
+<ul>
+<li>Unlike our first view, user_pagetakes an extra parameter in addition to the familiar request object. Remember that the pattern for this URL contains capturing parentheses? Strings captured by URL patterns are passed as parameters to views. The captured string in this URL is passed as the username parameter. </li>
+<li>We used User.objects.get to obtain the user object whose username is requested. We can use a similar technique to query any table by a unique column. This method throws an exception if there are no records that match the query, or if the matched record is not unique. <strong>The reason we can use User.objects.get is that we directly use default User Model to define our database table</strong></li>
+<li>If the requested username is not available in the database, we generate a 404 “Page Not Found” error by raising an exception of the type Http404. </li>
+<li>To obtain the list of bookmarks for a particular user object, we can conveniently use the <em>bookmark_set</em> <code>bookmarks = user.bookmark_set.all()</code> attribute available in the user object. <strong>Django detects relations between data models and automatically generates such attributes.</strong> There is no need to worry about constructing SQL JOIN queries ourselves to obtain user bookmarks for example. See more detail in stack overflow <a href="http://stackoverflow.com/questions/22338965/user-object-has-no-attribute-bookmark-set" target="_blank" rel="noopener">user-object-has-no-attribute-bookmark-set</a>, And <a href="https://docs.djangoproject.com/en/dev/topics/db/queries/" target="_blank" rel="noopener">Django reference</a> under “Following relationships “backward””</li>
+<li></li>
+</ul>
+<h2 id="User-Registration-and-Management"><a href="#User-Registration-and-Management" class="headerlink" title="User Registration and Management"></a>User Registration and Management</h2><ul>
+<li>Creating a login page.</li>
+<li>Enabling logout functionality.</li>
+<li>Creating a registration form.</li>
+<li>Enabling users to update their account information.</li>
+</ul>
+<p>Django has its own Authentication module. The Django authentication system is available in the django.contrib.<br>authpackage. It is installed by default as part of Django, and projects created with<br>the django-admin.pyutility have it enabled by default.</p>
+<p>Before we start using the authentication system, let’s have a quick look at the features<br>that it provides:</p>
+<ul>
+<li>Users: A comprehensive User data model with fields commonly required by web applications.</li>
+<li>Permissions: Yes/No flags that indicate whether a user may access a certain feature or not.</li>
+<li>Groups: A data model for grouping more than one user together and applying the same set of permissions to them.</li>
+<li>Messages: Provides the functionality for displaying information and error messages to the user.</li>
+</ul>
+<h3 id="Creating-the-Login-Page"><a href="#Creating-the-Login-Page" class="headerlink" title="Creating the Login Page"></a>Creating the Login Page</h3><p>Open the file in your editor and change it so that the URL table looks like the following snippet:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = patterns(&apos;&apos;,</span><br><span class="line">(r&apos;^$&apos;, main_page),</span><br><span class="line">(r&apos;^user/(\w+)/$&apos;, user_page),</span><br><span class="line">(r&apos;^login/$&apos;, &apos;django.contrib.auth.views.login&apos;),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The <strong>login</strong> view requires the availability of a template called registration/login.<br>html. It loads this template and passes an object that represents the login form to<br>it. We will learn about form objects in detail when we create a user registration<br>form, but for now, we only need to know that this object is called formand has the<br>following attributes: form.username, form.passwordand form.has_errors. When<br>printed, the first two attributes generate HTML code for the username and password<br>text fields, whereas form.has_errorsis a Boolean attribute that is set to true if<br>logging-in fails after submitting the form.</p>
+<h4 id="Improving-Template-Structure"><a href="#Improving-Template-Structure" class="headerlink" title="Improving Template Structure"></a>Improving Template Structure</h4><p>We see lots of templates have similar structure. Wouldn’t it be great if we could factor out the shared sections into a single file so that, if we want to modify all the pages in future, we need only edit one file?</p>
+<p>Fortunately, the Django template system already provides such a feature-template inheritance. The idea is simple; we create a <strong>base</strong> template that contains the structure shared by all templates in the system. We also declare certain blocksof the base template to be modifiable by <strong>child</strong> templates. Next, we create a template that<br>extendsthe base template and modifies its blocks. The idea is very similar to class inheritance in object-oriented programming.</p>
+<p>the base file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span><br><span class="line">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Django Bookmarks | &#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;&#123;% block head %&#125;&#123;% endblock %&#125;&lt;/h1&gt;</span><br><span class="line">&#123;% block content %&#125;&#123;% endblock %&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>The template utilizes a new template tag called block. This tag is used to define sections that are modifiable by child templates. Our base template contains three blocks, one for the title, one for the page heading and one for the body. </p>
+<p>To be continued </p>
+<p>how to apply crob job to do some thing </p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/Django/" rel="tag">#Django</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/19/PhantomJS-and-Selenium-headless-brower-spider/" rel="next" title="PhantomJS and Selenium -- Headless Browser Spider">
+                <i class="fa fa-chevron-left"></i> PhantomJS and Selenium -- Headless Browser Spider
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/16/how to turn latex formula to word/" rel="prev" title="How to Turn Latex Formula to Word">
+                How to Turn Latex Formula to Word <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/pic/mgx2.png" alt="Guoxuan Ma" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Guoxuan Ma</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaofeima1990/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100011710272689" target="_blank">
+                  
+                    <i class="fa fa-facebook"></i> Facebook
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-Django"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Django</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC-pattern-in-Web-Development"><span class="nav-number">1.1.</span> <span class="nav-text">MVC pattern in Web Development</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#advantages-of-Django"><span class="nav-number">1.2.</span> <span class="nav-text">advantages of Django</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#start-a-new-Django-Project"><span class="nav-number">2.</span> <span class="nav-text">start a new Django Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setup-the-database"><span class="nav-number">2.1.</span> <span class="nav-text">setup the database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Launching-the-Development-Server"><span class="nav-number">2.2.</span> <span class="nav-text">Launching the Development Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Launching-the-Development-Server-1"><span class="nav-number">2.3.</span> <span class="nav-text">Launching the Development Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-the-basic-web-application"><span class="nav-number">2.4.</span> <span class="nav-text">build the basic web application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URLs-and-Views-Creating-the-Main-Page"><span class="nav-number">2.4.1.</span> <span class="nav-text">URLs and Views: Creating the Main Page</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VIEW"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">VIEW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">URL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-Database-and-Models"><span class="nav-number">2.4.2.</span> <span class="nav-text">the Database and Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Template"><span class="nav-number">2.4.3.</span> <span class="nav-text">Template</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#some-synax-for-the-templates"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">some synax for the templates</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combining-Templates-and-View"><span class="nav-number">2.4.4.</span> <span class="nav-text">Combining Templates and View</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#User-Registration-and-Management"><span class="nav-number">2.5.</span> <span class="nav-text">User Registration and Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-the-Login-Page"><span class="nav-number">2.5.1.</span> <span class="nav-text">Creating the Login Page</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Improving-Template-Structure"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">Improving Template Structure</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guoxuan Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaofeima';
+      var disqus_identifier = '2016/12/25/django-learning-1/';
+      var disqus_title = 'Django Learning -1';
+      var disqus_url = 'http://xiaofeima1990.github.io/2016/12/25/django-learning-1/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

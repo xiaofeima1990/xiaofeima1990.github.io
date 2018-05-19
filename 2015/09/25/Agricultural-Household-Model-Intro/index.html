@@ -43,6 +43,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
 
 
 
@@ -347,15 +349,24 @@
 <a id="more"></a>
 <h2 id="Baseline-Model-Overview"><a href="#Baseline-Model-Overview" class="headerlink" title="Baseline Model Overview"></a>Baseline Model Overview</h2><p>The canonical model of an agricultural household includes a utility function, defined over consumption by each member of the household (usually can be simplified by one or two members), and a budget constraint, which incorporates production on assets owned by the household. </p>
 <p>Consider a typical household with two household members whose aggregate utility is represented by a household utility function:</p>
-<p>$$\max U({c_1},{c_2},{l_1},{l_2})\ \ (1)$$</p>
-<p>where each member gets utility from consuming a good ($c_1$ and $c_2$ ) and from leisure( $l_1$ and $l_2$ ).  Utility is an increasing function of both $c$ and $l$ </p>
+<script type="math/tex; mode=display">\max U({c_1},{c_2},{l_1},{l_2})\ \ (1)</script><p>where each member gets utility from consuming a good ($c_1$ and $c_2$ ) and from leisure( $l_1$ and $l_2$ ).  Utility is an increasing function of both $c$ and $l$ </p>
 <p>The most simple agricultural household models assume that each household faces a complete set of competitive markets. (This includes, in more general models than the one presented here, a complete set of markets for time- and state-indexed commodities.) Such assumption can be released in the following extending part</p>
 <p>About the Budget Constrains, we have the following setup: </p>
 <p>Let $p$ be the price of output, and $w$ be the wage of output (for simplicity, that the labour of the two family members is homogeneous.)  The household can produce the good on its farm according to the concave production function $F(L,A)$, where A is the area of the farm cultivated by the<br>household and $L$ is the amount of labour used on the farm. Let $E_i^L$ be personi’s endowment of time, $E^A$ the household’s endowment of land, and $r$ the price of one unit of land. </p>
-<p>$$<br>\displaylines{<br>  p({c_1} + {c_2}) + w{L^h} + r{A^h} \le F(L,A) + w(L_1^m + L_2^m) + r{A^m}\ \ (<em>) \cr<br>  L = L_1^f + L_2^f + {L^h} \ \ (3)\cr<br>  A = {A^f} + {A_h} \ \ (4)\cr<br>  {E^A} = {A^f} + {A^m},E_i^L = L_i^f + L_i^m + {l_i},i \in { 1,2} \ \  (5)\cr<br>  {c_i},{l_i},L_i^f,L_i^m,{A^f},{A^m} \ge 0,\;i \in { 1,2}  \ \ (6)\cr}<br>$$<br>(</em>) is the budget constraint which tells us cash expenditures on consumption, hired labour($L^h$), and rented land ($A^h$) cannot exceed cash revenues from farming, market labour (rented labour $L_i^m$, and land rented out ($A^m$). the rest equations are resource constraints: labour<br>use on the farm is household labour used on the farm plus hired labour; land use on the farm is owned land used on the farm plus hired land; the household’s land endowment is used on its own farm or rented out, and each individual’s time endowment equals their labour use on the farm, plus market labour time, plus leisure time.</p>
+<script type="math/tex; mode=display">
+\displaylines{
+  p({c_1} + {c_2}) + w{L^h} + r{A^h} \le F(L,A) + w(L_1^m + L_2^m) + r{A^m}\ \ (*) \cr 
+  L = L_1^f + L_2^f + {L^h} \ \ (3)\cr 
+  A = {A^f} + {A_h} \ \ (4)\cr 
+  {E^A} = {A^f} + {A^m},E_i^L = L_i^f + L_i^m + {l_i},i \in \{ 1,2\} \ \  (5)\cr 
+  {c_i},{l_i},L_i^f,L_i^m,{A^f},{A^m} \ge 0,\;i \in \{ 1,2\}  \ \ (6)\cr}</script><p>(*) is the budget constraint which tells us cash expenditures on consumption, hired labour($L^h$), and rented land ($A^h$) cannot exceed cash revenues from farming, market labour (rented labour $L_i^m$, and land rented out ($A^m$). the rest equations are resource constraints: labour<br>use on the farm is household labour used on the farm plus hired labour; land use on the farm is owned land used on the farm plus hired land; the household’s land endowment is used on its own farm or rented out, and each individual’s time endowment equals their labour use on the farm, plus market labour time, plus leisure time.</p>
 <p>The <strong>maximization</strong> is with respect to consumption and leisure, hired labour and land, and household<br>labour and land supplied to the market and used on the household farm. </p>
 <p>when we substitute the (3)-(5) into (*), we have: </p>
-<p>$$<br>\displaylines{<br>  p({c_1} + {c_2}) + w({l_1} + {l_2}) \le \Pi  + w(E_1^m + E_2^m) + r{E^A} \ \ (7)\cr<br>  \Pi  = F(L,A) - wL - rA \ \ (8)\cr<br>  {c_i},{l_i},L,A \ge 0,\;i \in { 1,2}  \ \ (9)\cr}<br>$$<br>(7) is called the ‘full-income’ constraint: the value of consumption cannot exceed the value of the household’s endowment plus farm profits. The household’s problem is now to maximize (1) (with respect to $L,A,c_{i}$  and $l_{i}$) subject to (7)–(9). </p>
+<script type="math/tex; mode=display">
+\displaylines{
+  p({c_1} + {c_2}) + w({l_1} + {l_2}) \le \Pi  + w(E_1^m + E_2^m) + r{E^A} \ \ (7)\cr 
+  \Pi  = F(L,A) - wL - rA \ \ (8)\cr 
+  {c_i},{l_i},L,A \ge 0,\;i \in \{ 1,2\}  \ \ (9)\cr}</script><p>(7) is called the ‘full-income’ constraint: the value of consumption cannot exceed the value of the household’s endowment plus farm profits. The household’s problem is now to maximize (1) (with respect to $L,A,c_{i}$  and $l_{i}$) subject to (7)–(9). </p>
 <p>Three Key things to notices: </p>
 <ul>
 <li><p>none of the variables in (7), the equation for farm profits is in (1)</p>
@@ -368,45 +379,57 @@
 <p>As long as $U(\cdot)$ is characterized by local non-satiation(increasing), then (7) is binding at the solution and the maximized value of $U(\cdot)$ is increasing in $\Pi$ .</p>
 <p>This implies that $L$ and $A$ can first be chosen to maximize prifit $\Pi$, and thus maximize the right side of (7), and then $c_{1},c_{2},l_{1}$ and $l_{2}$ can be chosen to maximize (1) subject to (7). <strong>This ability to “separate” the maximization problem into two steps is called the separability property of this model of agricultural households</strong>, because the production decisions of the household are separable from the household’s consumption choices. </p>
 <p>The <strong>separation property</strong> is robust to the non-existence of some markets. For example, if there is no <em>land market</em>, then replace A by $E^{A}$ in (8) and set $r=0$. The problem remains recursive, and the household chooses labour inputs to maximize profits given the household’s endowment of land. This choice is independent of the household’s preferences or endowment of labour. An analogous result is true if there is no labour market but land can be traded freely. Thus, the household’s decision-making process can be divided in two stages: first, farm profit is maximized, and then utility is maximized given the full income budget constraint. </p>
-<p>we can simplify the model and describe it by graph. Suppose that U(·) is such that at all prices and wages $c_{1}=c_{2}=c$ and $l_{1}=l_{2}=l$. Again, assuming that there is no market for land, the household chooses $c,l,L$.  $F(L,E^{A})$  is the production function on the household farm, given land endowment $E^{A}$. Given the real wage rate w/p, farm profits are maximized at \Pi(w/p.E^{A})<br>  using $L^{<em>}$  units of labour on the farm ($L^{</em>}=argmax{F(L,E^{A})-(w/p)L}$), Then, given the budget constraint $pc=wE^{L}+\Pi(w/p.E^{A})-wl$. household utility is maximized by choosing consumption $c^{<em>}$  and leisure $l^{</em>}. </p>
+<p>we can simplify the model and describe it by graph. Suppose that U(·) is such that at all prices and wages $c_{1}=c_{2}=c$ and $l_{1}=l_{2}=l$. Again, assuming that there is no market for land, the household chooses $c,l,L$.  $F(L,E^{A})$  is the production function on the household farm, given land endowment $E^{A}$. Given the real wage rate w/p, farm profits are maximized at \Pi(w/p.E^{A})<br>  using $L^{<em>}$  units of labour on the farm ($L^{</em>}=argmax\{F(L,E^{A})-(w/p)L\}$), Then, given the budget constraint $pc=wE^{L}+\Pi(w/p.E^{A})-wl$. household utility is maximized by choosing consumption $c^{<em>}$  and leisure $l^{</em>}. </p>
 <p>To further illustrate the $\Pi(w/p.E^{A})=F(L,E^{A})-(w/p)L$ , $w/p$  can be regarded as the slop of $\Pi(w/p.E^{A})$, maximization requires $\Pi(w/p.E^{A})$be on the edge of $F(L,E^{A})$. The same principal when we turn to the maximization problem of $U(c,l)$.</p>
-<div align="center"><br><img src="/pic/f1.png" width="600" height="400" alt="figure 1" align="center"><br></div>
+<div align="center"> 
+<img src="/pic/f1.png" width="600" height="400" alt="figure 1" align="center">
+</div>
 
 <h2 id="3-Incomplete-Market"><a href="#3-Incomplete-Market" class="headerlink" title="3 Incomplete Market"></a>3 Incomplete Market</h2><p>If multiple markets are incomplete, the separation property may no longer hold. The household no longer maximizes profit functions, and production decisions depend upon the preferences and endowments of the household. </p>
 <h3 id="3-1-imperfections-in-both-the-land-and-labour-markets"><a href="#3-1-imperfections-in-both-the-land-and-labour-markets" class="headerlink" title="3.1 imperfections in both the land and labour markets"></a>3.1 imperfections in both the land and labour markets</h3><p>A classic example is the problem of a household that faces imperfections in both the land and labour markets. Suppose again that there is no market for land, but now add the possibility that there is some involuntary unemployment in the rural labour market. The household cultivates its endowment of land, and might face a binding constraint on the amount of labour it can supply off its own farm. The household problem (now assuming just one person in the household) is:</p>
-<p>$$<br>\max_{c,l,L^{H},L^{F}}U(c,l)\ \ (10)<br>$$<br>subject to </p>
-<p>$$<br>\begin{matrix}<br>  pc  &amp; = &amp; F({L^f} + {L^h},{E^A}) - w{L^h} + w{L^m} \ \ (11)\cr<br>  {E^L} &amp; = &amp; l + {L^f} + {L^m}   \  \  \  \  \  (12) \cr<br>  {L^m} &amp; \le &amp; M  \ \ (13) \cr<br>  \end{matrix}<br>$$</p>
-<p>  $L^{h}$   is labour hired by the household to work on its farm,$L^{f}$is the household’s own labour on its farm, $L^{m}$is the time spent by the household working for a wage. and $M$ is the maximum amount of time the household can spend working for a wage as a result of some (here unmodelled) labour market rationing</p>
+<script type="math/tex; mode=display">
+\max_{c,l,L^{H},L^{F}}U(c,l)\ \ (10)</script><p>subject to </p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+  pc  & = & F({L^f} + {L^h},{E^A}) - w{L^h} + w{L^m} \ \ (11)\cr 
+  {E^L} & = & l + {L^f} + {L^m}   \  \  \  \  \  (12) \cr 
+  {L^m} & \le & M  \ \ (13) \cr
+  \end{matrix}</script><p>  $L^{h}$   is labour hired by the household to work on its farm,$L^{f}$is the household’s own labour on its farm, $L^{m}$is the time spent by the household working for a wage. and $M$ is the maximum amount of time the household can spend working for a wage as a result of some (here unmodelled) labour market rationing</p>
 <h4 id="not-binding"><a href="#not-binding" class="headerlink" title="not binding"></a>not binding</h4><p>if $L^{m}\leq M$ is not binding, then (11) becomes $pc+wl=F(L,EA)-wL+wE^{L}$, where $L$ is the amount of labour used on the farm. In this case, the household maximizes profits and the separation property holds.</p>
 <p>If separation holds, and the production function has constant returns to scale (CRTS), then all farms are identical. With CRTS, we can write $F(L,E^{A})=E^{A}f(L/E^{A})$, and the first-order condition for labour use is $w=f\prime(L/E^{A})$. All unconstrained farmers facing the same wage will use the same amount of labour per hectare, and achieve the same yield (output per unit of area) and output per unit of labour.</p>
 <h4 id="binding"><a href="#binding" class="headerlink" title="binding"></a>binding</h4><p>In this case, $L^{m}=M,L^{h}=0$. The household’s problem becomes:</p>
-<p>$$<br>\max_{c,l}U(c,l)\ \ (14)<br>$$</p>
-<p>subject to </p>
-<p>$$<br>pc=F(E^{L}-M,E^{A})+wM \ \ (15)<br>$$</p>
-<p>first order conditions $U_{l}/U_{c}=F_{L}$. The household’s problem is illustrated in figure 2 </p>
- <div align="center"><br><img src="/pic/f2.png" width="600" height="400" alt="figure 1" align="center"><br></div>
+<script type="math/tex; mode=display">
+\max_{c,l}U(c,l)\ \ (14)</script><p>subject to </p>
+<script type="math/tex; mode=display">
+pc=F(E^{L}-M,E^{A})+wM \ \ (15)</script><p>first order conditions $U_{l}/U_{c}=F_{L}$. The household’s problem is illustrated in figure 2 </p>
+ <div align="center"> 
+<img src="/pic/f2.png" width="600" height="400" alt="figure 1" align="center">
+</div>
 
 <p>inner axes demonstrate production on the household’s farm, with output on the vertical axis and labour input on the horizontal axis. $M$ hours are spent working in the market, earning $wM$. The household’s remaining labour time $(L^{f}$) is spent on the farm, producing q^{<em>}. So the household works $M+L^{f}$ hours and consumes $pc^{</em>}=wM+F(L^{f},E^{A})$ units of the good. The household achieves a maximized utility of $U(c^{<em>},l^{</em>})$ at point $A$. The household’s production choice clearly depends on its preferences and its endowment, and the separation property does not hold.</p>
 <p>This sort of market structure could give rise to an oft-observed pattern in the rural areas of less developed countries. Many observers find that small farms are often cultivated more intensively than large farms. More labour per unit area is used on small farms, and yields are larger on these smaller farms. Consider a household with more land than the household consuming at point $A$<br> , but facing the same wage and labour market constraint. If this household were to cultivate with the same intensity as household $A$, it would have to choose to produce and consume at point $C$<br>  in the figure. If leisure is a normal good,$C$ will not be chosen. Instead, the household will choose to produce and consume at a point such as $B$ ,cultivating its larger farm less intensively than the smaller farm of household $A$  </p>
 <p>by implicitly differentiating the first-order condition:</p>
-<p>$$<br>\frac{dL}{dE^{A}}=…&lt;\frac{L}{E^{A}}\ if\ U_{cl}\geq 0<br>$$</p>
-<p>Labour and land market imperfections are perhaps the most straightforward rationale for an inverse relationship between farm size and cultivation intensity.</p>
-<p>###3.2 Risk-Averse </p>
-<p>suppose that labour markets work well and the production function is CRTS but that production is risky, households are risk-averse, and insurance markets do not exist. To simplify this problem, suppose that households supply labour inelastically and that there is only a single good. The household’s problem is to </p>
-<p>$$<br>\max_{L\geq0}EU(c)<br>$$</p>
-<p>subject to </p>
-<p>$$<br>c=\theta E^{A}f(\frac{L}{E^{A}})-wL+wE^{L}<br>$$</p>
-<p>where $\theta$ is a random variable with positive support and mean one. The household chooses labour so that </p>
-<p>$$<br>EU^{‘}(c)[\theta f^{‘}(\frac{L}{E^{A}})-w]=0<br>$$</p>
-<p>The separation property, therefore, does not hold. The above equation can be expressed as :</p>
-<p>$$<br>\begin{matrix}<br>   {f’EU’\left( {\theta  - 1} \right)} &amp;  =  &amp; {EU’\left( {w - f’} \right)}  \cr<br>   {E\theta } &amp;  =  &amp; 1  \cr<br>   {f’cov\left( {U’,\theta } \right)} &amp;  =  &amp; {\left( {w - f’} \right)EU’}  \cr<br>\end{matrix}<br>$$</p>
-<p>Consumption increases with $\theta$, so $cov(U\prime,\theta)&lt;0$; $f^{\prime}$ and $EU^{‘}$ are both positive, so $w &lt; f^{‘}$. This land is farmed less intensively than land that is cultivated under (expected) profit maximization. We have shown that a combination of labour, land, and/or insurance market failures could be associated with this observation; it is possible to construct simple models of financial market imperfections that lead to the same observation.</p>
+<script type="math/tex; mode=display">
+\frac{dL}{dE^{A}}=...<\frac{L}{E^{A}}\ if\ U_{cl}\geq 0</script><p>Labour and land market imperfections are perhaps the most straightforward rationale for an inverse relationship between farm size and cultivation intensity.</p>
+<h3 id="3-2-Risk-Averse"><a href="#3-2-Risk-Averse" class="headerlink" title="3.2 Risk-Averse"></a>3.2 Risk-Averse</h3><p>suppose that labour markets work well and the production function is CRTS but that production is risky, households are risk-averse, and insurance markets do not exist. To simplify this problem, suppose that households supply labour inelastically and that there is only a single good. The household’s problem is to </p>
+<script type="math/tex; mode=display">
+\max_{L\geq0}EU(c)</script><p>subject to </p>
+<script type="math/tex; mode=display">
+c=\theta E^{A}f(\frac{L}{E^{A}})-wL+wE^{L}</script><p>where $\theta$ is a random variable with positive support and mean one. The household chooses labour so that </p>
+<script type="math/tex; mode=display">
+EU^{'}(c)[\theta f^{'}(\frac{L}{E^{A}})-w]=0</script><p>The separation property, therefore, does not hold. The above equation can be expressed as :</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+   {f'EU'\left( {\theta  - 1} \right)} &  =  & {EU'\left( {w - f'} \right)}  \cr 
+   {E\theta } &  =  & 1  \cr 
+   {f'cov\left( {U',\theta } \right)} &  =  & {\left( {w - f'} \right)EU'}  \cr
+\end{matrix}</script><p>Consumption increases with $\theta$, so $cov(U\prime,\theta)&lt;0$; $f^{\prime}$ and $EU^{‘}$ are both positive, so $w &lt; f^{‘}$. This land is farmed less intensively than land that is cultivated under (expected) profit maximization. We have shown that a combination of labour, land, and/or insurance market failures could be associated with this observation; it is possible to construct simple models of financial market imperfections that lead to the same observation.</p>
 <h2 id="4-unitary-household-model"><a href="#4-unitary-household-model" class="headerlink" title="4 unitary household model"></a>4 unitary household model</h2><p>In setting up the problem of the household, we rather simply wrote down a‘household utility function’ , which depended upon the leisure and consumption vector of each of the two individuals in the household. This approach is called unitary household model. The standard demand theory applies in this context, and empirical implementation is straightforward. Indeed the econometrician is often only able to observe aggregate household behavior. But such setup , the unitary model of the household, has increasingly come under attack on both the theoretical and empirical fronts. In the unitary framework, the process by which individual preferences get aggregated into a household utility function is essentially a“black box”; issues such as intra household inequality and household formation/dissolution cannot be handled very well. On the empirical side, important predictions of the unitary model have consistently failed to find support in the data. </p>
 <p>The simplest case is that of a household that consumes only private goods and whose members have identical homothetic preferences. If this household always achieved a Pareto-efficient allocation of resources within the household, then by the second welfare theorem this allocation could be achieved through a competitive equilibrium within the household. Since the income-consumption paths of the members of the household are parallel lines, aggregate demand is independent of the distribution of income (and utility) within the household. </p>
 <p>Let us take an example of unitary model: Consider a two-member household consisting of a husband and wife, indexed respectively by h and w . The husband and wife each has an individual utility function that depends on own consumption of private goods, but by consensus 2 ,they agree to maximize a social welfare function of their individual utilities, subject to a single budget constraint that pools together the two individual incomes. Let $c^h$ and $c^w$ denote the consumption, and $y^h$ and $y^w$ denote the income, of the husband and wife. The household’s problem is equivalent to maximizing a single utility function, $U$ ,subject to a pooled budget constraint</p>
-<p>$$<br>\max_{c^{h},c^{w}}U(c^{h},c^{w})<br>$$</p>
-<p>$$<br>p^{h}c^{h}+p^{w}c^{w}=y^{h}+y^{w}=y<br>$$</p>
-<p>where $p^{h}$  and $p^{w}$ are the prices of the husband’s and wife’s consumption and $y$ is defined as the households total income, i.e. the sum of the husband’s and wife’s income. Solving the household maximization problem yields demand functions, f h and f w that depend only on prices and total income. Formally, we have: $$c^{i}=f^{i}(p^{h},p^{w},y)\ i=h,w$$</p>
+<script type="math/tex; mode=display">
+\max_{c^{h},c^{w}}U(c^{h},c^{w})</script><script type="math/tex; mode=display">
+p^{h}c^{h}+p^{w}c^{w}=y^{h}+y^{w}=y</script><p>where $p^{h}$  and $p^{w}$ are the prices of the husband’s and wife’s consumption and $y$ is defined as the households total income, i.e. the sum of the husband’s and wife’s income. Solving the household maximization problem yields demand functions, f h and f w that depend only on prices and total income. Formally, we have: <script type="math/tex">c^{i}=f^{i}(p^{h},p^{w},y)\ i=h,w</script></p>
 <p>A central prediction of the unitary model of the household is income pooling, which is the idea that the household’s demands depend only on its total income, $y$ ,and not on the sources of income. Empirically, </p>
 <ul>
 <li><p>if total income is held constant, a change in the sources of income would have no effect on demands.</p>
@@ -415,7 +438,8 @@
 </li>
 </ul>
 <h2 id="5-efficient-household-model"><a href="#5-efficient-household-model" class="headerlink" title="5 efficient household model"></a>5 efficient household model</h2><p>Chiappori (1988,1992) and Browning and Chiappori (1994)argue that economists generally have little notion of the actual intra-household bargaining process. They argue, therefore, that any model of this process should make only very minimal assumptions. Of all the assumptions that underlie the bargaining models of earlier authors, <strong>they retain only that of the efficiency of household resource allocation.</strong> This‘efficient household’ model makes minimal assumptions, but retains enough content to guide analysis in many cases. For example, if markets are complete, then the separation property holds for efficient households, just as it does for unitary households</p>
-<p>$$<br>\max \sum_i \lambda_i U_i ({ c_i},{ l_i})\ \ 1’<br>$$<br>Each individuali might care about the vector of consumption and leisure consumed by each other household member. A Pareto-efficient allocation of resources within the household is defined as the solution to the problem defined by (1’). As was the case for the unitary household model with complete markets, decisions regarding production do not depend on the preferences or endowments of the individuals in the household, nor on the‘Pareto weights’ $\lambda_i​$ assigned to each individual.</p>
+<script type="math/tex; mode=display">
+\max \sum_i \lambda_i U_i (\{ c_i\},\{ l_i\})\ \ 1'</script><p>Each individuali might care about the vector of consumption and leisure consumed by each other household member. A Pareto-efficient allocation of resources within the household is defined as the solution to the problem defined by (1’). As was the case for the unitary household model with complete markets, decisions regarding production do not depend on the preferences or endowments of the individuals in the household, nor on the‘Pareto weights’ $\lambda_i​$ assigned to each individual.</p>
 <p>the unitary model has been rejected in favour of the more general efficient household model. The available empirical evidence casts serious doubt on the validity of the unitary model. While the available work is<br>mostly supportive of the more general model of efficient households,there is some evidence, particularly in Africa, that calls even this weaker model into question. If the efficient household model cannot adequately account for the intra-household allocation of resources, <em>it appears that it will be necessary to move towards more detailed, culturally and institutionally informed noncooperative models of the interaction between household members.</em>(the future development)</p>
 <p>eg: Udry (1996), however,finds that women’s plots are cultivated much less intensively than their husbands’ plots in parts of Burkina Faso, implying that total agricultural output within the household could be increased by reallocating factors of production across the plots cultivated by household members and contradicting the Pareto efficiency of resource allocation within the household.</p>
 </span>
@@ -435,12 +459,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/07/20/write-markdown-with-sublime-text/" rel="next" title="Write Markdown With Sublime Text">
+                <i class="fa fa-chevron-left"></i> Write Markdown With Sublime Text
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/25/BMA-Intro/" rel="prev" title="BMA Introduction">
-                BMA Introduction <i class="fa fa-chevron-right"></i>
+              <a href="/2015/09/28/multi-process introduction in python/" rel="prev" title="Multi-process Introduction In Python">
+                Multi-process Introduction In Python <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -513,27 +541,34 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
@@ -577,7 +612,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Agricultural-Household-Model"><span class="nav-number">1.</span> <span class="nav-text">Agricultural Household Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.1.</span> <span class="nav-text">reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Baseline-Model-Overview"><span class="nav-number">1.3.</span> <span class="nav-text">Baseline Model Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Incomplete-Market"><span class="nav-number">1.4.</span> <span class="nav-text">3 Incomplete Market</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-imperfections-in-both-the-land-and-labour-markets"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1 imperfections in both the land and labour markets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#not-binding"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">not binding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#binding"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">binding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-unitary-household-model"><span class="nav-number">1.5.</span> <span class="nav-text">4 unitary household model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-efficient-household-model"><span class="nav-number">1.6.</span> <span class="nav-text">5 efficient household model</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Agricultural-Household-Model"><span class="nav-number">1.</span> <span class="nav-text">Agricultural Household Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.1.</span> <span class="nav-text">reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Baseline-Model-Overview"><span class="nav-number">1.3.</span> <span class="nav-text">Baseline Model Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Incomplete-Market"><span class="nav-number">1.4.</span> <span class="nav-text">3 Incomplete Market</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-imperfections-in-both-the-land-and-labour-markets"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1 imperfections in both the land and labour markets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#not-binding"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">not binding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#binding"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">binding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Risk-Averse"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2 Risk-Averse</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-unitary-household-model"><span class="nav-number">1.5.</span> <span class="nav-text">4 unitary household model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-efficient-household-model"><span class="nav-number">1.6.</span> <span class="nav-text">5 efficient household model</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -43,6 +43,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
 
 
 
@@ -343,24 +345,18 @@
         <span itemprop="articleBody"><h1 id="Bayesian-Model-Averaging"><a href="#Bayesian-Model-Averaging" class="headerlink" title="Bayesian Model Averaging"></a>Bayesian Model Averaging</h1><h2 id="Basic-Ideas"><a href="#Basic-Ideas" class="headerlink" title="Basic Ideas"></a>Basic Ideas</h2><p>Assume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could be quite large. For example, if we consider only regression models but are unsure about which of $p$ possible predictors to include, there could be as many as $2^p$. BMA uses Bayesian statistics to select possible candidate predictors and help use construct the right model.</p>
 <a id="more"></a>
 <h2 id="Methology-Introduction"><a href="#Methology-Introduction" class="headerlink" title="Methology Introduction"></a>Methology Introduction</h2><p>consider the unknown quantity of interest $\Delta$ and observed data $D$. we have possible models,$M_1$, $M_2$…$M_k$ , to do the estimation and forecasting. Then by a simple application of the<br>law of total probability, the BMA posterior distribution of $\Delta$ is</p>
-<p>$$p(\Delta | D)=\sum\limits_{k = 1}^K {p(\Delta |D,M_k)p(M_k|D)} \ \ (1)$$</p>
-<p>where $p(\Delta |D,M_k)$ is the posterior distribution of $\Delta$ given the model $M_k$, and $p(M_k|D)$ is the posterior probability that $M_k$ is the correct model, given that one of the models considered is correct.  Thus the BMA posterior distribution of $\Delta$ is a weighted average of the posterior distributions of $\Delta$ under each of the models, weighted by their posterior model probabilities.(take the above equation as a weighted average case). </p>
+<script type="math/tex; mode=display">p(\Delta | D)=\sum\limits_{k = 1}^K {p(\Delta |D,M_k)p(M_k|D)} \ \ (1)</script><p>where $p(\Delta |D,M_k)$ is the posterior distribution of $\Delta$ given the model $M_k$, and $p(M_k|D)$ is the posterior probability that $M_k$ is the correct model, given that one of the models considered is correct.  Thus the BMA posterior distribution of $\Delta$ is a weighted average of the posterior distributions of $\Delta$ under each of the models, weighted by their posterior model probabilities.(take the above equation as a weighted average case). </p>
 <p>note that $p(\Delta |D,M_k)$ and $p(M_k|D)$ can be probability density functions, probability mass functions, or cumulative distribution functions.</p>
 <p>The posterior model probability of $M_k$ is given by </p>
-<p> $$p(M_k|D) = \frac{p(D| M_k)p( M_k)} { \sum \limits_{l = 1}^K {p(D| M_l ) p(M_l)} }  (2)$$</p>
-<p>$p(D| M_k)$ is the integrated likelihood of model $M_k$ , obtained by integrating (not maximizing)<br>over the unknown parameters</p>
-<p>$$p(D|M{k})  =  \int p(D|\theta{k},M{k})p(\theta{k}|M{k}){\rm d}\theta{k}=\int (likelihood \times prior)\ {\rm d}\theta_{k} $$</p>
-<p>where $θ_k$ is the parameter of model $M_k$ and $p(D| \theta_k, M_k)$ is the likelihood of $\theta_k$ under model $M_k$ . The prior model probabilities are often taken to be equal, so they cancel in (2), but the BMA package allows other formulations also</p>
+<script type="math/tex; mode=display">p(M_k|D) = \frac{p(D| M_k)p( M_k)} { \sum \limits_{l = 1}^K {p(D| M_l ) p(M_l)} }  (2)</script><p>$p(D| M_k)$ is the integrated likelihood of model $M_k$ , obtained by integrating (not maximizing)<br>over the unknown parameters</p>
+<script type="math/tex; mode=display">p(D|M{k})  =  \int p(D|\theta{k},M{k})p(\theta{k}|M{k}){\rm d}\theta{k}=\int (likelihood \times prior)\ {\rm d}\theta_{k}</script><p>where $θ_k$ is the parameter of model $M_k$ and $p(D| \theta_k, M_k)$ is the likelihood of $\theta_k$ under model $M_k$ . The prior model probabilities are often taken to be equal, so they cancel in (2), but the BMA package allows other formulations also</p>
 <h3 id="information-criterion"><a href="#information-criterion" class="headerlink" title="information criterion"></a>information criterion</h3><p>from the above (3), we see that the integrated likelihood $p(D| M_k )$ is a high dimensional integral that can be hard to calculate analytically. recalling the Maximum likelihood selection creteria, we found that $p(D| M_k )$ can be the simple and surprisingly accurate BIC approximation, which greatly simplify the model selection and calculation procedure </p>
-<p>$$ 2 \log p(D|M_{k})\approx2\log p(D|\tilde{\theta}<em>{k})-d</em>{k}\log(n)=-BIC_{k}$$</p>
-<p>where $d_{k}=\dim(\theta_{k})$ is the number of independent parameters in $M_k $, and $\tilde{\theta}_k$ is the maximum likelihood estimator (equal to the ordinary least squares estimator for linear regression coefficients).</p>
+<script type="math/tex; mode=display">2 \log p(D|M_{k})\approx2\log p(D|\tilde{\theta}_{k})-d_{k}\log(n)=-BIC_{k}</script><p>where $d_{k}=\dim(\theta_{k})$ is the number of independent parameters in $M_k $, and $\tilde{\theta}_k$ is the maximum likelihood estimator (equal to the ordinary least squares estimator for linear regression coefficients).</p>
 <p>And for linear regression, BIC has the simple form: </p>
-<p>$$BIC_{k}=n\log(1-R_{k}^{2})+p_{k}\log{n} $$</p>
-<p>up to an additive constant, where $R_k^2$ is the value of $R^2$ and $P_k$ is the number of regressors for the kth regression model.</p>
+<script type="math/tex; mode=display">BIC_{k}=n\log(1-R_{k}^{2})+p_{k}\log{n}</script><p>up to an additive constant, where $R_k^2$ is the value of $R^2$ and $P_k$ is the number of regressors for the kth regression model.</p>
 <p>eg: to illustrate what $\Delta$ is: </p>
 <p>When interest focuses on a model parameter, say a regression parameter such as $\beta_1 $ , (1) can be applied with $\Delta =\beta_1$ . The BMA posterior mean of $\beta_1$ is just a weighted average of the posterior means of $\beta_1$ under each of the models:</p>
-<p>$$E[\beta_{1}|D]=\sum \hat{\beta}<em>{1} p(M</em>{k}|D) $$</p>
-<p>which can be viewed as a model-averaged Bayesian point estimator. $\hat{\beta}_{1}$ is the posterior mean of $\beta_1$ under model $M_k$, and this can be approximated by the corresponding maximum likelihood estimator, $\hat{\beta}_{1}$ (Raftery, 1995).</p>
+<script type="math/tex; mode=display">E[\beta_{1}|D]=\sum \hat{\beta}_{1} p(M_{k}|D)</script><p>which can be viewed as a model-averaged Bayesian point estimator. $\hat{\beta}_{1}$ is the posterior mean of $\beta_1$ under model $M_k$, and this can be approximated by the corresponding maximum likelihood estimator, $\hat{\beta}_{1}$ (Raftery, 1995).</p>
 <p>For a survey and literature review of Bayesian model averaging, see Hoeting et al. (1999)</p>
 <h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><h3 id="Linear-REgression"><a href="#Linear-REgression" class="headerlink" title="Linear REgression"></a>Linear REgression</h3><p>we use the UScrime dataset on crime rates in 47 U.S. states in 1960 (Ehrlich, 1973); this is<br>available in the MASS library. There are 15 potential independent variables, all associated with crime rates in the literature. The last two, probability of imprisonment and average time spent in state prisons, were the predictor variables of interest in the original study, while the other 13 were control variables. All variables for which it makes sense were logarithmically transformed. The commands are:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(UScrime)</span><br><span class="line">x.crime&lt;- UScrime[,-<span class="number">16</span>]</span><br><span class="line">y.crime&lt;- log(UScrime[,<span class="number">16</span>])</span><br><span class="line">x.crime[,-<span class="number">2</span>]&lt;- log(x.crime[,-<span class="number">2</span>])</span><br><span class="line">crime.bicreg &lt;- bicreg(x.crime, y.crime)</span><br><span class="line">summary (crime.bicreg, digits=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"> plot (crime.bicreg,mfrow=c(<span class="number">4</span>,<span class="number">4</span>)) <span class="comment"># c(4,4) 意思是图形以4行4列共16个集体显示</span></span><br></pre></td></tr></table></figure>
@@ -391,16 +387,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/25/Agricultural-Household-Model-Intro/" rel="next" title="Agricultural Household Model Introduction">
-                <i class="fa fa-chevron-left"></i> Agricultural Household Model Introduction
+              <a href="/2015/09/28/multi-process introduction in python/" rel="next" title="Multi-process Introduction In Python">
+                <i class="fa fa-chevron-left"></i> Multi-process Introduction In Python
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/19/extract-text-from-sanned-pdf/" rel="prev" title="Extract Text From Sanned PDF With Python">
-                Extract Text From Sanned PDF With Python <i class="fa fa-chevron-right"></i>
+              <a href="/2015/12/13/research-proposal-guide/" rel="prev" title="Research Proposal Guide">
+                Research Proposal Guide <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -473,27 +469,34 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
 
         </nav>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">

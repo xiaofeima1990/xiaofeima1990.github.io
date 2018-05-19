@@ -1,0 +1,870 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QEfdUsKGngysYFQKsFYv-tWMu3Dt9XAUXYbLHg0a5gg" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,GIS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="This post breifly records my learning on how to visualiza the GIS info on the map by python. I attempted different ways to visualize my gis data by python. I was very luck to find two powerful package">
+<meta name="keywords" content="python,GIS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Visualization For GIS Info With Python">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2016/07/28/data-visualization-for-GIS-info-with-python/index.html">
+<meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
+<meta property="og:description" content="This post breifly records my learning on how to visualiza the GIS info on the map by python. I attempted different ways to visualize my gis data by python. I was very luck to find two powerful package">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/mgx1.png">
+<meta property="og:updated_time" content="2018-05-19T00:15:04.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Visualization For GIS Info With Python">
+<meta name="twitter:description" content="This post breifly records my learning on how to visualiza the GIS info on the map by python. I attempted different ways to visualize my gis data by python. I was very luck to find two powerful package">
+<meta name="twitter:image" content="http://xiaofeima1990.github.io/pic/mgx1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Data Visualization For GIS Info With Python | Guoxuan Ma | Stay Hard Stay Foolish </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Guoxuan Ma | Stay Hard Stay Foolish</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-research">
+          <a href="/categories/research" rel="section">
+            
+              <i class="menu-item-icon fa fa-laptop fa-fw"></i> <br />
+            
+            Research
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-economics">
+          <a href="/categories/economics" rel="section">
+            
+              <i class="menu-item-icon fa fa-university fa-fw"></i> <br />
+            
+            Economics
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-data_science">
+          <a href="/categories/Data-Science" rel="section">
+            
+              <i class="menu-item-icon fa fa-line-chart fa-fw"></i> <br />
+            
+            Data-Science
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-develop">
+          <a href="/categories/develop" rel="section">
+            
+              <i class="menu-item-icon fa fa-keyboard-o fa-fw"></i> <br />
+            
+            Develop
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iFjLUhsrtLPdUBH3P_UK','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Data Visualization For GIS Info With Python
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2016-07-28T16:05:04-04:00" content="2016-07-28">
+              2016-07-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/07/28/data-visualization-for-GIS-info-with-python/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/28/data-visualization-for-GIS-info-with-python/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>This post breifly records my learning on how to visualiza the GIS info on the map by python. I attempted different ways to visualize my gis data by python. I was very luck to find two powerful package to deal with data visualization:</p>
+<ul>
+<li>vincent <a href="http://vincent.readthedocs.org/en/latest/" target="_blank" rel="noopener">link</a> </li>
+<li>folium  <a href="https://pypi.python.org/pypi/folium" target="_blank" rel="noopener">link</a></li>
+</ul>
+<p>The two package offers different ways to visualize gis info on the map. And most importantly, it is easy to get started! </p>
+<a id="more"></a>
+<h2 id="what-is-folium"><a href="#what-is-folium" class="headerlink" title="what is folium"></a>what is folium</h2><p>folium is a package aimed at making beautiful maps with Leaflet.js &amp; Python. Just with a few codes, you can generate a beautiful map to visualize your data and help you doing analysis. folium supports python2 and python3. If you install the anaconda IDE environment, you won’t face any trouble to install it. the installation is simple and easy with pip: </p>
+<p><code>pip install folium</code>  </p>
+<h2 id="get-started-to-create-the-first-simple-map"><a href="#get-started-to-create-the-first-simple-map" class="headerlink" title="get started to create the first simple map"></a>get started to create the first simple map</h2><p>with a few code, we can get the traditional map immediately:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> folium</span><br><span class="line">map_osm = folium.Map(location=[<span class="number">45.5236</span>, <span class="number">-122.6750</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">## output to a html file</span></span><br><span class="line">map_osm.create_map(path=<span class="string">'osm.html'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Different-types-of-map"><a href="#Different-types-of-map" class="headerlink" title="Different types of map"></a>Different types of map</h2><p>As far as I know, folium has at least three types of map form (tiles), which are “default”,”Stamen Toner”,”Stamen Terrain”. In the following are the examples: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">map_demo1 = folium.Map(location=[<span class="number">45.5236</span>, <span class="number">-122.6750</span>])</span><br><span class="line">map_demo2 = folium.Map(location=[<span class="number">45.5236</span>, <span class="number">-122.6750</span>], tiles=<span class="string">'Stamen Toner'</span>,</span><br><span class="line">                    zoom_start=<span class="number">13</span>)</span><br><span class="line">map_demo3 = folium.Map(location=[<span class="number">45.372</span>, <span class="number">-121.6972</span>], tiles=<span class="string">'Stamen Terrain'</span>,</span><br><span class="line">					zoom_start=<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+<p>custom tiles: </p>
+<pre><code>tiles: str, default &#39;OpenStreetMap&#39;
+    Map tileset to use. Can choose from this list of built-in tiles:
+        - &quot;OpenStreetMap&quot;
+        - &quot;MapQuest Open&quot;
+        - &quot;MapQuest Open Aerial&quot;
+        - &quot;Mapbox Bright&quot; (Limited levels of zoom for free tiles)
+        - &quot;Mapbox Control Room&quot; (Limited levels of zoom for free tiles)
+        - &quot;Stamen&quot; (Terrain, Toner, and Watercolor)
+        - &quot;Cloudmade&quot; (Must pass API key)
+        - &quot;Mapbox&quot; (Must pass API key)
+        - &quot;CartoDB&quot; (positron and dark_matter)
+</code></pre><p>Of course, you can use mapbox and Leaflet.js to design and create many other types of map style (tile)<br>Of course, you can use mapbox and Leaflet.js to design and create many other types of map style (tile)<br>For <a href="https://www.mapbox.com/studio/" target="_blank" rel="noopener">Mapbox</a>, it is very simple : all you need to do is set the <strong>tiles</strong> as ‘Mapbox’, and include <strong>API_key</strong>.(I don not know it quite well) </p>
+<blockquote>
+<p>Mapbox is an open source mapping platform for custom designed maps. it is very easy to use and can help designers and gis professionars to create beautiful maps instantly</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">custom = folium.Map(location=[<span class="number">45.5236</span>, <span class="number">-122.6750</span>], tiles=<span class="string">'Mapbox'</span>,</span><br><span class="line">                    API_key=<span class="string">'wrobstory.map-12345678'</span>)</span><br><span class="line"></span><br><span class="line">tileset = <span class="string">r'https://api.mapbox.com/v4/xiaofeima.p37fkfk1/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;.png?access_token=pk.eyJ1IjoieGlhb2ZlaW1hIiwiYSI6ImNpa2I2dTRudDBtNnV2dWtwbXh6Njg2NmcifQ.7E2eCTrl2aY5dCtTJJwXtw'</span></span><br><span class="line"></span><br><span class="line">custom2 = folium.Map(location=[<span class="number">45.372</span>, <span class="number">-121.6972</span>], zoom_start=<span class="number">2</span>,</span><br><span class="line">                 tiles=tileset, attr=<span class="string">'My Data Attribution'</span>)</span><br></pre></td></tr></table></figure>
+<p>and with the above style, we get the following map style</p>
+<p><img src="/pic/mgx1.png" alt="map"></p>
+<h2 id="markers-and-popups"><a href="#markers-and-popups" class="headerlink" title="markers and popups"></a>markers and popups</h2><p>When we create the map style, the next thing we want to do is to mark the information on the map, folium offers us multiple methods to make marker icon and popups: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">map_demo2 = folium.Map(location=[<span class="number">45.5236</span>, <span class="number">-122.6750</span>], tiles=<span class="string">'Stamen Toner'</span>,</span><br><span class="line">                   zoom_start=<span class="number">13</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># custom simple </span></span><br><span class="line">map_demo2.simple_marker(location=[<span class="number">45.5244</span>, <span class="number">-122.6699</span>], popup=<span class="string">'The Waterfront'</span>)</span><br><span class="line"><span class="comment"># draw a circle</span></span><br><span class="line">map_demo2.circle_marker(location=[<span class="number">45.5215</span>, <span class="number">-122.6261</span>], radius=<span class="number">500</span>,</span><br><span class="line">                    popup=<span class="string">'Laurelhurst Park'</span>, line_color=<span class="string">'#3186cc'</span>,</span><br><span class="line">                    fill_color=<span class="string">'#3186cc'</span>)</span><br><span class="line"><span class="comment">#  Polygon marker</span></span><br><span class="line"></span><br><span class="line">map_demo4 = folium.Map(location=[<span class="number">45.5236</span>, <span class="number">-122.6750</span>], zoom_start=<span class="number">13</span>)</span><br><span class="line">map_demo4.polygon_marker(location=[<span class="number">45.5012</span>, <span class="number">-122.6655</span>], popup=<span class="string">'Ross Island Bridge'</span>,</span><br><span class="line">                     fill_color=<span class="string">'#132b5e'</span>, num_sides=<span class="number">3</span>, radius=<span class="number">10</span>)</span><br><span class="line">map_demo4.polygon_marker(location=[<span class="number">45.5132</span>, <span class="number">-122.6708</span>], popup=<span class="string">'Hawthorne Bridge'</span>,</span><br><span class="line">                     fill_color=<span class="string">'#45647d'</span>, num_sides=<span class="number">4</span>, radius=<span class="number">10</span>)</span><br><span class="line">map_demo4.polygon_marker(location=[<span class="number">45.5275</span>, <span class="number">-122.6692</span>], popup=<span class="string">'Steel Bridge'</span>,</span><br><span class="line">                     fill_color=<span class="string">'#769d96'</span>, num_sides=<span class="number">6</span>, radius=<span class="number">10</span>)</span><br><span class="line">map_demo4.polygon_marker(location=[<span class="number">45.5318</span>, <span class="number">-122.6745</span>], popup=<span class="string">'Broadway Bridge'</span>,</span><br><span class="line">                     fill_color=<span class="string">'#769d96'</span>, num_sides=<span class="number">8</span>, radius=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lively icon </span></span><br><span class="line">map_demo1.simple_marker([<span class="number">45.3288</span>, <span class="number">-121.6625</span>], popup=<span class="string">'Mt. Hood Meadows'</span>,marker_icon=<span class="string">'cloud'</span>)</span><br><span class="line">map_demo1.simple_marker([<span class="number">45.3311</span>, <span class="number">-121.7113</span>], popup=<span class="string">'Timberline Lodge'</span>,marker_color=<span class="string">'green'</span>)</span><br><span class="line">map_demo1.simple_marker([<span class="number">45.3300</span>, <span class="number">-121.6823</span>], popup=<span class="string">'Some Other Location'</span>,marker_color=<span class="string">'red'</span>,marker_icon=<span class="string">'info-sign'</span>)</span><br></pre></td></tr></table></figure>
+<p>Moreover, folium support the Vincent/Vega markers, which means we can put data and graphs into the marker </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> vincent, json</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">scatter_points = &#123;</span><br><span class="line">    <span class="string">'x'</span> : np.random.uniform(size=(<span class="number">100</span>,)),</span><br><span class="line">    <span class="string">'y'</span> : np.random.uniform(size=(<span class="number">100</span>,)),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's create the vincent chart.</span></span><br><span class="line">scatter_chart = vincent.Scatter(scatter_points,</span><br><span class="line">                                iter_idx=<span class="string">'x'</span>,</span><br><span class="line">                                width=<span class="number">600</span>,</span><br><span class="line">                                height=<span class="number">300</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's convert it to JSON.</span></span><br><span class="line">scatter_json = scatter_chart.to_json()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's convert it to dict.</span></span><br><span class="line">scatter_dict = json.loads(scatter_json)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">map_vin = folium.Map([<span class="number">43</span>,<span class="number">-100</span>], zoom_start=<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's create a Vega popup based on scatter_chart.</span></span><br><span class="line">popup = folium.Popup(max_width=<span class="number">800</span>)</span><br><span class="line">folium.Vega(scatter_chart, height=<span class="number">350</span>, width=<span class="number">650</span>).add_to(popup)</span><br><span class="line">folium.Marker([<span class="number">30</span>,<span class="number">-120</span>], popup=popup).add_to(map_vin)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's create a Vega popup based on scatter_json.</span></span><br><span class="line">popup = folium.Popup(max_width=<span class="number">800</span>)</span><br><span class="line">folium.Vega(scatter_json, height=<span class="number">350</span>, width=<span class="number">650</span>).add_to(popup)</span><br><span class="line">folium.Marker([<span class="number">30</span>,<span class="number">-100</span>], popup=popup).add_to(map_vin)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's create a Vega popup based on scatter_dict.</span></span><br><span class="line">popup = folium.Popup(max_width=<span class="number">800</span>)</span><br><span class="line">folium.Vega(scatter_dict, height=<span class="number">350</span>, width=<span class="number">650</span>).add_to(popup)    </span><br><span class="line">folium.Marker([<span class="number">30</span>,<span class="number">-80</span>], popup=popup).add_to(map_vin)</span><br><span class="line"></span><br><span class="line">map_vin</span><br></pre></td></tr></table></figure>
+<p>In more general case, we can put html in to the popup so that we can represet anything we want :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">m = folium.Map([<span class="number">43</span>,<span class="number">-100</span>], zoom_start=<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">html=<span class="string">"""</span></span><br><span class="line"><span class="string">    &lt;h1&gt; This is a big popup&lt;/h1&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">    With a few lines of code...</span></span><br><span class="line"><span class="string">    &lt;p&gt;</span></span><br><span class="line"><span class="string">    &lt;code&gt;</span></span><br><span class="line"><span class="string">        from numpy import *&lt;br&gt;</span></span><br><span class="line"><span class="string">        exp(-2*pi)</span></span><br><span class="line"><span class="string">    &lt;/code&gt;</span></span><br><span class="line"><span class="string">    &lt;/p&gt;</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">iframe = folium.element.IFrame(html=html, width=<span class="number">500</span>, height=<span class="number">300</span>)</span><br><span class="line">popup = folium.Popup(iframe, max_width=<span class="number">2650</span>)</span><br><span class="line"></span><br><span class="line">folium.Marker([<span class="number">30</span>,<span class="number">-100</span>], popup=popup).add_to(m)</span><br><span class="line"></span><br><span class="line">m</span><br></pre></td></tr></table></figure>
+<p>the folium also supports the Choropleth Maps. But we need to offer the Geojson files to draw the map. The folium command is simple, but how to get Geojson is difficult. we need to find GIS info and switch it into geojson format. Fortunately,We find ways to get geoJson format file: <a href="http://stackoverflow.com/questions/17267248/how-where-do-i-get-geojson-data-for-states-provinces-and-administrative-region" target="_blank" rel="noopener">source</a></p>
+<ul>
+<li>Install the Quantum GIS framework <a href="http://www.qgis.org/e/qgis" target="_blank" rel="noopener">http://www.qgis.org/e/qgis</a>.<ul>
+<li>If you are on Mac OS X, you can use this version <a href="http://www.kyngchaos.com/software" target="_blank" rel="noopener">http://www.kyngchaos.com/software</a> </li>
+<li>This will give you the ogr2ogr utility used for converting shapefiles to geoJSON</li>
+</ul>
+</li>
+<li>Download the shapefiles for your country from here <a href="http://www.gadm.org/country" target="_blank" rel="noopener">http://www.gadm.org/country</a> and unzip<ul>
+<li>For Canada, and possibly other countries, the shapefile with suffix 0 is for the country boundary and the suffix 1 is for the internal regions. Not sure if this naming is consistent across countries.</li>
+</ul>
+</li>
+<li>Upload the region level shapefile to MapShaper <a href="http://mapshaper.com/test/MapShaper.swf" target="_blank" rel="noopener">http://mapshaper.com/test/MapShaper.swf</a> or <a href="http://www.mapshaper.org" target="_blank" rel="noopener">http://www.mapshaper.org</a>. <ul>
+<li>You can skip this step if you don’t care to optimize the size of your resulting geoJSON</li>
+<li>Set the ‘simplification level’ slider in MapShaper to the desired level and export the simplified shapefile as ‘Shapefile - Polygons’</li>
+</ul>
+</li>
+<li>Download .shp and .shx file to the local directory where you unzipped the original shapefiiles, replace the original files with the simplified ones.</li>
+<li>Navigate to the local directory and run the command below, replacing <shapefile> with the actual name of the shapefile you want to convert.<br><code>ogr2ogr -f geoJSON regions.json &lt;shapefile&gt;.shp</code></shapefile></li>
+<li>You should now have the regions for your country in geoJSON format. Check to make sure there are paths defined in regions.json and that property fields were maintained (ex. region name).</li>
+</ul>
+<p>Then we should have the Choropleth maps:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">china_geo=<span class="string">r'geojson/chn_adm1_2.json'</span></span><br><span class="line"></span><br><span class="line">csv_data = <span class="string">r'data/CN-gdp-2014.csv'</span></span><br><span class="line">state_data = pd.read_csv(csv_data,encoding=<span class="string">'gbk'</span>)</span><br><span class="line">map_ch = folium.Map(location=[<span class="number">50</span>, <span class="number">120</span>], zoom_start=<span class="number">3</span>)</span><br><span class="line">map_ch.geo_json(geo_path=china_geo, data=state_data,</span><br><span class="line">             columns=[<span class="string">'province'</span>, <span class="string">'GDP-2014'</span>],</span><br><span class="line">             <span class="comment">#threshold_scale=[6, 7, 8, 9, 10,11,12,13],</span></span><br><span class="line">             key_on=<span class="string">'feature.properties.HASC_1'</span>,</span><br><span class="line">             fill_color=<span class="string">'BuPu'</span>, fill_opacity=<span class="number">0.7</span>, line_opacity=<span class="number">0.5</span>,</span><br><span class="line">             legend_name=<span class="string">'GDP Rate (%)'</span>,reset=<span class="keyword">True</span>)</span><br><span class="line">map_ch.create_map(<span class="string">'cn_states.html'</span>)</span><br></pre></td></tr></table></figure>
+<p>download the <a href="/files/folium_Choropleth.rar">source code</a></p>
+<p><a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">word_cloud</a><br><a href="https://github.com/aaren/notedown" target="_blank" rel="noopener">ipynb to md</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/GIS/" rel="tag">#GIS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/07/pandas-snippets/" rel="next" title="Pandas Techniques">
+                <i class="fa fa-chevron-left"></i> Pandas Techniques
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/19/extract-text-from-sanned-pdf/" rel="prev" title="Extract Text From Sanned PDF With Python">
+                Extract Text From Sanned PDF With Python <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/pic/mgx2.png" alt="Guoxuan Ma" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Guoxuan Ma</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaofeima1990/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100011710272689" target="_blank">
+                  
+                    <i class="fa fa-facebook"></i> Facebook
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-folium"><span class="nav-number">1.</span> <span class="nav-text">what is folium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-started-to-create-the-first-simple-map"><span class="nav-number">2.</span> <span class="nav-text">get started to create the first simple map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-types-of-map"><span class="nav-number">3.</span> <span class="nav-text">Different types of map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markers-and-popups"><span class="nav-number">4.</span> <span class="nav-text">markers and popups</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guoxuan Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaofeima';
+      var disqus_identifier = '2016/07/28/data-visualization-for-GIS-info-with-python/';
+      var disqus_title = 'Data Visualization For GIS Info With Python';
+      var disqus_url = 'http://xiaofeima1990.github.io/2016/07/28/data-visualization-for-GIS-info-with-python/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

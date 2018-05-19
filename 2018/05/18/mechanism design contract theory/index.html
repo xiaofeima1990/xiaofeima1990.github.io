@@ -1,0 +1,937 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QEfdUsKGngysYFQKsFYv-tWMu3Dt9XAUXYbLHg0a5gg" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mechanism Design," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Mechanism Design Mechanism design is a field in economics and game theory that takes an engineering approach to designing economic mechanisms or incentives, toward desired objectives, in strategic set">
+<meta name="keywords" content="Mechanism Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mechanism Design and Contract Theory Introduction">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2018/05/18/mechanism design contract theory/index.html">
+<meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
+<meta property="og:description" content="Mechanism Design Mechanism design is a field in economics and game theory that takes an engineering approach to designing economic mechanisms or incentives, toward desired objectives, in strategic set">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-05-19T02:21:24.132Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mechanism Design and Contract Theory Introduction">
+<meta name="twitter:description" content="Mechanism Design Mechanism design is a field in economics and game theory that takes an engineering approach to designing economic mechanisms or incentives, toward desired objectives, in strategic set">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Mechanism Design and Contract Theory Introduction | Guoxuan Ma | Stay Hard Stay Foolish </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Guoxuan Ma | Stay Hard Stay Foolish</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-research">
+          <a href="/categories/research" rel="section">
+            
+              <i class="menu-item-icon fa fa-laptop fa-fw"></i> <br />
+            
+            Research
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-economics">
+          <a href="/categories/economics" rel="section">
+            
+              <i class="menu-item-icon fa fa-university fa-fw"></i> <br />
+            
+            Economics
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-data_science">
+          <a href="/categories/Data-Science" rel="section">
+            
+              <i class="menu-item-icon fa fa-line-chart fa-fw"></i> <br />
+            
+            Data-Science
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-develop">
+          <a href="/categories/develop" rel="section">
+            
+              <i class="menu-item-icon fa fa-keyboard-o fa-fw"></i> <br />
+            
+            Develop
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iFjLUhsrtLPdUBH3P_UK','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Mechanism Design and Contract Theory Introduction
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-05-18T20:39:00-04:00" content="2018-05-18">
+              2018-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Economics/" itemprop="url" rel="index">
+                    <span itemprop="name">Economics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/05/18/mechanism design contract theory/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/18/mechanism design contract theory/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="Mechanism-Design"><a href="#Mechanism-Design" class="headerlink" title="Mechanism Design"></a>Mechanism Design</h1><blockquote>
+<p>Mechanism design is a field in economics and game theory that takes an engineering approach to designing economic mechanisms or incentives, toward desired objectives, in strategic settings, where players act rationally.</p>
+<p>Participants in the Mechanism design understand that they are playing a non-cooperative game. <strong>Game theory takes the rules of the game as given. The theory of mechanism design is about the optimal choice of the rules of the game</strong></p>
+<p>Because it starts at the end of the game, then goes backwards, it is also called reverse game theory. Mechanism design studies solution concepts for a class of private-information games.</p>
+</blockquote>
+<p>Mechanism design theory provides a coherent framework for analyzing this great variety of institutions, or allocation mechanisms, with a focus on the problems associated with incentives and private information. By using game theory, mechanism design can go beyond the classical approach, and, for example, explicitly model how prices are set. The theory shows, for example, that so-called double auctions (where buyers and sellers post their bid- and ask-prices) can be efficient trading institutions when each trader has private information about his or her valuations of the goods traded.</p>
+<a id="more"></a>
+<p>There are at least two reasons why we study mechanism design.</p>
+<ul>
+<li><p>normative<br>  it aids in practice the designers of real-world mechanisms. The theory of optimal auctions, for example, is frequently invoked in discussions about the design of government and industry auctions.</p>
+</li>
+<li><p>positive<br>  it can explain why real-world institutions are. For example, we might seek to explain the use of auctions in some house sales, as well as the use of posted prices in other house sales by appealing to the theory of mechanism design</p>
+</li>
+</ul>
+<p>One cases for the application of mechanism is that theory has been used to identify conditions under which commonly observed auction forms maximize the sellers expected revenue. Other cases such as public goods,the theory thus helps to justify governmental financing of public goods through taxation.</p>
+<p>The development of mechanism design theory began with the work of Leonid Hurwicz (1960). <strong>He defined a mechanism as a communication system in which participants send messages to each other and/or to a message center, and where a pre-specified rule assigns an outcome (such as an allocation of goods and services) for every collection of received messages.</strong> Hurwicz (1972) introduced the key notion of <em>incentive-compatibility</em>, which allows the analysis to incorporate the incentives of self-interested participants. <strong>The incentives created by the choice of rules of games are central to the theory of mechanism design.</strong></p>
+<p>In the 1970s, the formulation of the so-called <em>revelation principle</em> and the development of <em>implementation theory</em> led to great advances in the theory of mechanism design. revelation principle was developed by Roger Myerson. And the <em>resulting theory</em>, known as <em>implementation theory</em> was developed by Eric Maskin.</p>
+<p><strong>distinction between the theory of mechanism design and contract theory</strong> : In contract theory, we study the optimal design of incentives for a <strong>single agent</strong>. In mechanism design, we study the optimal design of incentives for <strong>a group of agents</strong>, such as the buyers in our first example and the colleagues in the second example. Contract theory therefore, unlike the theory of mechanism design, does not have to deal with strategic interaction.</p>
+<p>direct mechanism: the agent report their private information .</p>
+<p>(incentive compatible) (IC) A mechanism is called incentive-compatible if every participant can achieve the best outcome to him/herself just by acting according to his/her true preferences</p>
+<p>(participation constraint) no agent should be made worse off by participating in the mechanism.</p>
+<h2 id="Incentive-compatibility-and-the-revelation-principle"><a href="#Incentive-compatibility-and-the-revelation-principle" class="headerlink" title="Incentive compatibility and the revelation principle"></a>Incentive compatibility and the revelation principle</h2><p>In Hurwiczs formulation, a mechanism is a <strong>communication</strong> system in which participants exchange messages with each other, messages that jointly determine the outcome. These messages may contain private information, such as an individuals (true or pretended) willingness to pay for a public good. The mechanism is like a <strong>machine</strong> that compiles and processes the received messages, thereby aggregating (true or false) private information provided by many agents. Each agent strives to maximize his or her expected payoff (utility or profit), and may decide to withhold disadvantageous information or send false information (hoping to pay less for a public good, say).</p>
+<p>Hurwiczs (1972) notion of incentive-compatibility can now be expressed as follows: the mechanism is incentive-compatible if it is a dominant strategy for each participant to report his private information truthfully.</p>
+<blockquote>
+<p>In a standard exchange economy, no incentive-compatible mechanism which satisfies the participation constraint can produce Pareto-optimal outcomes.</p>
+</blockquote>
+<p>Private information precludes full efficiency.</p>
+<p>This lead to the following questions :</p>
+<ul>
+<li><p>Can Pareto optimality be attained if we consider a wider class of mechanisms and/or a less demanding equilibrium concept than dominant-strategy equilibrium, such as Nash equilibrium or Bayesian Nash equilibrium?</p>
+</li>
+<li><p>If not, then we would like to know how large the unavoidable social welfare losses are, and what the appropriate standard of efficiency should be.</p>
+</li>
+</ul>
+<p>The revelation principle states that any equilibrium outcome of an arbitrary mechanism can be replicated by an incentive-compatible direct mechanism. Although the set of all possible mechanisms is huge, the revelation principle implies that an optimal mechanism can always be found within the well-structured subclass consisting of <strong><em>direct mechanisms.</em></strong></p>
+<p>Direct Mechanisms A direct revelation mechanism is one where each agent is asked to report his individual preferences. In an indirect mechanism agents are asked to send messages other than preferences.</p>
+<p>(Incentive Efficient) A direct mechanism is said to be incentive efficient if it maximizes some weighted sum of the agents expected payoffs subject to their IC constraints.</p>
+<h3 id="Dominant-strategy-mechanisms-for-public-goods-provision"><a href="#Dominant-strategy-mechanisms-for-public-goods-provision" class="headerlink" title="Dominant-strategy mechanisms for public goods provision"></a>Dominant-strategy mechanisms for public goods provision</h3><p>Before 1970, economists generally believed that public goods could not be provided at an efficient level, precisely because people would not reveal their true willingness to pay. But Edward Clarke (1971) and Theodore Groves (1973) shows a case if there are no income effects on the demand for public goods (technically, if utility functions are quasi-linear), then there exists a class of mechanisms in which (a) truthful revelation of ones willingness to pay is a dominant strategy, and (b) the equilibrium level of the public good maximizes the social surplus.</p>
+<p>Each person is asked to report his or her willingness to pay for the project, and the project is undertaken if and only if the aggregate reported willingness to pay exceeds the cost of the project. If the project is undertaken, then each person pays a tax or fee equal to the difference between the cost of the project and everyone elses reported total willingness to pay. With such taxes, each person internalizes the total social surplus, and truth-telling is a dominant strategy.</p>
+<p>But due to the drawbacks of Dominant-strategy mechanisms, focus of the literature shifted from dominantstrategy solutions to so-called Bayesian mechanism design.</p>
+<h3 id="Bayesian-mechanisms-for-public-goods-provision"><a href="#Bayesian-mechanisms-for-public-goods-provision" class="headerlink" title="Bayesian mechanisms for public goods provision"></a>Bayesian mechanisms for public goods provision</h3><p>In a Bayesian model, the agents are expected-utility maximizers. The solution concept is typically Bayesian Nash equilibrium. Regarding Clarke-Groves dominant-strategy mechanism, Claude dAspremont and Louis- AndrGrard-Varet (1979) showed that this problem can be solved in the Bayesian version of the model. In the Bayesian model, agents are expected utility maximizers, and the IC constraints only have to hold in expectation. So it is easier to satisfy.</p>
+<p>The fact that English villages were much earlier than French villages in deciding on public goods such as enclosure of open fields and drainage of marshlands can arguably be ascribed to the fact that French villages required unanimity on such issues whereas the English did not. (why)</p>
+<p>Why if participation is voluntary and decisions to start the project must be taken unanimously, then the problem of free-riding becomes severe?  -<strong>bilateral trade</strong></p>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p>Incentive compatibility guarantees that truth-telling is an equilibrium, but not that it is the only equilibrium. Many mechanisms have multiple equilibria that produce different outcomes. In view of these difficulties, it is desirable to design mechanisms in which all equilibrium outcomes are optimal for the given goal function. The quest for this property is known as the implementation problem.</p>
+<p>Groves and Ledyard (1977) and Hurwicz and Schmeidler (1978) showed that, in certain situations, <strong>it is possible to construct mechanisms in which all Nash equilibria are Pareto optimal,</strong> while Eric Maskin (1977) gave a general characterization of Nash implementable social-choice functions.</p>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><h3 id="Optimal-selling-and-procurement-mechanisms"><a href="#Optimal-selling-and-procurement-mechanisms" class="headerlink" title="Optimal selling and procurement mechanisms"></a>Optimal selling and procurement mechanisms</h3><p>General revenue-equivalence theorem. In particular, four well-known auction forms (the so-called English and Dutch auctions, and first-price and second-price sealed bid auctions, respectively) generate the same expected revenue. Myerson (1981) showed that if the bidders are symmetric (drawn from one and the same type pool) and if the seller sets an appropriate reserve price (a lowest price below which the object will not be sold), then all of the four well-known auction formats are in fact optimal</p>
+<p>if the bidders types are independently drawn from a uniform distribution on the interval from zero to one hundred, then the optimal reserve price is 50, independently of the number of bidders. This reserve price induces bidders whose valuations exceed 50 to bid higher than they would otherwise have done, which raises the expected revenue. <strong>On the other hand, if it so happens that no bidder thinks the object is worth 50, then the object is not sold even if it has a positive value to some bidder and no value at all to the seller.(not understand)</strong> This outcome is clearly not Pareto efficient in the classical sense</p>
+<p>Maskin (1992) found that, under certain conditions, an English auction maximizes social welfare even if each bidders valuation depends on other bidders private information.</p>
+<p>One might be tempted to discount the need for the governments auction to maximize social welfare, for the following reason. Suppose there are two potential bidders, A and B, and B values the asset more than A. Then, even if the government allocates the asset to the wrong person, A, would not then B simply buy the asset from A (assuming it can be traded)? If so, then B (who values the asset the most) would always get the asset in the end - so the government should not worry too much about getting the initial allocation right. However, this argument is incorrect, because it does not take informational constraints into account. The Laffont-Maskin and Myerson-Satterthwaite impossibility results (see Section 2.4) imply that B may not buy the asset from A even if B values it the most. Therefore, getting the initial allocation of ownership right may be of the utmost importance.</p>
+<h3 id="Regulation-and-auditing"><a href="#Regulation-and-auditing" class="headerlink" title="Regulation and auditing"></a>Regulation and auditing</h3><p>This is about monopolies and oligopolies. The situation changed dramatically with the pioneering contributions of Baron and Myerson (1982) and Sappington (1982, 1983). the regulatory process was modeled as a game of incomplete information. The regulator did not have direct access to information about the monopolists true production costs.</p>
+<h3 id="Social-Choice-Theory"><a href="#Social-Choice-Theory" class="headerlink" title="Social Choice Theory"></a>Social Choice Theory</h3><p>In the axiomatic social-choice theory pioneered by Kenneth Arrow (1951), there is a set X of feasible alternatives and n individuals who have preferences over these. A social choice rule is a rule that selects one or several alternatives from X on the basis of the individuals preferences, for any given such preference profile</p>
+<p>Maskin monotonicity is the following property of a social choice rule. Suppose that, for preference profile P1, the chosen alternative is A1. Consider another preference profile P2 such that, the position of A1 relative to each of the other alternatives either improves or stays the same as in P1. Then, A1 should still be chosen at P2.</p>
+<p>plurality rule. An alternative in $X$ is said to be the plurality alternative if it is top-ranked by the greatest number of voters</p>
+<h1 id="Asymmetric-Information"><a href="#Asymmetric-Information" class="headerlink" title="Asymmetric Information"></a>Asymmetric Information</h1><p>In 1996, the Bank of Sweden Prize in Economic Sciences in Memory of Alfred Nobel was awarded to James Mirrlees and William Vickrey for their fundamental contributions to the theory of incentives under asymmetric information, in particular its applications to the <strong>design of optimal income taxation</strong> and resource allocation through <strong>different types of auctions.</strong> The theory of markets with asymmetric information rests firmly on the work of three researchers: George Akerlof (University of California, Berkeley), Michael Spence (Stanford University) and Joseph Stiglitz (Columbia University).</p>
+<p>Some questions like Why do people looking for a good used car typically turn to a dealer rather than a private seller? Why dofirms pay dividends even if they are taxed more heavily than capital gains? Why is it in the interest of insurance companies to offer a menu of policies with different mixes of premiums, coverage and deductibles? challenge the traditional economic theory. Those questions share a same realistic assumption : one side of the market has better information than the other.</p>
+<p>Akerlof showed how informational asymmetries can give rise toadverse selection in markets. Spence demonstrated that informed economic agents in such markets may have incentives to take observable and costly actions to crediblysignaltheir private information to uninformed agents, so as to improve their market outcome. Stiglitz showed that poorly informed agents can indirectly extract information from those who are better informed, by offering a menu of alternative contracts for a specific transaction, so-called screening through self-selection.</p>
+<ul>
+<li><p><strong>Akerlof</strong> </p>
+<p>market failure and asymmetric information. (lemon market)</p>
+</li>
+<li><p><strong>Michael Spence</strong></p>
+<p>Spence’s most important work demonstrates how agents in a market can use signaling to counteract the effects of adverse selection. In this context, signaling refers to observable actions taken by economic agents to convince the opposite party of the value or quality of their products. A fundamental insight is that signaling can succeed only if the signaling cost differs sufficiently among the ’senders’.</p>
+</li>
+<li><p><strong>Stiglitz</strong></p>
+<p>insurance market </p>
+</li>
+</ul>
+<h1 id="Contract-Theory"><a href="#Contract-Theory" class="headerlink" title="Contract Theory"></a>Contract Theory</h1><p>An eternal obstacle to human cooperation is that people have different interests. In modern societies, conflicts of interests are often mitigated if not completely resolved by contractual arrangements. The idea that incentives must be aligned to exploit the gains from cooperation has a long history within economics. In the 1700’s, Adam Smith argued that sharecropping contracts do not give tenants sufficient incentives to improve the land. Today, incentive problems are almost universally seen through its lens. The theory has had a major impact on organizational economics and corporate finance, and it has deeply influenced other fields such as industrial organization, labor economics, public economics, political science, and law.</p>
+<p>A <strong>classic contracting problem</strong> has the following structure. A principal engages an agent to take certain actions on the principals behalf. However, the principal cannot directly observe the agents actions, which creates a problem of moral hazard : <em>the agent may take actions that increase his own payoff but reduce the overall surplus of the relationship.</em> To be specific, suppose the principal is the main shareholder of a company and the agent is the company’s manager. As Adam Smith noted, the separation of ownership and control in a company might cause the manager to make decisions contrary to the interests of shareholders.</p>
+<blockquote>
+<p>Therefore <strong>contract theory</strong> has traditionally been divided into <strong>two</strong> parts: the theory of hidden information (also referred to as the theory of adverse selection) and the theory of hidden action (also referred to as the theory of moral hazard).</p>
+</blockquote>
+<p>To alleviate this moral-hazard problem, the principal may offer a compensation package which ties the managers income to some (observable and verifiable) performance measure. We refer to this as paying for performance. But any performance measure is likely to be imprecise and noisy, so in the end the optimal compensation schedule must trade off incentive provision against risk-sharing.</p>
+<p>informativeness principle Formally, suppose P is considering making the transfer t a function of some signal s in addition to $\beta$. The informativeness principle implies that she should do so if and only if is not a sufficient statistic for a given ($\beta$; s).</p>
+<p>Paying for performance requires both the ability to write sufficiently detailed contracts ex ante, as well as the ability to measure and verify performance ex post.</p>
+<p>incomplete contracting approach</p>
+<p>allocation of decision rights.</p>
+<p>Decision rights are often determined by property rights, property rights generate bargaining power,which in turn determines incentives. image the company want to do R&amp;D. the researcher’s right and company’s right during the innovation of the product.</p>
+<p>More generally, when performance-based contracts are hard to write or hard to enforce, carefully allocated decision rights may produce good incentives and thus substitute for contractually specified rewards. This insight is a cornerstone in the theory of incomplete contracts.</p>
+<p>The theory has been highly influential within corporate finance and organizational economics,</p>
+<ul>
+<li><p>costs and benefits of mergers</p>
+</li>
+<li><p>the distribution of authority within organizations</p>
+</li>
+<li><p>whether or not providers of public services should be privately owned</p>
+</li>
+<li><p>how outside owners can control a company’s inside managers through the design of corporate governance and capital structure</p>
+</li>
+</ul>
+<h2 id="Complete-Contracts-principal-agent-model"><a href="#Complete-Contracts-principal-agent-model" class="headerlink" title="Complete Contracts: principal-agent model"></a>Complete Contracts: principal-agent model</h2><p>A simple framework :</p>
+<p>imprecise performance measure</p>
+<h2 id="Incomplete-Contracts-Allocating-Decision-Rights"><a href="#Incomplete-Contracts-Allocating-Decision-Rights" class="headerlink" title="Incomplete Contracts: Allocating Decision Rights"></a>Incomplete Contracts: Allocating Decision Rights</h2><ul>
+<li>Hold up problem</li>
+<li>property right</li>
+<li>In property-rights models of Hart and coauthors, decision rights over physical assets are the crucial source of bargaining power and incentives.</li>
+<li>What is the connection between mechanism design, asymmetric information and contract theory?!</li>
+<li>Screening Contract and Incentive Contract</li>
+</ul>
+<h4 id="Voting-Scheme-of-the-social-choice"><a href="#Voting-Scheme-of-the-social-choice" class="headerlink" title="Voting Scheme of the social choice."></a>Voting Scheme of the social choice.</h4><p>Condorcet conditions: If there is a candidate that is preferred to every other candidate in pair wise majority -rule comparisons , that candidate should be choose</p>
+<p>$(a\succ b),\ (a\succ c)\ (a\succ d)$ $a$ is the winner. The potential candidate should win all the pairs</p>
+<p>Arrow impossibility theorem : Any social welfare function W over three or more outcomes that is pareto efficient and independent of irrelevant alternatives is dictatorial.</p>
+<p>Pareto Efficiency : W is Pareto efficient if for any $o_{1},\ o_{2}\in O,\ \forall i\ o_{1}\succ_{i}o_{2}$ implies that $o_{1}\succ_{W}o_{2}$</p>
+<p>If everyone agrees $a$ better than b, social welfare function is also required that $a$ is better than <strong>$b$</strong> . If one person feels differently, this does not restrict soical welfare function at all.</p>
+<p>Idependence of Irrelevant Alternatives : $W$ is independent of Irrelevant Alternatives if for any $o_{1},\ o_{2}\in O,$ and any two preference profiles $[\succ’],[\succ’’]\in L^{n}$ $\forall i\ (o_{1}\succ_{i}’o_{2}\ \text{iff},\ o_{1}\succ_{i}’’o_{2})$ implies that $(o_{1}\succ_{W}([\succ’])o_{2})$ iff $(o_{1}\succ_{W}([\succ’’])o_{2})$</p>
+<p>if agent 1 likes $o_{1}$ better than $o_{2}$, in preference $\succ’$ , he must also likes $o_{1}$ better than $o_{2}$, in preference $\succ’’$ .</p>
+<p>Non-dictatorship : $W$ does not have a dictator if $\lnot\exists i\ \forall o_{1},o_{2}(o_{1}\succ_{i}o_{2}\Rightarrow o_{1}\succ_{W}o_{2})$</p>
+<p>given a set of agents $N=\{1,2,3…\}$a finite set of outcomes (or alternative or candidates ) $O$ and the set of preferences over outcomes $L_{NS}$</p>
+<p>Social choice function $C:\ L_{NS}^{N}\rightarrow O$</p>
+<p>Social welfare function $W:\ L_{NS}^{n}\rightarrow L_{NS}$</p>
+<p>social choice function VS social welfare function</p>
+<p>Assume that finite set of alternatives are a,b and c. social choice function can have one single output which can be a or b or c. A social welfare function can have any ranking as output such as $a &lt; b &lt; c​ $ .</p>
+<h1 id="Tian’s-notes"><a href="#Tian’s-notes" class="headerlink" title="Tian’s notes"></a>Tian’s notes</h1><p>The <strong>incentives</strong> structure and information structure are thus two basic features of any economic system. Indeed, delegation of a task to an agent who has different objectives than the principal who delegates this task is problematic when information about the agent is imperfect. This problem is the essence of incentive questions. <strong>Thus, conflicting objectives and decentralized information are the two basic ingredients of incentive theory.</strong></p>
+<p>The three words contracts, mechanisms and institutions are to a large extent synonymous. They all mean <strong>rules of the game</strong>, which describe what actions the parties can undertake, and what outcomes these actions would be obtained. While mechanism design theory may be able answer big questions, such as socialism vs. capitalism, contract theory is developed and useful for more manageable smaller questions, concerning specific contracting practices and mechanisms.</p>
+<p>mechanism design is normative economics, in contrast to game theory, which is positive economics.</p>
+<p>(normative economics) a part of economics that expresses value or normative judgments about economic fairness or what the outcome of the economy or goals of public policy ought to be.</p>
+<p>(positive economics) is the branch of economics that concerns the description and explanation of economic phenomena. It focuses on facts and cause-and-effect behavioral relationships and includes the development and testing of economics theories.</p>
+<h4 id="Screening-and-Signaling"><a href="#Screening-and-Signaling" class="headerlink" title="Screening and Signaling"></a>Screening and Signaling</h4><p>For the most part we will focus on the situation where the <em>Principal has no private information and the agents do</em>. This framework is called <strong>screening</strong>, because the principal will in general try to screen different types of agents by inducing them to choose different bundles.</p>
+<p>The opposite situation, in which the <em>Principal has private information and the agents do not</em>, is called <strong>signaling</strong>, since the Principal could signal his type with the design of his contract.</p>
+<h4 id="First-Best-and-Second-Best"><a href="#First-Best-and-Second-Best" class="headerlink" title="First Best and Second Best"></a>First Best and Second Best</h4><p>In the class, what we learned of first best is that principal can extract all the rent from agents; second best involves the incentive compatibility constraint and principal need to share some rent to agents to pay for the “information value”</p>
+<h5 id="In-Contract-Theory"><a href="#In-Contract-Theory" class="headerlink" title="In Contract Theory"></a>In Contract Theory</h5><p>The first-best refers to the best you could do if you knew agent’s preferences over labor an income (i.e., if you did not have to impose the incentive compatibility constraint), and the second-best is the best you can do if agents have to reveal their preferences themselves.</p>
+<h5 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h5><p>There is not much connection between the two notions as defined above. Every combination of the two notions is a priori possible. Both a mechanism and a contract can be</p>
+<ol>
+<li><p>First-best ex-post efficient (i.e., efficient when incentive compatibility constraint is <strong>not</strong> imposed and the outcome of the mechanism/contract must be deterministic)</p>
+</li>
+<li><p>First-best ex-ante efficient (i.e., efficient when incentive compatibility constraint is <strong>not</strong> imposed and the outcome of the mechanism/contract can be random)</p>
+</li>
+<li><p>Second-best ex-post efficient (i.e., efficient when incentive compatibility constraint <strong>is</strong> imposed and the outcome of the mechanism/contract must be deterministic)</p>
+</li>
+<li><p>Second-best ex-ante efficient (i.e., efficient when incentive compatibility constraint <strong>is</strong> imposed and the outcome of the mechanism/contract can be random)</p>
+</li>
+</ol>
+<h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><p>Quasi-linear Utility quasi-linear utility functions are linear in one argument, generally the numeraire. This utility function has the representation $u(x_{1},x_{2},\ldots,x_{n})=x_{1}+\theta(x_{2},\ldots,x_{n})$. Informally, an agent has quasi-linear utility if it can express all its preferences in terms of money and the amount of money it has will not create a <strong>wealth effect.</strong> As a practical matter in mechanism design, quasi-linear utility ensures that <strong>agents can compensate each other with side payments.</strong> In regard to surplus, quasi-linear preferences entail that Marshallian surplus will equal Hicksian surplus since there would be <strong>no wealth effect for a change in price</strong>.</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mechanism-Design/" rel="tag">#Mechanism Design</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/14/continous-time-model/" rel="next" title="Continuous Time Model">
+                <i class="fa fa-chevron-left"></i> Continuous Time Model
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/18/Economics-Important-Data-and-Tools/" rel="prev" title="Economics Important Data and Tools">
+                Economics Important Data and Tools <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/pic/mgx2.png" alt="Guoxuan Ma" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Guoxuan Ma</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaofeima1990/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100011710272689" target="_blank">
+                  
+                    <i class="fa fa-facebook"></i> Facebook
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mechanism-Design"><span class="nav-number">1.</span> <span class="nav-text">Mechanism Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Incentive-compatibility-and-the-revelation-principle"><span class="nav-number">1.1.</span> <span class="nav-text">Incentive compatibility and the revelation principle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dominant-strategy-mechanisms-for-public-goods-provision"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dominant-strategy mechanisms for public goods provision</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayesian-mechanisms-for-public-goods-provision"><span class="nav-number">1.1.2.</span> <span class="nav-text">Bayesian mechanisms for public goods provision</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">1.1.3.</span> <span class="nav-text">Implementation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application"><span class="nav-number">1.2.</span> <span class="nav-text">Application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimal-selling-and-procurement-mechanisms"><span class="nav-number">1.2.1.</span> <span class="nav-text">Optimal selling and procurement mechanisms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regulation-and-auditing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Regulation and auditing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Social-Choice-Theory"><span class="nav-number">1.2.3.</span> <span class="nav-text">Social Choice Theory</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Asymmetric-Information"><span class="nav-number">2.</span> <span class="nav-text">Asymmetric Information</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contract-Theory"><span class="nav-number">3.</span> <span class="nav-text">Contract Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Contracts-principal-agent-model"><span class="nav-number">3.1.</span> <span class="nav-text">Complete Contracts: principal-agent model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Incomplete-Contracts-Allocating-Decision-Rights"><span class="nav-number">3.2.</span> <span class="nav-text">Incomplete Contracts: Allocating Decision Rights</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Voting-Scheme-of-the-social-choice"><span class="nav-number">3.2.0.1.</span> <span class="nav-text">Voting Scheme of the social choice.</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tian’s-notes"><span class="nav-number">4.</span> <span class="nav-text">Tian’s notes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Screening-and-Signaling"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">Screening and Signaling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#First-Best-and-Second-Best"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">First Best and Second Best</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#In-Contract-Theory"><span class="nav-number">4.0.0.2.1.</span> <span class="nav-text">In Contract Theory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Difference"><span class="nav-number">4.0.0.2.2.</span> <span class="nav-text">Difference</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Appendix"><span class="nav-number">5.</span> <span class="nav-text">Appendix</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guoxuan Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaofeima';
+      var disqus_identifier = '2018/05/18/mechanism design contract theory/';
+      var disqus_title = 'Mechanism Design and Contract Theory Introduction';
+      var disqus_url = 'http://xiaofeima1990.github.io/2018/05/18/mechanism design contract theory/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+</body>
+</html>
