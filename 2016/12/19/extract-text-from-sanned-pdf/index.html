@@ -37,7 +37,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="econometrics," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -53,21 +53,20 @@
 
 
 
-<meta name="description" content="Bayesian Model AveragingBasic IdeasAssume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could">
-<meta name="keywords" content="econometrics">
+<meta name="description" content="This article introduces how to setup the denpendicies and environment for using OCR technic to extract data from scanned PDF or image.">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BMA Introduction">
-<meta property="og:url" content="http://xiaofeima1990.github.io/2015/10/25/BMA-Intro/index.html">
+<meta property="og:title" content="Extract Text From Sanned PDF With Python">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2016/12/19/extract-text-from-sanned-pdf/index.html">
 <meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
-<meta property="og:description" content="Bayesian Model AveragingBasic IdeasAssume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could">
+<meta property="og:description" content="This article introduces how to setup the denpendicies and environment for using OCR technic to extract data from scanned PDF or image.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://xiaofeima1990.github.io/pic/bma-f1.png">
-<meta property="og:image" content="http://xiaofeima1990.github.io/pic/bma-f2.png">
-<meta property="og:updated_time" content="2018-05-19T00:45:12.610Z">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/pdfocr1.png">
+<meta property="og:updated_time" content="2018-05-19T00:17:15.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BMA Introduction">
-<meta name="twitter:description" content="Bayesian Model AveragingBasic IdeasAssume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could">
-<meta name="twitter:image" content="http://xiaofeima1990.github.io/pic/bma-f1.png">
+<meta name="twitter:title" content="Extract Text From Sanned PDF With Python">
+<meta name="twitter:description" content="This article introduces how to setup the denpendicies and environment for using OCR technic to extract data from scanned PDF or image.">
+<meta name="twitter:image" content="http://xiaofeima1990.github.io/pic/pdfocr1.png">
 
 
 
@@ -79,7 +78,7 @@
   };
 </script>
 
-  <title> BMA Introduction | Guoxuan Ma | Stay Hard Stay Foolish </title>
+  <title> Extract Text From Sanned PDF With Python | Guoxuan Ma | Stay Hard Stay Foolish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
@@ -285,7 +284,7 @@
             
             
               
-                BMA Introduction
+                Extract Text From Sanned PDF With Python
               
             
           </h1>
@@ -294,8 +293,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2015-10-25T10:05:09-04:00" content="2015-10-25">
-              2015-10-25
+            <time itemprop="dateCreated" datetime="2016-12-19T13:10:31-05:00" content="2016-12-19">
+              2016-12-19
             </time>
           </span>
 
@@ -304,8 +303,8 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Economics/" itemprop="url" rel="index">
-                    <span itemprop="name">Economics</span>
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
                   </a>
                 </span>
 
@@ -320,8 +319,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/25/BMA-Intro/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/25/BMA-Intro/" itemprop="commentsCount"></span>
+              <a href="/2016/12/19/extract-text-from-sanned-pdf/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/19/extract-text-from-sanned-pdf/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -340,40 +339,61 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Bayesian-Model-Averaging"><a href="#Bayesian-Model-Averaging" class="headerlink" title="Bayesian Model Averaging"></a>Bayesian Model Averaging</h1><h2 id="Basic-Ideas"><a href="#Basic-Ideas" class="headerlink" title="Basic Ideas"></a>Basic Ideas</h2><p>Assume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could be quite large. For example, if we consider only regression models but are unsure about which of $p$ possible predictors to include, there could be as many as $2^p$. BMA uses Bayesian statistics to select possible candidate predictors and help use construct the right model.</p>
+        <span itemprop="articleBody"><p>This article introduces how to setup the denpendicies and environment for using OCR technic to extract data from scanned PDF or image.</p>
 <a id="more"></a>
-<h2 id="Methology-Introduction"><a href="#Methology-Introduction" class="headerlink" title="Methology Introduction"></a>Methology Introduction</h2><p>consider the unknown quantity of interest $\Delta$ and observed data $D$. we have possible models,$M_1$, $M_2$…$M_k$ , to do the estimation and forecasting. Then by a simple application of the<br>law of total probability, the BMA posterior distribution of $\Delta$ is</p>
-<p>$$p(\Delta | D)=\sum\limits_{k = 1}^K {p(\Delta |D,M_k)p(M_k|D)} \ \ (1)$$</p>
-<p>where $p(\Delta |D,M_k)$ is the posterior distribution of $\Delta$ given the model $M_k$, and $p(M_k|D)$ is the posterior probability that $M_k$ is the correct model, given that one of the models considered is correct.  Thus the BMA posterior distribution of $\Delta$ is a weighted average of the posterior distributions of $\Delta$ under each of the models, weighted by their posterior model probabilities.(take the above equation as a weighted average case). </p>
-<p>note that $p(\Delta |D,M_k)$ and $p(M_k|D)$ can be probability density functions, probability mass functions, or cumulative distribution functions.</p>
-<p>The posterior model probability of $M_k$ is given by </p>
-<p> $$p(M_k|D) = \frac{p(D| M_k)p( M_k)} { \sum \limits_{l = 1}^K {p(D| M_l ) p(M_l)} }  (2)$$</p>
-<p>$p(D| M_k)$ is the integrated likelihood of model $M_k$ , obtained by integrating (not maximizing)<br>over the unknown parameters</p>
-<p>$$p(D|M{k})  =  \int p(D|\theta{k},M{k})p(\theta{k}|M{k}){\rm d}\theta{k}=\int (likelihood \times prior)\ {\rm d}\theta_{k} $$</p>
-<p>where $θ_k$ is the parameter of model $M_k$ and $p(D| \theta_k, M_k)$ is the likelihood of $\theta_k$ under model $M_k$ . The prior model probabilities are often taken to be equal, so they cancel in (2), but the BMA package allows other formulations also</p>
-<h3 id="information-criterion"><a href="#information-criterion" class="headerlink" title="information criterion"></a>information criterion</h3><p>from the above (3), we see that the integrated likelihood $p(D| M_k )$ is a high dimensional integral that can be hard to calculate analytically. recalling the Maximum likelihood selection creteria, we found that $p(D| M_k )$ can be the simple and surprisingly accurate BIC approximation, which greatly simplify the model selection and calculation procedure </p>
-<p>$$ 2 \log p(D|M_{k})\approx2\log p(D|\tilde{\theta}<em>{k})-d</em>{k}\log(n)=-BIC_{k}$$</p>
-<p>where $d_{k}=\dim(\theta_{k})$ is the number of independent parameters in $M_k $, and $\tilde{\theta}_k$ is the maximum likelihood estimator (equal to the ordinary least squares estimator for linear regression coefficients).</p>
-<p>And for linear regression, BIC has the simple form: </p>
-<p>$$BIC_{k}=n\log(1-R_{k}^{2})+p_{k}\log{n} $$</p>
-<p>up to an additive constant, where $R_k^2$ is the value of $R^2$ and $P_k$ is the number of regressors for the kth regression model.</p>
-<p>eg: to illustrate what $\Delta$ is: </p>
-<p>When interest focuses on a model parameter, say a regression parameter such as $\beta_1 $ , (1) can be applied with $\Delta =\beta_1$ . The BMA posterior mean of $\beta_1$ is just a weighted average of the posterior means of $\beta_1$ under each of the models:</p>
-<p>$$E[\beta_{1}|D]=\sum \hat{\beta}<em>{1} p(M</em>{k}|D) $$</p>
-<p>which can be viewed as a model-averaged Bayesian point estimator. $\hat{\beta}_{1}$ is the posterior mean of $\beta_1$ under model $M_k$, and this can be approximated by the corresponding maximum likelihood estimator, $\hat{\beta}_{1}$ (Raftery, 1995).</p>
-<p>For a survey and literature review of Bayesian model averaging, see Hoeting et al. (1999)</p>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><h3 id="Linear-REgression"><a href="#Linear-REgression" class="headerlink" title="Linear REgression"></a>Linear REgression</h3><p>we use the UScrime dataset on crime rates in 47 U.S. states in 1960 (Ehrlich, 1973); this is<br>available in the MASS library. There are 15 potential independent variables, all associated with crime rates in the literature. The last two, probability of imprisonment and average time spent in state prisons, were the predictor variables of interest in the original study, while the other 13 were control variables. All variables for which it makes sense were logarithmically transformed. The commands are:</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(UScrime)</span><br><span class="line">x.crime&lt;- UScrime[,-<span class="number">16</span>]</span><br><span class="line">y.crime&lt;- log(UScrime[,<span class="number">16</span>])</span><br><span class="line">x.crime[,-<span class="number">2</span>]&lt;- log(x.crime[,-<span class="number">2</span>])</span><br><span class="line">crime.bicreg &lt;- bicreg(x.crime, y.crime)</span><br><span class="line">summary (crime.bicreg, digits=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"> plot (crime.bicreg,mfrow=c(<span class="number">4</span>,<span class="number">4</span>)) <span class="comment"># c(4,4) 意思是图形以4行4列共16个集体显示</span></span><br></pre></td></tr></table></figure>
-<p>This summary yields Figure 1. (The default number of digits is 4, but this may be more than<br>needed.) The column headed “p!=0” shows the posterior probability that the variable is in the model (in %). The column headed “EV” shows the BMA posterior mean, and the column headed “SD” shows the<br>BMA posterior standard deviation for each variable. The following five columns show the parameter estimates for the best five models found, together with the numbers of variables they include, their $R^2$ values, their BIC values and their posterior model probabilities.</p>
-<p><img src="/pic/bma-f1.png" alt="figure1"></p>
-<p>Figure 2: BMA posterior distribution of the coefficient of the average time in prison variable in the<br>crime dataset. The <strong>spike at 0 shows the posterior probability that the variable is not in the model.</strong>(在0点的那条竖线的纵坐标值代表不在模型中的概率是多少) The curve is the model-averaged posterior density of the coefficient given that the variable is in the model, approximated by a finite mixture of normal distributions, one for each model that includes the variable. The density is scaled so that its <strong>maximum height is equal to the probability of the variable being in the model</strong>.</p>
-<p><img src="/pic/bma-f2.png" alt="figure2"></p>
-<h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p>We illustrate BMA for logistic regression using the low birthweight data set of Hosmer and Lemeshow<br>(1989), available in the MASS library. The dataset consists of 189 babies, and the dependent variable<br>measures whether their weight was low at birth. There are 8 potential independent variables of which<br>two are categorical with more than two categories: race and the number of previous premature labors<br>(ptl). Figure 5 shows the output of the commands</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(birthwt)</span><br><span class="line">birthwt$race &lt;- as.factor (birthwt$race)</span><br><span class="line">birthwt$ptl &lt;- as.factor (birthwt$ptl)</span><br><span class="line">bwt.bic.glm &lt;- bic.glm (low ~ age + lwt</span><br><span class="line">+ race + smoke + ptl + ht + ui + ftv,</span><br><span class="line">data=birthwt, glm.family=<span class="string">"binomial"</span>)</span><br><span class="line">summary (bwt.bic.glm,conditional=<span class="literal">T</span>,digits=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p>The function bic.glm in BMA can accept a formula, as here, instead of a design matrix and dependent variable (the same is true of bic.surv but not of bicreg)</p>
-<h3 id="Survival-Analysis"><a href="#Survival-Analysis" class="headerlink" title="Survival Analysis"></a>Survival Analysis</h3><p>BMA can account for model uncertainty in survival analysis using the Cox proportional hazards model.We illustrate this using the well-known Primary Biliary Cirrhosis (PBC) data set of Fleming and Harrington (1991). This consists of 312 randomized patients with the disease, and the dependent variable was survival time; 187 of the records were censored. There were 15 potential predictors. The data set is available in the survival library, which is loaded when BMA is loaded.</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(pbc)</span><br><span class="line">x.pbc&lt;- pbc[<span class="number">1</span>:<span class="number">312</span>,]</span><br><span class="line">surv.t&lt;- x.pbc$time</span><br><span class="line">cens&lt;- x.pbc$status</span><br><span class="line">x.pbc&lt;- x.pbc[,-c(<span class="number">6</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">19</span>)]</span><br><span class="line">x.pbc$bili&lt;- log(x.pbc$bili)</span><br><span class="line">x.pbc$alb&lt;- log(x.pbc$alb)</span><br><span class="line">x.pbc$protime&lt;- log(x.pbc$protime)</span><br><span class="line">x.pbc$copper&lt;- log(x.pbc$copper)</span><br><span class="line">x.pbc$sgot&lt;- log(x.pbc$sgot)</span><br><span class="line">pbc.bic.surv &lt;- bic.surv(x.pbc,surv.t,cens)</span><br><span class="line">summary(pbc.bic.surv,digits=<span class="number">2</span>)</span><br><span class="line">plot(pbc.bic.surv,mfrow=c(<span class="number">4</span>,<span class="number">4</span>))</span><br><span class="line">imageplot.bma(pbc.bic.surv)</span><br></pre></td></tr></table></figure>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Based on R package BMA, we can easily deal with Bayesian model averaging for linear regression, generalized linear models, and survival or event history analysis using Cox proportional hazards models. More specific coding can refer to the manual of BMA. But based on the above knowledge, we are able to do some simple application by BMA.</p>
+<p>extracting normal pdf is easy and convinent, we can just use <a href="https://pypi.python.org/pypi/pdfminer/" target="_blank" rel="noopener">pdfminer</a> and <a href="https://pypi.python.org/pypi/pdfminer.six/20160614" target="_blank" rel="noopener">pdfminer.six</a> (for python2 and python3 respectively) and follow the instruction to get text content. But for those scanned pdf, it is actually the image in essence. To extract the text from it, we need a little bit more complicated setup. In addition, it is easy for linux system but hard for windows system. </p>
+<h2 id="Basic-package-and-software-needed"><a href="#Basic-package-and-software-needed" class="headerlink" title="Basic package and software needed"></a>Basic package and software needed</h2><p>We want to use <a href="https://pypi.python.org/pypi/pyocr" target="_blank" rel="noopener">pyocr</a> to extract what we need. And in order to use if correctly, we need the following important denpendencies</p>
+<ul>
+<li><a href="http://www.pythonware.com/products/pil/" target="_blank" rel="noopener">Python Imaging Library (PIL)</a></li>
+<li><a href="https://pypi.python.org/pypi/Wand" target="_blank" rel="noopener">Wand</a></li>
+<li><a href="https://github.com/tesseract-ocr" target="_blank" rel="noopener">tesseract-ocr</a></li>
+<li><a href="https://ghostscript.com/" target="_blank" rel="noopener">ghostscript</a></li>
+<li><p><a href="https://www.imagemagick.org/script/binary-releases.php" target="_blank" rel="noopener">ImageMagick</a></p>
+<p>Note that PIL could use <strong>conda install pil</strong>.  And also we need to setup the environment and path.<br>First of all, do not change the default name of the folder, you can change the directory. But if you change the directory, you need to change some path setup from <strong>tesseract.py.py</strong> in pyocr package. </p>
+<p>For the system path and environment, you need to add the directory of ghostscript, ImageMagick, tesseract-ocr into system path:</p>
+</li>
+<li><p>create a new name MAGICK_HOME and set ImageMagick,ghostscript as  E:\system\ImageMagick-6.9.7-Q8; E:\system\gs9.20\bin</p>
+</li>
+<li>add them into the <strong>path</strong> E:\system\ImageMagick-6.9.7-Q8; E:\system\gs9.20\bin</li>
+<li>create a new name TESSDATA_PREFIX and set tesseract directory E:\system\Tesseract-OCR</li>
+<li><p>change the <strong>tesseract.py</strong> as </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># CHANGE THIS IF TESSERACT IS NOT IN YOUR PATH, OR IS NAMED DIFFERENTLY</span><br><span class="line">TESSERACT_CMD = os.environ[&quot;TESSDATA_PREFIX&quot;]+ os.sep +&apos;tesseract.exe&apos; if os.name == &apos;nt&apos; else &apos;tesseract&apos;</span><br><span class="line"></span><br><span class="line">TESSDATA_EXTENSION = &quot;.traineddata&quot;</span><br><span class="line"></span><br><span class="line">logger = logging.getLogger(__name__)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/pic/pdfocr1.png" alt="environment"></p>
+<p>when you successfully setup, you can open the cmd, and input :<br><code>convert filename.pdf filename.jpg</code><br>to see whether it can operate correctly.</p>
+<h2 id="python-OCR-stript"><a href="#python-OCR-stript" class="headerlink" title="python OCR stript"></a>python OCR stript</h2><p>When all those are done. We are able to write the python script : </p>
+<ul>
+<li>importing the required libraries:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wand.image <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image <span class="keyword">as</span> PI</span><br><span class="line"><span class="keyword">import</span> pyocr</span><br><span class="line"><span class="keyword">import</span> pyocr.builders</span><br><span class="line"><span class="keyword">import</span> io</span><br></pre></td></tr></table></figure>
+<ul>
+<li>get the handle of the OCR library (tesseract) </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tool = pyocr.get_available_tools()[<span class="number">0</span>]</span><br><span class="line">lang = tool.get_available_languages()[<span class="number">0</span>]  <span class="comment"># you need to check what the language is in the list, in my computer it is eng for [0]</span></span><br></pre></td></tr></table></figure>
+<p>If your tesseract does not setup correctly, you will encount null value in this part, please carefully check the environment path setup. </p>
+<ul>
+<li>setup two lists to store the images and final_text</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">req_image = []</span><br><span class="line">final_text = []</span><br></pre></td></tr></table></figure>
+<ul>
+<li>open the PDF file using wand and convert it to jpeg </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image_pdf = Image(filename=<span class="string">"path/filename.pdf"</span>, resolution=<span class="number">300</span>)</span><br><span class="line">image_jpeg = image_pdf.convert(<span class="string">'jpeg'</span>)</span><br></pre></td></tr></table></figure>
+<p>If the ghostscript does not setup correctly, this part will raise the error, usually I encounter <em>798</em> : the system could not find the file. Here you need not only check the environment path but also do not change the folder’s name, because I change the folder’s name at the beginning, It tooks me a long time to fix this problem.</p>
+<p>wand has converted all the separate pages in the PDF into separate image blobs. We can loop over them and append them as a blob into the req_image list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> img <span class="keyword">in</span> image_jpeg.sequence:</span><br><span class="line">    img_page = Image(image=img)</span><br><span class="line">    req_image.append(img_page.make_blob(<span class="string">'jpeg'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>run OCR to get the text </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> img <span class="keyword">in</span> req_image: </span><br><span class="line">    txt = tool.image_to_string(</span><br><span class="line">        PI.open(io.BytesIO(img)),</span><br><span class="line">        lang=lang,</span><br><span class="line">        builder=pyocr.builders.TextBuilder()</span><br><span class="line">    )</span><br><span class="line">    final_text.append(txt)</span><br></pre></td></tr></table></figure>
+<p>It will take a few minuite to finsih the converting. </p>
+<h2 id="Full-code"><a href="#Full-code" class="headerlink" title="Full code"></a>Full code</h2><p>The Full code is </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">python <span class="number">27</span></span><br><span class="line">required package pyocr, PIL, wand</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> wand.image <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image <span class="keyword">as</span> PI</span><br><span class="line"><span class="keyword">import</span> pyocr</span><br><span class="line"><span class="keyword">import</span> pyocr.builders</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"></span><br><span class="line">path = <span class="string">"your path directory\demo.pdf"</span></span><br><span class="line">tool = pyocr.get_available_tools()[<span class="number">0</span>]</span><br><span class="line">lang = tool.get_available_languages()[<span class="number">0</span>] // <span class="number">0</span> <span class="keyword">is</span> eng</span><br><span class="line"></span><br><span class="line">req_image = []</span><br><span class="line">final_text = []</span><br><span class="line"></span><br><span class="line">image_pdf = Image(filename=path, resolution=<span class="number">300</span>)</span><br><span class="line">image_jpeg = image_pdf.convert(<span class="string">'jpeg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> img <span class="keyword">in</span> image_jpeg.sequence:</span><br><span class="line">    img_page = Image(image=img)</span><br><span class="line">    req_image.append(img_page.make_blob(<span class="string">'jpeg'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> img <span class="keyword">in</span> req_image: </span><br><span class="line">    txt = tool.image_to_string(</span><br><span class="line">        PI.open(io.BytesIO(img)),</span><br><span class="line">        lang=lang,</span><br><span class="line">        builder=pyocr.builders.TextBuilder()</span><br><span class="line">    )</span><br><span class="line">    final_text.append(txt)</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://pythontips.com/2016/02/25/ocr-on-pdf-files-using-python/" target="_blank" rel="noopener">OCR on PDF files using Python</a></li>
+<li><a href="http://stackoverflow.com/questions/26494211/extracting-text-from-a-pdf-file-using-pdfminer-in-python" target="_blank" rel="noopener">extracting normal PDF using pdfminer</a></li>
+</ul>
 </span>
       
     </div>
@@ -382,7 +402,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/econometrics/" rel="tag">#econometrics</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -391,16 +411,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/25/Agricultural-Household-Model-Intro/" rel="next" title="Agricultural Household Model Introduction">
-                <i class="fa fa-chevron-left"></i> Agricultural Household Model Introduction
+              <a href="/2015/10/25/BMA-Intro/" rel="next" title="BMA Introduction">
+                <i class="fa fa-chevron-left"></i> BMA Introduction
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/19/extract-text-from-sanned-pdf/" rel="prev" title="Extract Text From Sanned PDF With Python">
-                Extract Text From Sanned PDF With Python <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/18/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -537,7 +557,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bayesian-Model-Averaging"><span class="nav-number">1.</span> <span class="nav-text">Bayesian Model Averaging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Ideas"><span class="nav-number">1.1.</span> <span class="nav-text">Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methology-Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Methology Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#information-criterion"><span class="nav-number">1.2.1.</span> <span class="nav-text">information criterion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application"><span class="nav-number">1.3.</span> <span class="nav-text">Application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-REgression"><span class="nav-number">1.3.1.</span> <span class="nav-text">Linear REgression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.3.2.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Survival-Analysis"><span class="nav-number">1.3.3.</span> <span class="nav-text">Survival Analysis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-package-and-software-needed"><span class="nav-number">1.</span> <span class="nav-text">Basic package and software needed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-OCR-stript"><span class="nav-number">2.</span> <span class="nav-text">python OCR stript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Full-code"><span class="nav-number">3.</span> <span class="nav-text">Full code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -597,9 +617,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'xiaofeima';
-      var disqus_identifier = '2015/10/25/BMA-Intro/';
-      var disqus_title = 'BMA Introduction';
-      var disqus_url = 'http://xiaofeima1990.github.io/2015/10/25/BMA-Intro/';
+      var disqus_identifier = '2016/12/19/extract-text-from-sanned-pdf/';
+      var disqus_title = 'Extract Text From Sanned PDF With Python';
+      var disqus_url = 'http://xiaofeima1990.github.io/2016/12/19/extract-text-from-sanned-pdf/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
