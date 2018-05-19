@@ -37,7 +37,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, xiaofeima" />
+  <meta name="keywords" content="econometrics," />
 
 
 
@@ -53,17 +53,21 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Bayesian Model AveragingBasic IdeasAssume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could">
+<meta name="keywords" content="econometrics">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://xiaofeima1990.github.io/2018/05/18/hello-world/index.html">
+<meta property="og:title" content="BMA Introduction">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2015/10/25/BMA-Intro/index.html">
 <meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Bayesian Model AveragingBasic IdeasAssume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-19T01:59:29.037Z">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/bma-f1.png">
+<meta property="og:image" content="http://xiaofeima1990.github.io/pic/bma-f2.png">
+<meta property="og:updated_time" content="2018-05-19T00:45:12.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="BMA Introduction">
+<meta name="twitter:description" content="Bayesian Model AveragingBasic IdeasAssume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could">
+<meta name="twitter:image" content="http://xiaofeima1990.github.io/pic/bma-f1.png">
 
 
 
@@ -75,7 +79,7 @@
   };
 </script>
 
-  <title> Hello World | Guoxuan Ma | Stay Hard Stay Foolish </title>
+  <title> BMA Introduction | Guoxuan Ma | Stay Hard Stay Foolish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
@@ -281,7 +285,7 @@
             
             
               
-                Hello World
+                BMA Introduction
               
             
           </h1>
@@ -290,19 +294,34 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-05-18T21:59:29-04:00" content="2018-05-18">
-              2018-05-18
+            <time itemprop="dateCreated" datetime="2015-10-25T10:05:09-04:00" content="2015-10-25">
+              2015-10-25
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Economics/" itemprop="url" rel="index">
+                    <span itemprop="name">Economics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2018/05/18/hello-world/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/18/hello-world/" itemprop="commentsCount"></span>
+              <a href="/2015/10/25/BMA-Intro/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/25/BMA-Intro/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -321,33 +340,68 @@
       
 
       
-        <span itemprop="articleBody"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <span itemprop="articleBody"><h1 id="Bayesian-Model-Averaging"><a href="#Bayesian-Model-Averaging" class="headerlink" title="Bayesian Model Averaging"></a>Bayesian Model Averaging</h1><h2 id="Basic-Ideas"><a href="#Basic-Ideas" class="headerlink" title="Basic Ideas"></a>Basic Ideas</h2><p>Assume we want to investigate some problem by statistical method, and we have data D. several possible statistical models are $M_1$, $M_2$…The number of models could be quite large. For example, if we consider only regression models but are unsure about which of $p$ possible predictors to include, there could be as many as $2^p$. BMA uses Bayesian statistics to select possible candidate predictors and help use construct the right model.</p>
+<a id="more"></a>
+<h2 id="Methology-Introduction"><a href="#Methology-Introduction" class="headerlink" title="Methology Introduction"></a>Methology Introduction</h2><p>consider the unknown quantity of interest $\Delta$ and observed data $D$. we have possible models,$M_1$, $M_2$…$M_k$ , to do the estimation and forecasting. Then by a simple application of the<br>law of total probability, the BMA posterior distribution of $\Delta$ is</p>
+<p>$$p(\Delta | D)=\sum\limits_{k = 1}^K {p(\Delta |D,M_k)p(M_k|D)} \ \ (1)$$</p>
+<p>where $p(\Delta |D,M_k)$ is the posterior distribution of $\Delta$ given the model $M_k$, and $p(M_k|D)$ is the posterior probability that $M_k$ is the correct model, given that one of the models considered is correct.  Thus the BMA posterior distribution of $\Delta$ is a weighted average of the posterior distributions of $\Delta$ under each of the models, weighted by their posterior model probabilities.(take the above equation as a weighted average case). </p>
+<p>note that $p(\Delta |D,M_k)$ and $p(M_k|D)$ can be probability density functions, probability mass functions, or cumulative distribution functions.</p>
+<p>The posterior model probability of $M_k$ is given by </p>
+<p> $$p(M_k|D) = \frac{p(D| M_k)p( M_k)} { \sum \limits_{l = 1}^K {p(D| M_l ) p(M_l)} }  (2)$$</p>
+<p>$p(D| M_k)$ is the integrated likelihood of model $M_k$ , obtained by integrating (not maximizing)<br>over the unknown parameters</p>
+<p>$$p(D|M{k})  =  \int p(D|\theta{k},M{k})p(\theta{k}|M{k}){\rm d}\theta{k}=\int (likelihood \times prior)\ {\rm d}\theta_{k} $$</p>
+<p>where $θ_k$ is the parameter of model $M_k$ and $p(D| \theta_k, M_k)$ is the likelihood of $\theta_k$ under model $M_k$ . The prior model probabilities are often taken to be equal, so they cancel in (2), but the BMA package allows other formulations also</p>
+<h3 id="information-criterion"><a href="#information-criterion" class="headerlink" title="information criterion"></a>information criterion</h3><p>from the above (3), we see that the integrated likelihood $p(D| M_k )$ is a high dimensional integral that can be hard to calculate analytically. recalling the Maximum likelihood selection creteria, we found that $p(D| M_k )$ can be the simple and surprisingly accurate BIC approximation, which greatly simplify the model selection and calculation procedure </p>
+<p>$$ 2 \log p(D|M_{k})\approx2\log p(D|\tilde{\theta}<em>{k})-d</em>{k}\log(n)=-BIC_{k}$$</p>
+<p>where $d_{k}=\dim(\theta_{k})$ is the number of independent parameters in $M_k $, and $\tilde{\theta}_k$ is the maximum likelihood estimator (equal to the ordinary least squares estimator for linear regression coefficients).</p>
+<p>And for linear regression, BIC has the simple form: </p>
+<p>$$BIC_{k}=n\log(1-R_{k}^{2})+p_{k}\log{n} $$</p>
+<p>up to an additive constant, where $R_k^2$ is the value of $R^2$ and $P_k$ is the number of regressors for the kth regression model.</p>
+<p>eg: to illustrate what $\Delta$ is: </p>
+<p>When interest focuses on a model parameter, say a regression parameter such as $\beta_1 $ , (1) can be applied with $\Delta =\beta_1$ . The BMA posterior mean of $\beta_1$ is just a weighted average of the posterior means of $\beta_1$ under each of the models:</p>
+<p>$$E[\beta_{1}|D]=\sum \hat{\beta}<em>{1} p(M</em>{k}|D) $$</p>
+<p>which can be viewed as a model-averaged Bayesian point estimator. $\hat{\beta}_{1}$ is the posterior mean of $\beta_1$ under model $M_k$, and this can be approximated by the corresponding maximum likelihood estimator, $\hat{\beta}_{1}$ (Raftery, 1995).</p>
+<p>For a survey and literature review of Bayesian model averaging, see Hoeting et al. (1999)</p>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><h3 id="Linear-REgression"><a href="#Linear-REgression" class="headerlink" title="Linear REgression"></a>Linear REgression</h3><p>we use the UScrime dataset on crime rates in 47 U.S. states in 1960 (Ehrlich, 1973); this is<br>available in the MASS library. There are 15 potential independent variables, all associated with crime rates in the literature. The last two, probability of imprisonment and average time spent in state prisons, were the predictor variables of interest in the original study, while the other 13 were control variables. All variables for which it makes sense were logarithmically transformed. The commands are:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(UScrime)</span><br><span class="line">x.crime&lt;- UScrime[,-<span class="number">16</span>]</span><br><span class="line">y.crime&lt;- log(UScrime[,<span class="number">16</span>])</span><br><span class="line">x.crime[,-<span class="number">2</span>]&lt;- log(x.crime[,-<span class="number">2</span>])</span><br><span class="line">crime.bicreg &lt;- bicreg(x.crime, y.crime)</span><br><span class="line">summary (crime.bicreg, digits=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"> plot (crime.bicreg,mfrow=c(<span class="number">4</span>,<span class="number">4</span>)) <span class="comment"># c(4,4) 意思是图形以4行4列共16个集体显示</span></span><br></pre></td></tr></table></figure>
+<p>This summary yields Figure 1. (The default number of digits is 4, but this may be more than<br>needed.) The column headed “p!=0” shows the posterior probability that the variable is in the model (in %). The column headed “EV” shows the BMA posterior mean, and the column headed “SD” shows the<br>BMA posterior standard deviation for each variable. The following five columns show the parameter estimates for the best five models found, together with the numbers of variables they include, their $R^2$ values, their BIC values and their posterior model probabilities.</p>
+<p><img src="/pic/bma-f1.png" alt="figure1"></p>
+<p>Figure 2: BMA posterior distribution of the coefficient of the average time in prison variable in the<br>crime dataset. The <strong>spike at 0 shows the posterior probability that the variable is not in the model.</strong>(在0点的那条竖线的纵坐标值代表不在模型中的概率是多少) The curve is the model-averaged posterior density of the coefficient given that the variable is in the model, approximated by a finite mixture of normal distributions, one for each model that includes the variable. The density is scaled so that its <strong>maximum height is equal to the probability of the variable being in the model</strong>.</p>
+<p><img src="/pic/bma-f2.png" alt="figure2"></p>
+<h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p>We illustrate BMA for logistic regression using the low birthweight data set of Hosmer and Lemeshow<br>(1989), available in the MASS library. The dataset consists of 189 babies, and the dependent variable<br>measures whether their weight was low at birth. There are 8 potential independent variables of which<br>two are categorical with more than two categories: race and the number of previous premature labors<br>(ptl). Figure 5 shows the output of the commands</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(birthwt)</span><br><span class="line">birthwt$race &lt;- as.factor (birthwt$race)</span><br><span class="line">birthwt$ptl &lt;- as.factor (birthwt$ptl)</span><br><span class="line">bwt.bic.glm &lt;- bic.glm (low ~ age + lwt</span><br><span class="line">+ race + smoke + ptl + ht + ui + ftv,</span><br><span class="line">data=birthwt, glm.family=<span class="string">"binomial"</span>)</span><br><span class="line">summary (bwt.bic.glm,conditional=<span class="literal">T</span>,digits=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>The function bic.glm in BMA can accept a formula, as here, instead of a design matrix and dependent variable (the same is true of bic.surv but not of bicreg)</p>
+<h3 id="Survival-Analysis"><a href="#Survival-Analysis" class="headerlink" title="Survival Analysis"></a>Survival Analysis</h3><p>BMA can account for model uncertainty in survival analysis using the Cox proportional hazards model.We illustrate this using the well-known Primary Biliary Cirrhosis (PBC) data set of Fleming and Harrington (1991). This consists of 312 randomized patients with the disease, and the dependent variable was survival time; 187 of the records were censored. There were 15 potential predictors. The data set is available in the survival library, which is loaded when BMA is loaded.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(BMA)</span><br><span class="line"><span class="keyword">library</span>(MASS)</span><br><span class="line">data(pbc)</span><br><span class="line">x.pbc&lt;- pbc[<span class="number">1</span>:<span class="number">312</span>,]</span><br><span class="line">surv.t&lt;- x.pbc$time</span><br><span class="line">cens&lt;- x.pbc$status</span><br><span class="line">x.pbc&lt;- x.pbc[,-c(<span class="number">6</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">19</span>)]</span><br><span class="line">x.pbc$bili&lt;- log(x.pbc$bili)</span><br><span class="line">x.pbc$alb&lt;- log(x.pbc$alb)</span><br><span class="line">x.pbc$protime&lt;- log(x.pbc$protime)</span><br><span class="line">x.pbc$copper&lt;- log(x.pbc$copper)</span><br><span class="line">x.pbc$sgot&lt;- log(x.pbc$sgot)</span><br><span class="line">pbc.bic.surv &lt;- bic.surv(x.pbc,surv.t,cens)</span><br><span class="line">summary(pbc.bic.surv,digits=<span class="number">2</span>)</span><br><span class="line">plot(pbc.bic.surv,mfrow=c(<span class="number">4</span>,<span class="number">4</span>))</span><br><span class="line">imageplot.bma(pbc.bic.surv)</span><br></pre></td></tr></table></figure>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Based on R package BMA, we can easily deal with Bayesian model averaging for linear regression, generalized linear models, and survival or event history analysis using Cox proportional hazards models. More specific coding can refer to the manual of BMA. But based on the above knowledge, we are able to do some simple application by BMA.</p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/econometrics/" rel="tag">#econometrics</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/25/BMA-Intro/" rel="next" title="BMA Introduction">
-                <i class="fa fa-chevron-left"></i> BMA Introduction
+              <a href="/2015/09/25/Agricultural-Household-Model-Intro/" rel="next" title="Agricultural Household Model Introduction">
+                <i class="fa fa-chevron-left"></i> Agricultural Household Model Introduction
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/18/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -483,7 +537,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bayesian-Model-Averaging"><span class="nav-number">1.</span> <span class="nav-text">Bayesian Model Averaging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Ideas"><span class="nav-number">1.1.</span> <span class="nav-text">Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methology-Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Methology Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#information-criterion"><span class="nav-number">1.2.1.</span> <span class="nav-text">information criterion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application"><span class="nav-number">1.3.</span> <span class="nav-text">Application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-REgression"><span class="nav-number">1.3.1.</span> <span class="nav-text">Linear REgression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.3.2.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Survival-Analysis"><span class="nav-number">1.3.3.</span> <span class="nav-text">Survival Analysis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -543,9 +597,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'xiaofeima';
-      var disqus_identifier = '2018/05/18/hello-world/';
-      var disqus_title = 'Hello World';
-      var disqus_url = 'http://xiaofeima1990.github.io/2018/05/18/hello-world/';
+      var disqus_identifier = '2015/10/25/BMA-Intro/';
+      var disqus_title = 'BMA Introduction';
+      var disqus_url = 'http://xiaofeima1990.github.io/2015/10/25/BMA-Intro/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
