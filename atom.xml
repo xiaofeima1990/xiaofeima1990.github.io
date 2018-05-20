@@ -41,28 +41,28 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>Typora for Math Formula</title>
     <link href="http://xiaofeima1990.github.io/2018/05/19/Use%20Typora%20for%20Math%20Formula/"/>
     <id>http://xiaofeima1990.github.io/2018/05/19/Use Typora for Math Formula/</id>
     <published>2018-05-19T19:49:22.289Z</published>
-    <updated>2018-05-20T00:08:46.517Z</updated>
+    <updated>2018-05-20T04:22:20.921Z</updated>
     
-    <content type="html"><![CDATA[<p>title: Typora for Math Formula<br>Date : 2018-05-19 20:08:00<br>tag:</p><ul><li>guide<br>categories: </li><li>Skills</li></ul><h1 id="Use-Typora-for-Math-Formula"><a href="#Use-Typora-for-Math-Formula" class="headerlink" title="Use Typora for Math Formula"></a>Use Typora for Math Formula</h1><p><strong>How to number the equations</strong></p><p>As far as I can see, in mac system, Typora automatically number the equations in <em>Math block</em> . But in windows system, there is no automatically numbering function. whether it has automatically or not, we can always choose to use <code>\tag{}</code> and <code>\nonumber</code> to number or remove the number for certain equations.</p><p><strong>How to cite the equations</strong></p><p>If we want to cite the equations later, we can use <code>\label{name}</code> and <code>\ref{label_name}</code> to cite the particular equation. Of course, we need to add <code>$ $</code> outsides. </p>]]></content>
+    <content type="html"><![CDATA[<p><strong>How to number the equations</strong></p><p>As far as I can see, in mac system, Typora automatically number the equations in <em>Math block</em> . But in windows system, there is no automatically numbering function. whether it has automatically or not, we can always choose to use <code>\tag{}</code> and <code>\nonumber</code> to number or remove the number for certain equations.</p><p><strong>How to cite the equations</strong></p><p>If we want to cite the equations later, we can use <code>\label{name}</code> and <code>\ref{label_name}</code> to cite the particular equation. Of course, we need to add <code>$ $</code> outsides. </p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;title: Typora for Math Formula&lt;br&gt;Date : 2018-05-19 20:08:00&lt;br&gt;tag:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;guide&lt;br&gt;categories: &lt;/li&gt;
-&lt;li&gt;Skills&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id
+        &lt;p&gt;&lt;strong&gt;How to number the equations&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As far as I can see, in mac system, Typora automatically number the equations in &lt;em&gt;
       
     
     </summary>
     
+      <category term="Skills" scheme="http://xiaofeima1990.github.io/categories/Skills/"/>
+    
+    
+      <category term="guide" scheme="http://xiaofeima1990.github.io/tags/guide/"/>
     
   </entry>
   
