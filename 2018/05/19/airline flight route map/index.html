@@ -1,0 +1,835 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QEfdUsKGngysYFQKsFYv-tWMu3Dt9XAUXYbLHg0a5gg" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="GIS,python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="In this post, I try to summarize the the construction of US Airline Flight Map. The data source comes from Bureau of Transportation Statistics. THe first thing I want to do is get the local airport in">
+<meta name="keywords" content="GIS,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="US Airline Flight Route Map">
+<meta property="og:url" content="http://xiaofeima1990.github.io/2018/05/19/airline flight route map/index.html">
+<meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
+<meta property="og:description" content="In this post, I try to summarize the the construction of US Airline Flight Map. The data source comes from Bureau of Transportation Statistics. THe first thing I want to do is get the local airport in">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-05-20T04:19:43.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="US Airline Flight Route Map">
+<meta name="twitter:description" content="In this post, I try to summarize the the construction of US Airline Flight Map. The data source comes from Bureau of Transportation Statistics. THe first thing I want to do is get the local airport in">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> US Airline Flight Route Map | Guoxuan Ma | Stay Hard Stay Foolish </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Guoxuan Ma | Stay Hard Stay Foolish</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-research">
+          <a href="/categories/research" rel="section">
+            
+              <i class="menu-item-icon fa fa-laptop fa-fw"></i> <br />
+            
+            Research
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-economics">
+          <a href="/categories/Economics" rel="section">
+            
+              <i class="menu-item-icon fa fa-university fa-fw"></i> <br />
+            
+            Economics
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-data_science">
+          <a href="/categories/Data-Science" rel="section">
+            
+              <i class="menu-item-icon fa fa-line-chart fa-fw"></i> <br />
+            
+            Data-Science
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-develop">
+          <a href="/categories/develop" rel="section">
+            
+              <i class="menu-item-icon fa fa-keyboard-o fa-fw"></i> <br />
+            
+            Develop
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iFjLUhsrtLPdUBH3P_UK','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                US Airline Flight Route Map
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-05-19T21:23:25-04:00" content="2018-05-19">
+              2018-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/05/19/airline flight route map/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/19/airline flight route map/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>In this post, I try to summarize the the construction of US Airline Flight Map. The data source comes from <a href="https://www.transtats.bts.gov/Tables.asp?DB_ID=125" target="_blank" rel="noopener">Bureau of Transportation Statistics</a>. THe first thing I want to do is get the local airport information. For example, the GIS location, the carrier’s market share and market construction. and the distance from the near HUB. Secondly, I want to draw the flight route map. </p>
+<a id="more"></a>
+<h2 id="Airport-Information"><a href="#Airport-Information" class="headerlink" title="Airport Information"></a>Airport Information</h2><p>To get the local airport information, we can extract from the data and use gis information to calculate distance. First, we need to extract all the flight routes flying into the particular airport. Second, we use airport address to get GIS information. Third, organize the information and output.  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> geocoder</span><br><span class="line"><span class="keyword">from</span> geopy <span class="keyword">import</span> distance</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">DICT_HUB=&#123;</span><br><span class="line">        <span class="string">"PA"</span>:<span class="string">'PHL'</span>,</span><br><span class="line">        <span class="string">"MI"</span>:<span class="string">'DTW'</span>,</span><br><span class="line">        <span class="string">"WV"</span>:<span class="string">"DCA"</span>,</span><br><span class="line">        <span class="string">"IL"</span>:<span class="string">"ORD"</span>,</span><br><span class="line">        <span class="comment"># and we can also add other hubs in different States</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">path=<span class="string">"your path directory"</span></span><br><span class="line">STATE=input(<span class="string">"input the state you want "</span>)</span><br><span class="line"></span><br><span class="line">market_pd=pd.read_csv(path+STATE+<span class="string">"_market_data.csv"</span>)</span><br><span class="line"></span><br><span class="line">airport_pd=pd.read_csv(path+<span class="string">"airport_statistics.csv"</span>) </span><br><span class="line">col=list(market_pd.columns)</span><br><span class="line">market_pd.drop(col[<span class="number">-1</span>],axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>) <span class="comment">#drop a columns </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## first let me focus on only one routes from other state to PA</span></span><br><span class="line">market_pd_1=market_pd.loc[market_pd[<span class="string">'DEST_STATE_ABR'</span>]==STATE,]</span><br><span class="line">STATE_airports=list(market_pd_1[<span class="string">'DEST'</span>].unique())</span><br><span class="line">year=list(market_pd_1[<span class="string">'YEAR'</span>].unique())[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">## gropuby airports from origin to dest </span></span><br><span class="line">group_airport=market_pd_1.groupby([<span class="string">'ORIGIN'</span>,<span class="string">'DEST'</span>])</span><br><span class="line">routes_list=group_airport.groups.keys()</span><br><span class="line">col_info=[<span class="string">'code'</span>,<span class="string">'year'</span>,<span class="string">'name'</span>,<span class="string">'address'</span>,<span class="string">'lat'</span>,<span class="string">'lgt'</span>,<span class="string">'dis_to_hub0'</span>,<span class="string">'carriers'</span>,<span class="string">'major_airline'</span>,<span class="string">'ratio_1'</span>]</span><br><span class="line">State_airport_info=pd.DataFrame(index=STATE_airports,columns=col_info)</span><br><span class="line"></span><br><span class="line"><span class="comment">## HUB airport in State</span></span><br><span class="line">add_HUB=airport_pd.loc[airport_pd[<span class="string">'Code'</span>]==DICT_HUB[STATE],<span class="string">'add'</span>].values[<span class="number">0</span>]</span><br><span class="line">geo_info_HUB= geocoder.google(add_HUB)</span><br><span class="line"></span><br><span class="line"><span class="comment">## return GIS information and calculate the distance </span></span><br><span class="line"><span class="keyword">for</span> nn_airport <span class="keyword">in</span> STATE_airports:</span><br><span class="line">    </span><br><span class="line">    new_gb = pd.concat( [ group_airport.get_group(name) <span class="keyword">for</span> name,group <span class="keyword">in</span> group_airport <span class="keyword">if</span> name[<span class="number">1</span>]==nn_airport ] )</span><br><span class="line">    new_gb.drop_duplicates([<span class="string">'ORIGIN'</span>],keep=<span class="string">'first'</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## get carrier information from different routes</span></span><br><span class="line">    new_gb[<span class="string">'last_carrier'</span>]=new_gb[<span class="string">'TK_CARRIER_GROUP'</span>].str.strip(<span class="string">"-|:"</span>)</span><br><span class="line">    new_gb[<span class="string">'last_carrier'</span>]=new_gb[<span class="string">'last_carrier'</span>].str[<span class="number">-2</span>:]</span><br><span class="line">    new_gb = new_gb[new_gb[<span class="string">'last_carrier'</span>] != <span class="string">''</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## get market ratio</span></span><br><span class="line">    carr_pd=new_gb.groupby(<span class="string">"last_carrier"</span>)</span><br><span class="line">    carr_pd=pd.DataFrame(carr_pd[<span class="string">'ITIN_ID'</span>].count())</span><br><span class="line">    carr_pd[<span class="string">'ratio'</span>]=carr_pd[<span class="string">'ITIN_ID'</span>]/sum(carr_pd[<span class="string">'ITIN_ID'</span>])</span><br><span class="line">    carr_pd.sort_values(by=<span class="string">'ratio'</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    carriers=list(zip(carr_pd.index, carr_pd.ratio))</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## rest is the geographic infomation and population </span></span><br><span class="line">    <span class="comment">## use goocode to calculate the distance </span></span><br><span class="line">    add_temp=airport_pd.loc[airport_pd[<span class="string">'Code'</span>]==nn_airport,<span class="string">'add'</span>].values[<span class="number">0</span>]</span><br><span class="line">    geo_info_temp= geocoder.google(add_temp)</span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> geo_info_temp.ok:</span><br><span class="line">        </span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line">        geo_info_temp= geocoder.google(nn_airport)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    airport_name=airport_pd.loc[airport_pd[<span class="string">'Code'</span>]==nn_airport,<span class="string">'name'</span>].values[<span class="number">0</span>]</span><br><span class="line">    dis_hub=distance.distance(geo_info_temp.latlng, geo_info_HUB.latlng).miles</span><br><span class="line">    </span><br><span class="line">    s=pd.Series([nn_airport,year,airport_name,add_temp,geo_info_temp.lat,geo_info_temp.lng,dis_hub,carriers,carriers[<span class="number">-1</span>][<span class="number">0</span>],carriers[<span class="number">-1</span>][<span class="number">1</span>]],index=col_info)</span><br><span class="line">    </span><br><span class="line">    State_airport_info.loc[nn_airport,]=s</span><br><span class="line"></span><br><span class="line">State_airport_info.reset_index(level=<span class="number">0</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment">## output to airport information</span></span><br><span class="line">State_airport_info.to_csv(path+STATE+<span class="string">"_airport_info.csv"</span>,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="draw-the-airport-location-map"><a href="#draw-the-airport-location-map" class="headerlink" title="draw the airport location map"></a>draw the airport location map</h2><p>Once we get airport infromation in different State, we can then construct GIS information table and draw the map . The <code>airport_gis.csv</code> includes the airport information, i.e. gis information, major carriers and market ratio for the major carriers plus State. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> folium</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">path =<span class="string">"your data path "</span></span><br><span class="line">data_airport_gis=pd.read_csv(path+<span class="string">"airport_gis.csv"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">map_1 = folium.Map(location=[<span class="number">40.8499873</span>,	<span class="number">-77.8486889</span>], tiles=<span class="string">"Mapbox Bright"</span>, zoom_start=<span class="number">4</span>) <span class="comment"># focus location can be anywhere</span></span><br><span class="line">temp_pd=data_airport_gis[data_airport_gis[<span class="string">'Major'</span>]==<span class="number">0</span>].copy()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(temp_pd)):</span><br><span class="line">    folium.Marker([temp_pd.iloc[i][<span class="string">'lat'</span>], temp_pd.iloc[i][<span class="string">'lgt'</span>]], popup=temp_pd.iloc[i][<span class="string">'code'</span>],</span><br><span class="line">                  icon = folium.Icon(color=<span class="string">'green'</span>,prefix=<span class="string">"fa"</span>, icon=<span class="string">"plane"</span>),).add_to(map_1)</span><br><span class="line"></span><br><span class="line">temp_pd=data_airport_gis[data_airport_gis[<span class="string">'Major'</span>]==<span class="number">1</span>].copy()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(temp_pd)):   </span><br><span class="line">    print(temp_pd.iloc[i][<span class="string">'code'</span>])</span><br><span class="line">    folium.Marker([temp_pd.iloc[i][<span class="string">'lat'</span>], temp_pd.iloc[i][<span class="string">'lgt'</span>]], popup=temp_pd.iloc[i][<span class="string">'code'</span>],</span><br><span class="line">                  icon = folium.Icon(color=<span class="string">'blue'</span>,prefix=<span class="string">"glyphicon"</span>, icon=<span class="string">"plane"</span>),).add_to(map_1)</span><br><span class="line">    folium.Circle(</span><br><span class="line">      location=[temp_pd.iloc[i][<span class="string">'lat'</span>], temp_pd.iloc[i][<span class="string">'lgt'</span>]],</span><br><span class="line">      radius=<span class="number">1609</span>*<span class="number">200</span>,</span><br><span class="line">      popup=<span class="string">"200 miles"</span>,</span><br><span class="line">      color=<span class="string">'crimson'</span>,</span><br><span class="line">      fill=<span class="keyword">True</span>,</span><br><span class="line">      fill_color=<span class="string">'crimson'</span></span><br><span class="line">   ).add_to(map_1)</span><br><span class="line"></span><br><span class="line">    folium.Circle(</span><br><span class="line">      location=[temp_pd.iloc[i][<span class="string">'lat'</span>], temp_pd.iloc[i][<span class="string">'lgt'</span>]],</span><br><span class="line">      radius=<span class="number">1609</span>*<span class="number">300</span>,</span><br><span class="line">      popup=<span class="string">"300 miles"</span>,</span><br><span class="line">      color=<span class="string">'#32aaff'</span>,</span><br><span class="line">      fill=<span class="keyword">True</span>,</span><br><span class="line">      fill_color=<span class="string">'#32aaff'</span></span><br><span class="line">   ).add_to(map_1)</span><br><span class="line">    </span><br><span class="line">    folium.Circle(</span><br><span class="line">      location=[temp_pd.iloc[i][<span class="string">'lat'</span>], temp_pd.iloc[i][<span class="string">'lgt'</span>]],</span><br><span class="line">      radius=<span class="number">1609</span>*<span class="number">450</span>,</span><br><span class="line">      popup=<span class="string">"450 miles"</span>,</span><br><span class="line">      color=<span class="string">'#7f8eff'</span>,</span><br><span class="line">      fill=<span class="keyword">True</span>,</span><br><span class="line">      fill_color=<span class="string">'#7f8eff'</span></span><br><span class="line">   ).add_to(map_1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">map_1.save(path+<span class="string">'map.html'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="construct-the-flight-route-data"><a href="#construct-the-flight-route-data" class="headerlink" title="construct the flight route data"></a>construct the flight route data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> geocoder</span><br><span class="line"><span class="keyword">from</span> geopy <span class="keyword">import</span> distance</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">DICT_HUB=&#123;</span><br><span class="line">        <span class="string">"PA"</span>:<span class="string">'PHL'</span>,</span><br><span class="line">        <span class="string">"MI"</span>:<span class="string">'DTW'</span>,</span><br><span class="line">        <span class="string">"WV"</span>:<span class="string">"DCA"</span>,</span><br><span class="line">        <span class="string">"IL"</span>:<span class="string">"ORD"</span>,</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">path =<span class="string">"your data path"</span></span><br><span class="line"><span class="comment">#STATE=input("input the state you want ")</span></span><br><span class="line"><span class="comment">#Year=input("time period ")</span></span><br><span class="line">STATE=<span class="string">"PA"</span></span><br><span class="line">Year=<span class="string">"2000Q1"</span></span><br><span class="line"></span><br><span class="line">market_pd=pd.read_csv(path+STATE+Year+<span class="string">".csv"</span>)</span><br><span class="line"></span><br><span class="line">airport_pd=pd.read_csv(path+<span class="string">"airport_statistics.csv"</span>) </span><br><span class="line">col=list(market_pd.columns)</span><br><span class="line">market_pd.drop(col[<span class="number">-1</span>],axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>) <span class="comment">#drop a columns </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## first let me focus on only one routes from other state to PA</span></span><br><span class="line">market_pd_1=market_pd.loc[market_pd[<span class="string">'DEST_STATE_ABR'</span>]==STATE,]</span><br><span class="line">STATE_airports=list(market_pd_1[<span class="string">'DEST'</span>].unique())</span><br><span class="line">year=list(market_pd_1[<span class="string">'YEAR'</span>].unique())[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#,'ORIGIN','ORIGIN_STATE_ABR','DEST','DEST_STATE_ABR'</span></span><br><span class="line">col_map=[<span class="string">'ITIN_ID'</span>, <span class="string">'MKT_ID'</span>,<span class="string">'AIRPORT_GROUP'</span>,<span class="string">'TK_CARRIER_GROUP'</span>,<span class="string">'MARKET_FARE'</span>,<span class="string">'MARKET_DISTANCE'</span>, <span class="string">'DISTANCE_GROUP'</span>,<span class="string">'MKT_GEO_TYPE'</span>]</span><br><span class="line"></span><br><span class="line">market_pd_map=market_pd_1[col_map]</span><br><span class="line"></span><br><span class="line"><span class="comment"># deal with the aiprot info </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">air_cat1</span><span class="params">(x)</span>:</span></span><br><span class="line">    xx=str(x).split(<span class="string">":"</span>)</span><br><span class="line">    <span class="keyword">if</span> len(xx)==<span class="number">2</span>:</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> xx[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> xx[<span class="number">-2</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">air_cat2</span><span class="params">(x)</span>:</span></span><br><span class="line">    xx=str(x).split(<span class="string">":"</span>)</span><br><span class="line">    <span class="keyword">if</span> len(xx)==<span class="number">2</span>:</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> xx[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> xx[<span class="number">-1</span>]</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">market_pd_map[<span class="string">'pos1'</span>]=market_pd_map[<span class="string">'AIRPORT_GROUP'</span>].apply(air_cat1)</span><br><span class="line">market_pd_map[<span class="string">'pos2'</span>]=market_pd_map[<span class="string">'AIRPORT_GROUP'</span>].apply(air_cat2)</span><br><span class="line"></span><br><span class="line">airport_list=list(pd.unique(market_pd_map[<span class="string">'pos1'</span>]))+list(pd.unique(market_pd_map[<span class="string">'pos2'</span>]))</span><br><span class="line">col_info = [<span class="string">'Code'</span>,<span class="string">'name'</span>,<span class="string">'address'</span>,<span class="string">'lat'</span>,<span class="string">'lng'</span>]</span><br><span class="line">airport_gis_pd=pd.DataFrame(columns=col_info)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> nn_airport <span class="keyword">in</span> airport_list:</span><br><span class="line">    add_temp=airport_pd.loc[airport_pd[<span class="string">'Code'</span>]==nn_airport,<span class="string">'add'</span>].values[<span class="number">0</span>]</span><br><span class="line">    airport_name=airport_pd.loc[airport_pd[<span class="string">'Code'</span>]==nn_airport,<span class="string">'name'</span>].values[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    geo_info_temp= geocoder.google(add_temp)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> geo_info_temp.ok:</span><br><span class="line">        </span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        geo_info_temp= geocoder.google(airport_name+<span class="string">", "</span>+STATE)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    s=pd.Series([nn_airport,airport_name,add_temp,geo_info_temp.lat,geo_info_temp.lng],index=col_info)</span><br><span class="line"></span><br><span class="line">    airport_gis_pd=airport_gis_pd.append(s,ignore_index=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">airport_gis_pd.to_csv(path+<span class="string">"airport_PA00Q1_gis.csv"</span>,index=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">group_airport=market_pd_map.groupby([<span class="string">'pos1'</span>,<span class="string">'pos2'</span>])</span><br><span class="line"></span><br><span class="line">airport_m_pd=group_airport[<span class="string">'ITIN_ID'</span>].count()</span><br><span class="line">airport_m_pd=pd.DataFrame(airport_m_pd)</span><br><span class="line">airport_m_pd = airport_m_pd.rename(columns=&#123;<span class="string">'ITIN_ID'</span>: <span class="string">'num_flights'</span>,&#125;)</span><br><span class="line"></span><br><span class="line">airport_m_pd.reset_index(level=<span class="number">0</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line">airport_m_pd.reset_index(level=<span class="number">0</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">merg_fligh_od=pd.merge(airport_m_pd,airport_gis_pd[[<span class="string">'Code'</span>,<span class="string">'lat'</span>,<span class="string">'lng'</span>]],left_on=<span class="string">'pos1'</span>, right_on=<span class="string">'Code'</span>,how=<span class="string">"left"</span>)</span><br><span class="line">merg_fligh_od = merg_fligh_od.rename(columns=&#123;<span class="string">'lat'</span>: <span class="string">'lat_1'</span>, <span class="string">'lng'</span>: <span class="string">'lng_1'</span>&#125;)</span><br><span class="line">merg_fligh_od=pd.merge(merg_fligh_od,airport_gis_pd[[<span class="string">'Code'</span>,<span class="string">'lat'</span>,<span class="string">'lng'</span>]],left_on=<span class="string">'pos2'</span>, right_on=<span class="string">'Code'</span>,how=<span class="string">"left"</span>)</span><br><span class="line">merg_fligh_od = merg_fligh_od.rename(columns=&#123;<span class="string">'lat'</span>: <span class="string">'lat_2'</span>, <span class="string">'lng'</span>: <span class="string">'lng_2'</span>&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">merg_fligh_od.to_csv(path+<span class="string">"flight_routes.csv"</span>,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Create-Flight-Map-with-plotly"><a href="#Create-Flight-Map-with-plotly" class="headerlink" title="Create Flight Map with plotly"></a>Create Flight Map with plotly</h3><p>Finally, with all the gis information, I can construct the flight route map. After searching for different data visualization tools, I finally decide to use plotly to do the graph. The following is the simple example for a basic route map. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> plotly </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">path =<span class="string">"E:/Dropbox/psu/2017-2018-spring/IO 597/airline/data/"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df_airports = pd.read_csv(path+<span class="string">'airport_PA00Q1_gis.csv'</span>)</span><br><span class="line"></span><br><span class="line">df_airports.head()</span><br><span class="line"></span><br><span class="line">df_flight_paths = pd.read_csv(path+<span class="string">"flight_routes.csv"</span>)</span><br><span class="line">df_flight_paths.head()</span><br><span class="line"></span><br><span class="line">airports = [ dict(</span><br><span class="line">        type = <span class="string">'scattergeo'</span>,</span><br><span class="line">        locationmode = <span class="string">'USA-states'</span>,</span><br><span class="line">        lon = df_airports[<span class="string">'lng'</span>],</span><br><span class="line">        lat = df_airports[<span class="string">'lat'</span>],</span><br><span class="line">        hoverinfo = <span class="string">'text'</span>,</span><br><span class="line">        text = df_airports[<span class="string">'name'</span>],</span><br><span class="line">        mode = <span class="string">'markers'</span>,</span><br><span class="line">        marker = dict( </span><br><span class="line">            size=<span class="number">2</span>, </span><br><span class="line">            color=<span class="string">'rgb(255, 0, 0)'</span>,</span><br><span class="line">            line = dict(</span><br><span class="line">                width=<span class="number">3</span>,</span><br><span class="line">                color=<span class="string">'rgba(68, 68, 68, 0)'</span></span><br><span class="line">            )</span><br><span class="line">        ))]</span><br><span class="line">        </span><br><span class="line">flight_paths = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range( len( df_flight_paths ) ):</span><br><span class="line">    flight_paths.append(</span><br><span class="line">        dict(</span><br><span class="line">            type = <span class="string">'scattergeo'</span>,</span><br><span class="line">            locationmode = <span class="string">'USA-states'</span>,</span><br><span class="line">            lon = [ df_flight_paths[<span class="string">'lng_1'</span>][i], df_flight_paths[<span class="string">'lng_2'</span>][i] ],</span><br><span class="line">            lat = [ df_flight_paths[<span class="string">'lat_1'</span>][i], df_flight_paths[<span class="string">'lat_2'</span>][i] ],</span><br><span class="line">            mode = <span class="string">'lines'</span>,</span><br><span class="line">            line = dict(</span><br><span class="line">                width = <span class="number">1</span>,</span><br><span class="line">                color = <span class="string">'red'</span>,</span><br><span class="line">            ),</span><br><span class="line">            opacity = float(df_flight_paths[<span class="string">'num_flights'</span>][i])/float(df_flight_paths[<span class="string">'num_flights'</span>].max()),</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">layout = dict(</span><br><span class="line">        title = <span class="string">'2000 Q1 flight paths&lt;br&gt;(PA)'</span>,</span><br><span class="line">        showlegend = <span class="keyword">False</span>, </span><br><span class="line">        geo = dict(</span><br><span class="line">            scope=<span class="string">'north america'</span>,</span><br><span class="line">            projection=dict( type=<span class="string">'azimuthal equal area'</span> ),</span><br><span class="line">            showland = <span class="keyword">True</span>,</span><br><span class="line">            landcolor = <span class="string">'rgb(243, 243, 243)'</span>,</span><br><span class="line">            countrycolor = <span class="string">'rgb(204, 204, 204)'</span>,</span><br><span class="line">        ),</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">fig = dict( data=flight_paths + airports, layout=layout )</span><br><span class="line">plotly.offline.plot( fig, filename=path+<span class="string">'d3-flight-paths.html'</span> )</span><br></pre></td></tr></table></figure>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>to be continued</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GIS/" rel="tag">#GIS</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/19/Use Typora for Math Formula/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/pic/mgx2.png" alt="Guoxuan Ma" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Guoxuan Ma</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Personal Website</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaofeima1990/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100011710272689" target="_blank">
+                  
+                    <i class="fa fa-facebook"></i> Facebook
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Airport-Information"><span class="nav-number">1.</span> <span class="nav-text">Airport Information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#draw-the-airport-location-map"><span class="nav-number">2.</span> <span class="nav-text">draw the airport location map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#construct-the-flight-route-data"><span class="nav-number">3.</span> <span class="nav-text">construct the flight route data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Flight-Map-with-plotly"><span class="nav-number">3.1.</span> <span class="nav-text">Create Flight Map with plotly</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">4.</span> <span class="nav-text">Resources</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guoxuan Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaofeima';
+      var disqus_identifier = '2018/05/19/airline flight route map/';
+      var disqus_title = 'US Airline Flight Route Map';
+      var disqus_url = 'http://xiaofeima1990.github.io/2018/05/19/airline flight route map/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+</body>
+</html>
