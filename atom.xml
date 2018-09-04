@@ -86,9 +86,9 @@
       <category term="Data Science" scheme="http://xiaofeima1990.github.io/categories/Data-Science/"/>
     
     
-      <category term="python" scheme="http://xiaofeima1990.github.io/tags/python/"/>
-    
       <category term="GIS" scheme="http://xiaofeima1990.github.io/tags/GIS/"/>
+    
+      <category term="python" scheme="http://xiaofeima1990.github.io/tags/python/"/>
     
   </entry>
   
@@ -389,9 +389,9 @@
       <category term="Data Science" scheme="http://xiaofeima1990.github.io/categories/Data-Science/"/>
     
     
-      <category term="python" scheme="http://xiaofeima1990.github.io/tags/python/"/>
-    
       <category term="GIS" scheme="http://xiaofeima1990.github.io/tags/GIS/"/>
+    
+      <category term="python" scheme="http://xiaofeima1990.github.io/tags/python/"/>
     
   </entry>
   
@@ -468,26 +468,24 @@
   </entry>
   
   <entry>
-    <title>Python Data Visualization</title>
-    <link href="http://xiaofeima1990.github.io/2016/03/21/python-data-visualization/"/>
-    <id>http://xiaofeima1990.github.io/2016/03/21/python-data-visualization/</id>
+    <title>Matlab Technique</title>
+    <link href="http://xiaofeima1990.github.io/2016/03/21/matlab-technique/"/>
+    <id>http://xiaofeima1990.github.io/2016/03/21/matlab-technique/</id>
     <published>2016-03-21T14:05:09.000Z</published>
-    <updated>2018-05-19T00:16:09.028Z</updated>
+    <updated>2018-05-19T01:10:59.909Z</updated>
     
-    <content type="html"><![CDATA[<p>python 上面有不少数据可视化的工具包，先利用这篇文章总结如下：</p><a id="more"></a><ul><li>ggplot</li><li>Seaborn</li><li>Bokeh</li><li>Pygal</li><li>python-igraph</li><li>folium</li><li>Network</li><li>XMayavi</li><li>VisPy</li><li>PyQtGraph</li><li>vincent</li><li>Plotly</li></ul><p>seaborn是偏向于统计作图的，尤其是线性作图，用起来比较顺手，简单。seaborn整个语法层也会简化很多，画出的图不需要修饰看起来也很好看。但是绘图方式有限，不够灵活</p><p>bokeh是使用了js。因此主打的是交互式绘图，你可以在Ipython notebook里使用到最佳！画出的图非常好看，关键是可以交互修改！ 缺点是语法有点生涩，一点也不必matplotlib简单</p><p>ggplot就算了吧，和R语言那个GGPLOT2比起来，简直是感觉在用两个包，似然都是同一个人开发的！ 而且原作者也在GITHUB上说了，不再会更新PYTHON的库！ 不过话说，ggplot2真的是绘图神器，这几乎是我还在用R语言的唯一原因。</p><p>python for map data visualization </p><p>folium no doubt </p><p>javascript library :    <a href="http://kartograph.org/" target="_blank" rel="noopener">http://kartograph.org/</a><br>dynamic visualization : <a href="https://github.com/areski/python-nvd3" target="_blank" rel="noopener">https://github.com/areski/python-nvd3</a><br><a href="https://github.com/wrobstory/bearcart" target="_blank" rel="noopener">https://github.com/wrobstory/bearcart</a></p><p>以下是folium 作者的回复<br>Vincent is really meant for static visualization, unfortunately. If you’re interested in dynamic vis, take a look at python NVD3: <a href="https://github.com/areski/python-nvd3" target="_blank" rel="noopener">https://github.com/areski/python-nvd3</a></p><p>or my other lib, Bearcart:</p><p><a href="https://github.com/wrobstory/bearcart" target="_blank" rel="noopener">https://github.com/wrobstory/bearcart</a></p><p>I might put in a little work this weekend to integrate it more tightly with the ipython notebook.</p><p>If you’re looking for interactive D3 libs that are easy to work with, I highly recommend Dimple as well:</p><p><a href="http://dimplejs.org/" target="_blank" rel="noopener">http://dimplejs.org/</a></p><h3 id="matplotlib-draw-animate-graph"><a href="#matplotlib-draw-animate-graph" class="headerlink" title="matplotlib draw animate graph"></a>matplotlib draw animate graph</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.axis([<span class="number">0</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.ion()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    y = np.random.random()</span><br><span class="line">    plt.scatter(i, y)</span><br><span class="line">    plt.pause(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><h2 id="Source-for-map-visualization"><a href="#Source-for-map-visualization" class="headerlink" title="Source for map visualization"></a>Source for map visualization</h2><p><a href="http://stackoverflow.com/questions/17267248/how-where-do-i-get-geojson-data-for-states-provinces-and-administrative-region" target="_blank" rel="noopener">how to get geoJson Data</a><br><a href="http://vallandingham.me/shapefile_to_geojson.html" target="_blank" rel="noopener">from shapefile to geoJson</a><br><a href="https://bost.ocks.org/mike/map/" target="_blank" rel="noopener">lets make a map</a><br><a href="http://www.gadm.org/country" target="_blank" rel="noopener">gadm world shapefile download </a><br><a href="http://www.mapshaper.org/" target="_blank" rel="noopener">mapshaper</a><br><a href="https://github.com/mbostock/topojson/wiki" target="_blank" rel="noopener">topoJson</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Here I summarize some matlab trips to facilate my research </p><a id="more"></a><p><strong>将 excel 中的日期转化为matlab中的日期(char)</strong></p><ol><li>在EXCEL中设置日期变量的单元格为“常规格式”； </li><li>复制此变化到EXCEL中，生成一个数组A </li><li>采用 x2mdate命令将其转化为MATLAB中的数据B </li><li>采用datestr命令将其转化为MATLAB中特有的日期格式</li></ol><p><strong> matlab arry tricks</strong><br><a href="/files/matlab array tricks.pdf">matlab array tricks</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;python 上面有不少数据可视化的工具包，先利用这篇文章总结如下：&lt;/p&gt;
+      &lt;p&gt;Here I summarize some matlab trips to facilate my research &lt;/p&gt;
     
     </summary>
     
       <category term="Data Science" scheme="http://xiaofeima1990.github.io/categories/Data-Science/"/>
     
     
-      <category term="guide" scheme="http://xiaofeima1990.github.io/tags/guide/"/>
-    
-      <category term="python" scheme="http://xiaofeima1990.github.io/tags/python/"/>
+      <category term="matlab" scheme="http://xiaofeima1990.github.io/tags/matlab/"/>
     
   </entry>
   
