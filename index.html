@@ -291,6 +291,248 @@
             
               
                 
+                <a class="post-title-link" href="/2018/08/16/understanding-decorator/" itemprop="url">
+                  understanding decorator
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-08-16T07:59:14-04:00" content="2018-08-16">
+              2018-08-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/develop/" itemprop="url" rel="index">
+                    <span itemprop="name">develop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/08/16/understanding-decorator/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/16/understanding-decorator/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <a id="more"></a>
+<h1 id="Decorator-in-Python"><a href="#Decorator-in-Python" class="headerlink" title="Decorator in Python"></a>Decorator in Python</h1><p>Many times when you read the code, you will find some annoying synax like <code>@somefunction</code>. What does that mean? That is the decorator in python. The synax for the decorator has the following definition and function: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@decorator</span></span><br><span class="line">var = some_value</span><br><span class="line"></span><br><span class="line"><span class="comment"># which would be the same as</span></span><br><span class="line"></span><br><span class="line">var = decorator(some_value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># and can be chained as well:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="meta">@decorator_2</span></span><br><span class="line">var = some_value</span><br><span class="line"></span><br><span class="line"><span class="comment"># which would be</span></span><br><span class="line"></span><br><span class="line">var = decorator(decorator_2(some_value))</span><br></pre></td></tr></table></figure>
+<p>the main advantage is that you can use the decorator as a standardized way to create variables that have the same behaviour, instead<br>of havng to do that using methods. I think that a lot can be gained by specifying a decorator that can decorate variables or properties.</p>
+<p><strong>BUT</strong>, just look at the synax again, the decorator actually help developer to initialize the variable before the invoke of the function. for example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">list_function=[]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_function_lists</span><span class="params">(f)</span>:</span></span><br><span class="line">	list_function.append(f)</span><br><span class="line">	print(<span class="string">"this is decorator"</span>)</span><br><span class="line">	<span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"><span class="meta">@add_function_lists</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></span><br><span class="line">	print(<span class="string">"this is function a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@add_function_lists</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></span><br><span class="line">	print(<span class="string">"this is function b"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">The above code has no initilization or instance to call the function. But can you guess the result when we codpy the code into the python complier? </span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">this <span class="keyword">is</span> decorator</span><br><span class="line">this <span class="keyword">is</span> decorator</span><br></pre></td></tr></table></figure>
+<p>if we check the <code>list_function</code>, we will find </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;list_function</span><br><span class="line">&gt;&gt;&gt;[&lt;function __main__.a&gt;, &lt;function __main__.b&gt;]</span><br></pre></td></tr></table></figure>
+<p>In order to have a deeper understanding of the decorator, remember that functions are objects in Python.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shout</span><span class="params">(word=<span class="string">"yes"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> word.capitalize()+<span class="string">"!"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> shout()</span><br><span class="line"><span class="comment"># outputs : 'Yes!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># As an object, you can assign the function to a variable like any</span></span><br><span class="line"><span class="comment"># other object </span></span><br><span class="line"></span><br><span class="line">scream = shout</span><br><span class="line"></span><br><span class="line"><span class="comment"># Notice we don't use parentheses: we are not calling the function, we are</span></span><br><span class="line"><span class="comment"># putting the function "shout" into the variable "scream". </span></span><br><span class="line"><span class="comment"># It means you can then call "shout" from "scream":</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> scream()</span><br><span class="line"><span class="comment"># outputs : 'Yes!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># More than that, it means you can remove the old name 'shout', and</span></span><br><span class="line"><span class="comment"># the function will still be accessible from 'scream'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> shout</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">print</span> shout()</span><br><span class="line"><span class="keyword">except</span> NameError, e:</span><br><span class="line">    <span class="keyword">print</span> e</span><br><span class="line">    <span class="comment">#outputs: "name 'shout' is not defined"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> scream()</span><br><span class="line"><span class="comment"># outputs: 'Yes!'</span></span><br></pre></td></tr></table></figure>
+<p>Another interesting property of Python functions is they can be defined… inside another function!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">talk</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># You can define a function on the fly in "talk" ...</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">whisper</span><span class="params">(word=<span class="string">"yes"</span>)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> word.lower()+<span class="string">"..."</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ... and use it right away!</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> whisper()</span><br><span class="line"></span><br><span class="line"><span class="comment"># You call "talk", that defines "whisper" EVERY TIME you call it, then</span></span><br><span class="line"><span class="comment"># "whisper" is called in "talk". </span></span><br><span class="line">talk()</span><br><span class="line"><span class="comment"># outputs: </span></span><br><span class="line"><span class="comment"># "yes..."</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># But "whisper" DOES NOT EXIST outside "talk":</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">print</span> whisper()</span><br><span class="line"><span class="keyword">except</span> NameError, e:</span><br><span class="line">    <span class="keyword">print</span> e</span><br><span class="line">    <span class="comment">#outputs : "name 'whisper' is not defined"*</span></span><br></pre></td></tr></table></figure>
+<p>Usually, people use decorator to define a insider functions for invoke. The following is the example without decorator<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># A decorator is a function that expects ANOTHER function as parameter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_shiny_new_decorator</span><span class="params">(a_function_to_decorate)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Inside, the decorator defines a function on the fly: the wrapper.</span></span><br><span class="line">    <span class="comment"># This function is going to be wrapped around the original function</span></span><br><span class="line">    <span class="comment"># so it can execute code before and after it.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">the_wrapper_around_the_original_function</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Put here the code you want to be executed BEFORE the original </span></span><br><span class="line">        <span class="comment"># function is called</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Before the function runs"</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Call the function here (using parentheses)</span></span><br><span class="line">        a_function_to_decorate()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Put here the code you want to be executed AFTER the original </span></span><br><span class="line">        <span class="comment"># function is called</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"After the function runs"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># At this point, "a_function_to_decorate" HAS NEVER BEEN EXECUTED.</span></span><br><span class="line">    <span class="comment"># We return the wrapper function we have just created.</span></span><br><span class="line">    <span class="comment"># The wrapper contains the function and the code to execute before</span></span><br><span class="line">    <span class="comment"># and after. It's ready to use!</span></span><br><span class="line">    <span class="keyword">return</span> the_wrapper_around_the_original_function</span><br><span class="line"></span><br><span class="line"><span class="comment"># Now imagine you create a function you don't want to ever touch again.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_stand_alone_function</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I am a stand alone function, don't you dare modify me"</span></span><br><span class="line"></span><br><span class="line">a_stand_alone_function() </span><br><span class="line"><span class="comment">#outputs: I am a stand alone function, don't you dare modify me</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Well, you can decorate it to extend its behavior.</span></span><br><span class="line"><span class="comment"># Just pass it to the decorator, it will wrap it dynamically in </span></span><br><span class="line"><span class="comment"># any code you want and return you a new function ready to be used:</span></span><br><span class="line"></span><br><span class="line">a_stand_alone_function_decorated = my_shiny_new_decorator(a_stand_alone_function)</span><br><span class="line">a_stand_alone_function_decorated()</span><br><span class="line"><span class="comment">#outputs:</span></span><br><span class="line"><span class="comment">#Before the function runs</span></span><br><span class="line"><span class="comment">#I am a stand alone function, don't you dare modify me</span></span><br><span class="line"><span class="comment">#After the function runs</span></span><br></pre></td></tr></table></figure></p>
+<p>When we start using decorator, the world becomes simple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@my_shiny_new_decorator</span><br><span class="line">def another_stand_alone_function():</span><br><span class="line">    print &quot;Leave me alone&quot;</span><br><span class="line"></span><br><span class="line">another_stand_alone_function()  </span><br><span class="line">#outputs:  </span><br><span class="line">#Before the function runs</span><br><span class="line">#Leave me alone</span><br><span class="line">#After the function runs</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/01/pandoc_start/" itemprop="url">
+                  How to Use Pandoc
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-06-01T13:39:56-04:00" content="2018-06-01">
+              2018-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Skills</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/06/01/pandoc_start/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/01/pandoc_start/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>About <a href="http://pandoc.org/installing.html" target="_blank" rel="noopener">pandoc</a></p>
+<p>If you need to convert files from one markup format into another, pandoc is your swiss-army knife. Pandoc can convert documents in markdown, reStructuredText, textile, HTML, DocBook, LaTeX, MediaWiki markup, TWiki markup, OPML, Emacs Org-Mode, Txt2Tags, Microsoft Word docx, LibreOffice ODT, EPUB, or Haddock markup to</p>
+<ul>
+<li>HTML formats: XHTML, HTML5, and HTML slide shows using Slidy, reveal.js, Slideous, S5, or DZSlides.</li>
+<li>Word processor formats: Microsoft Word docx, OpenOffice/LibreOffice ODT, OpenDocument XML</li>
+<li>Ebooks: EPUB version 2 or 3, FictionBook2</li>
+<li>Documentation formats: DocBook, TEI Simple, GNU TexInfo, Groff man pages, Haddock markup</li>
+<li>Page layout formats: InDesign ICML</li>
+<li>Outline formats: OPML</li>
+<li>TeX formats: LaTeX, ConTeXt, LaTeX Beamer slides</li>
+<li>PDF via LaTeX</li>
+<li>Lightweight markup formats: Markdown (including CommonMark), reStructuredText, AsciiDoc, MediaWiki markup, DokuWiki markup, Emacs Org-Mode, Textile</li>
+<li>Custom formats: custom writers can be written in lua.</li>
+</ul>
+<h2 id="installing"><a href="#installing" class="headerlink" title="installing"></a>installing</h2><p>you can install pandoc from its <a href="https://github.com/jgm/pandoc/releases/tag/1.17.0.2" target="_blank" rel="noopener">website</a></p>
+<h2 id="geting-started"><a href="#geting-started" class="headerlink" title="geting started"></a>geting started</h2><p>for example, if you want to convert latex file (demo.tex )into md, then you can : </p>
+<ol>
+<li>change path into the file directory </li>
+<li>use the command <code>pandoc demo.tex -f latex -t markdown -s -o demo.md</code>  convert latex to markdown</li>
+<li>use the commond <code>pandoc demo.md -f markdown -t html -s -o demo.html</code>  convert markdown to html</li>
+</ol>
+<p>pretty simple right ?! </p>
+<p>for more information, you can see from <a href="http://pandoc.org" target="_blank" rel="noopener">http://pandoc.org</a></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/05/19/airline flight route map/" itemprop="url">
                   US Airline Flight Route Map
                 </a>
@@ -349,7 +591,7 @@
 
       
         
-          <p>In this post, I try to summarize the the construction of US Airline Flight Map. The data source comes from <a href="https://www.transtats.bts.gov/Tables.asp?DB_ID=125" target="_blank" rel="noopener">Bureau of Transportation Statistics</a>. THe first thing I want to do is get the local airport information. For example, the GIS location, the carrier’s market share and market construction. and the distance from the near HUB. Secondly, I want to draw the flight route map. </p>
+          <p>In this post, I try to summarize the the construction of US Airline Flight Map. The data source comes from <a href="https://www.transtats.bts.gov/Tables.asp?DB_ID=125" target="_blank" rel="noopener">Bureau of Transportation Statistics</a>. The first thing is to obtain the local airport information. For example, the GIS location, the carrier’s market share and market construction, and the distance from the near HUB. Secondly, I want to draw the flight route map. </p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/05/19/airline flight route map/#more" rel="contents">
               Read more &raquo;
@@ -1097,212 +1339,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/academic-assistant-from-Apple/" itemprop="url">
-                  Academic Assistance From Apple Device
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2017-01-19T19:27:40-05:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; In
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Skills</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/01/19/academic-assistant-from-Apple/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/19/academic-assistant-from-Apple/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>这篇文章主要介绍和记载如何更好利用各种电脑、电子设备以及软件、应用等帮助更好的工作、学习和研究<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/19/academic-assistant-from-Apple/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/16/how to turn latex formula to word/" itemprop="url">
-                  How to Turn Latex Formula to Word
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2017-01-16T13:10:43-05:00" content="2017-01-16">
-              2017-01-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; In
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Skills</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/01/16/how to turn latex formula to word/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/16/how to turn latex formula to word/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>This article introduce a little technic to assist research work.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/16/how to turn latex formula to word/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1349,7 +1385,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
