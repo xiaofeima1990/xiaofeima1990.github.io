@@ -204,14 +204,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Matlab Technique]]></title>
-    <url>%2F2016%2F03%2F21%2Fmatlab-technique%2F</url>
-    <content type="text"><![CDATA[Here I summarize some matlab trips to facilate my research 将 excel 中的日期转化为matlab中的日期(char) 在EXCEL中设置日期变量的单元格为“常规格式”； 复制此变化到EXCEL中，生成一个数组A 采用 x2mdate命令将其转化为MATLAB中的数据B 采用datestr命令将其转化为MATLAB中特有的日期格式 matlab arry tricksmatlab array tricks]]></content>
+    <title><![CDATA[Pandas Data Analysis]]></title>
+    <url>%2F2016%2F03%2F21%2Fpython%20data%20analysis%2F</url>
+    <content type="text"><![CDATA[安装 pip123456later use utf-8-sig instead of utf-8pip install --target=d:\somewhere\other\than\the\default package_name带空格处理pip install --target=X:\My~Documents\py_pkg\ selenium 进行分组统计123456789101112131415161718192021222324252627import pandas as pddf = pd.DataFrame(&#123;'key1':['a', 'a', 'b', 'b', 'a'], 'key2':['one', 'two', 'one', 'two', 'one'], 'data1':np.random.randn(5), 'data2':np.random.randn(5)&#125;)df data1 data2 key1 key20 -0.410673 0.519378 a one1 -2.120793 0.199074 a two2 0.642216 -0.143671 b one3 0.975133 -0.592994 b two4 -1.017495 -0.530459 a onegrouped = df['data1'].groupby(df['key1'])grouped.mean()key1a -1.182987b 0.808674dtype: float64means = df['data1'].groupby([df['key1'], df['key2']]).mean()means.unstack()key2 one twokey1 a -0.714084 -2.120793b 0.642216 0.975133 选取两个dataframe中列公共的元素有df1.ID, df2.ID 两列，我需要选取两列中都有的元素。可以用如下方法： 1234567import pandas as pdm_df=pd.merge(df1,df2,how="inner",on="ID")ind=m_df.IDdf1.set_index('ID',inplace=True)df2.set_index('ID',inplace=True)common_df1=df1.loc[ind,:]common_df2=df2.loc[ind,:] 改变pandas 列的类型把数值型的改变成string 1234567import pandas as pddf = pd.DataFrame(&#123;'key1':['a', 'a', 'b', 'b', 'a'], 'key2':['one', 'two', 'one', 'two', 'one'], 'data1':np.random.randn(5), 'data2':np.random.randn(5)&#125;) df["data1"]=df["data1"].astype(str) 寻找缺失值或者NaN值所带的位置12345678910111213141516171819202122 a b2011-01-01 00:00:00 1.883381 -0.4166292011-01-01 01:00:00 0.149948 -1.7821702011-01-01 02:00:00 -0.407604 0.3141682011-01-01 03:00:00 1.452354 NaN2011-01-01 04:00:00 -1.224869 -0.9474572011-01-01 05:00:00 0.498326 0.0704162011-01-01 06:00:00 0.401665 NaN2011-01-01 07:00:00 -0.019766 0.5336412011-01-01 08:00:00 -1.101303 -1.4085612011-01-01 09:00:00 1.671795 -0.764629import numpy as npindex = df['b'].index[df['b'].apply(np.isnan)]df['a'].ix[index[0]]&gt;&gt;&gt; 1.452354df_index = df.index.values.tolist()[df_index.index(i) for i in index]&gt;&gt;&gt; [3, 6] iloc 与 loc 区别 at 与 iat 区别 ixdataframe.iloc按下标选取，或者使用dataframe.loc按索引选取： 如果不是需要访问特定行列，而只是某个特殊位置的元素的话，dataframe.at和dataframe.iat是最快的方式，它们分别用于使用索引和下标进行访问： ataframe.ix可以混合使用索引和下标进行访问，唯一需要注意的地方是行列内部需要一致，不可以同时使用索引和标签访问行或者列，不然的话，将会得到意外的结果。 pandas 处理缺失数据原始数据的中很可能存在一些数据的缺失，就如同现在处理的这个样例数据一样，处理缺失数据有多种方式。通常使用dataframe.dropna()，dataframe.dropna()可以按行丢弃带有nan的数据；若指定how=’all’（默认是’any’），则只在整行全部是nan时丢弃数据；若指定thresh，则表示当某行数据非缺失列数超过指定数值时才保留；要指定根据某列丢弃可以通过subset完成。 12345678910111213141516171819202122print "Data size before filtering:"print df.shapeprint "Drop all rows that have any NaN values:"print "Data size after filtering:"print df.dropna().shapeprint df.dropna().head(10)print "Drop only if all columns are NaN:"print "Data size after filtering:"print df.dropna(how='all').shapeprint df.dropna(how='all').head(10)print "Drop rows who do not have at least six values that are not NaN"print "Data size after filtering:"print df.dropna(thresh=6).shapeprint df.dropna(thresh=6).head(10)print "Drop only if NaN in specific column:"print "Data size after filtering:"print df.dropna(subset=['closePrice']).shapeprint df.dropna(subset=['closePrice']).head(10)]]></content>
       <categories>
         <category>Data Science</category>
       </categories>
       <tags>
-        <tag>matlab</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -223,17 +223,6 @@
       </categories>
       <tags>
         <tag>guide</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Pandas Data Analysis]]></title>
-    <url>%2F2016%2F03%2F21%2Fpython%20data%20analysis%2F</url>
-    <content type="text"><![CDATA[安装 pip123456later use utf-8-sig instead of utf-8pip install --target=d:\somewhere\other\than\the\default package_name带空格处理pip install --target=X:\My~Documents\py_pkg\ selenium 进行分组统计123456789101112131415161718192021222324252627import pandas as pddf = pd.DataFrame(&#123;'key1':['a', 'a', 'b', 'b', 'a'], 'key2':['one', 'two', 'one', 'two', 'one'], 'data1':np.random.randn(5), 'data2':np.random.randn(5)&#125;)df data1 data2 key1 key20 -0.410673 0.519378 a one1 -2.120793 0.199074 a two2 0.642216 -0.143671 b one3 0.975133 -0.592994 b two4 -1.017495 -0.530459 a onegrouped = df['data1'].groupby(df['key1'])grouped.mean()key1a -1.182987b 0.808674dtype: float64means = df['data1'].groupby([df['key1'], df['key2']]).mean()means.unstack()key2 one twokey1 a -0.714084 -2.120793b 0.642216 0.975133 选取两个dataframe中列公共的元素有df1.ID, df2.ID 两列，我需要选取两列中都有的元素。可以用如下方法： 1234567import pandas as pdm_df=pd.merge(df1,df2,how="inner",on="ID")ind=m_df.IDdf1.set_index('ID',inplace=True)df2.set_index('ID',inplace=True)common_df1=df1.loc[ind,:]common_df2=df2.loc[ind,:] 改变pandas 列的类型把数值型的改变成string 1234567import pandas as pddf = pd.DataFrame(&#123;'key1':['a', 'a', 'b', 'b', 'a'], 'key2':['one', 'two', 'one', 'two', 'one'], 'data1':np.random.randn(5), 'data2':np.random.randn(5)&#125;) df["data1"]=df["data1"].astype(str) 寻找缺失值或者NaN值所带的位置12345678910111213141516171819202122 a b2011-01-01 00:00:00 1.883381 -0.4166292011-01-01 01:00:00 0.149948 -1.7821702011-01-01 02:00:00 -0.407604 0.3141682011-01-01 03:00:00 1.452354 NaN2011-01-01 04:00:00 -1.224869 -0.9474572011-01-01 05:00:00 0.498326 0.0704162011-01-01 06:00:00 0.401665 NaN2011-01-01 07:00:00 -0.019766 0.5336412011-01-01 08:00:00 -1.101303 -1.4085612011-01-01 09:00:00 1.671795 -0.764629import numpy as npindex = df['b'].index[df['b'].apply(np.isnan)]df['a'].ix[index[0]]&gt;&gt;&gt; 1.452354df_index = df.index.values.tolist()[df_index.index(i) for i in index]&gt;&gt;&gt; [3, 6] iloc 与 loc 区别 at 与 iat 区别 ixdataframe.iloc按下标选取，或者使用dataframe.loc按索引选取： 如果不是需要访问特定行列，而只是某个特殊位置的元素的话，dataframe.at和dataframe.iat是最快的方式，它们分别用于使用索引和下标进行访问： ataframe.ix可以混合使用索引和下标进行访问，唯一需要注意的地方是行列内部需要一致，不可以同时使用索引和标签访问行或者列，不然的话，将会得到意外的结果。 pandas 处理缺失数据原始数据的中很可能存在一些数据的缺失，就如同现在处理的这个样例数据一样，处理缺失数据有多种方式。通常使用dataframe.dropna()，dataframe.dropna()可以按行丢弃带有nan的数据；若指定how=’all’（默认是’any’），则只在整行全部是nan时丢弃数据；若指定thresh，则表示当某行数据非缺失列数超过指定数值时才保留；要指定根据某列丢弃可以通过subset完成。 12345678910111213141516171819202122print "Data size before filtering:"print df.shapeprint "Drop all rows that have any NaN values:"print "Data size after filtering:"print df.dropna().shapeprint df.dropna().head(10)print "Drop only if all columns are NaN:"print "Data size after filtering:"print df.dropna(how='all').shapeprint df.dropna(how='all').head(10)print "Drop rows who do not have at least six values that are not NaN"print "Data size after filtering:"print df.dropna(thresh=6).shapeprint df.dropna(thresh=6).head(10)print "Drop only if NaN in specific column:"print "Data size after filtering:"print df.dropna(subset=['closePrice']).shapeprint df.dropna(subset=['closePrice']).head(10)]]></content>
-      <categories>
-        <category>Data Science</category>
-      </categories>
-      <tags>
         <tag>python</tag>
       </tags>
   </entry>
@@ -257,6 +246,17 @@
       </categories>
       <tags>
         <tag>Database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Matlab Technique]]></title>
+    <url>%2F2016%2F03%2F21%2Fmatlab-technique%2F</url>
+    <content type="text"><![CDATA[Here I summarize some matlab trips to facilate my research 将 excel 中的日期转化为matlab中的日期(char) 在EXCEL中设置日期变量的单元格为“常规格式”； 复制此变化到EXCEL中，生成一个数组A 采用 x2mdate命令将其转化为MATLAB中的数据B 采用datestr命令将其转化为MATLAB中特有的日期格式 matlab arry tricksmatlab array tricks]]></content>
+      <categories>
+        <category>Data Science</category>
+      </categories>
+      <tags>
+        <tag>matlab</tag>
       </tags>
   </entry>
   <entry>
