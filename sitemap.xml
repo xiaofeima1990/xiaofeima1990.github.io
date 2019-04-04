@@ -2,23 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xiaofeima1990.github.io/about/index.html</loc>
+    
+    <lastmod>2019-04-04T14:55:40.891Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiaofeima1990.github.io/2015/12/30/econ-research-summary/</loc>
+    
+    <lastmod>2019-04-04T14:52:06.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiaofeima1990.github.io/2018/05/19/Use%20Typora%20for%20Math%20Formula/</loc>
+    
+    <lastmod>2019-04-04T14:51:30.785Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiaofeima1990.github.io/2018/05/18/hello-world/</loc>
+    
+    <lastmod>2019-04-04T14:51:11.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiaofeima1990.github.io/2016/03/21/nueral_network1/</loc>
+    
+    <lastmod>2019-04-04T14:50:16.629Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiaofeima1990.github.io/2018/08/16/understanding-decorator/</loc>
+    
+    <lastmod>2019-04-04T14:49:37.479Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xiaofeima1990.github.io/2018/09/13/understand_CNN/</loc>
     
-    <lastmod>2018-09-14T00:50:11.015Z</lastmod>
+    <lastmod>2019-04-04T14:48:57.255Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiaofeima1990.github.io/2018/09/18/Data-Science-Visualization-Resources/</loc>
+    
+    <lastmod>2018-09-19T00:09:09.195Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://xiaofeima1990.github.io/2018/09/12/Problems%20in%20Ecocomectrics/</loc>
     
-    <lastmod>2018-09-14T00:46:47.927Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiaofeima1990.github.io/about/index.html</loc>
-    
-    <lastmod>2018-09-04T14:25:55.855Z</lastmod>
+    <lastmod>2018-09-15T02:39:24.060Z</lastmod>
     
   </url>
   
@@ -30,23 +72,9 @@
   </url>
   
   <url>
-    <loc>http://xiaofeima1990.github.io/2018/08/16/understanding-decorator/</loc>
-    
-    <lastmod>2018-08-16T12:45:44.516Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xiaofeima1990.github.io/2018/06/01/pandoc_start/</loc>
     
     <lastmod>2018-06-01T12:21:27.717Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiaofeima1990.github.io/2018/05/19/Use%20Typora%20for%20Math%20Formula/</loc>
-    
-    <lastmod>2018-05-20T04:22:20.921Z</lastmod>
     
   </url>
   
@@ -72,30 +100,9 @@
   </url>
   
   <url>
-    <loc>http://xiaofeima1990.github.io/2015/12/30/econ-research-summary/</loc>
-    
-    <lastmod>2018-05-19T03:05:36.837Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiaofeima1990.github.io/2018/05/18/hello-world/</loc>
-    
-    <lastmod>2018-05-19T01:59:29.037Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xiaofeima1990.github.io/2017/01/16/how%20to%20turn%20latex%20formula%20to%20word/</loc>
     
     <lastmod>2018-05-19T01:22:43.116Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiaofeima1990.github.io/2016/03/21/nueral_network1/</loc>
-    
-    <lastmod>2018-05-19T01:15:28.546Z</lastmod>
     
   </url>
   
@@ -282,7 +289,7 @@
   </url>
   
   <url>
-    <loc>http://xiaofeima1990.github.io/2015/12/30/datascience/</loc>
+    <loc>http://xiaofeima1990.github.io/2015/12/30/Data%20Science/</loc>
     
     <lastmod>2018-05-18T04:49:24.091Z</lastmod>
     

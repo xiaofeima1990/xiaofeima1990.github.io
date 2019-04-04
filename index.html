@@ -43,7 +43,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Glen | Stay Hard Stay Foolish" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Guoxuan Ma | Stay Hard Stay Foolish" type="application/atom+xml" />
 
 
 
@@ -57,13 +57,13 @@
 
 <meta name="description" content="Personal Website">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Glen | Stay Hard Stay Foolish">
+<meta property="og:title" content="Guoxuan Ma | Stay Hard Stay Foolish">
 <meta property="og:url" content="http://xiaofeima1990.github.io/index.html">
-<meta property="og:site_name" content="Glen | Stay Hard Stay Foolish">
+<meta property="og:site_name" content="Guoxuan Ma | Stay Hard Stay Foolish">
 <meta property="og:description" content="Personal Website">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glen | Stay Hard Stay Foolish">
+<meta name="twitter:title" content="Guoxuan Ma | Stay Hard Stay Foolish">
 <meta name="twitter:description" content="Personal Website">
 
 
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title> Glen | Stay Hard Stay Foolish </title>
+  <title> Guoxuan Ma | Stay Hard Stay Foolish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en,default">
@@ -109,7 +109,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Glen | Stay Hard Stay Foolish</span>
+      <span class="site-title">Guoxuan Ma | Stay Hard Stay Foolish</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -268,6 +268,118 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/09/18/Data-Science-Visualization-Resources/" itemprop="url">
+                  Data Science Visualization Resources
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-09-18T20:06:09-04:00" content="2018-09-18">
+              2018-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/09/18/Data-Science-Visualization-Resources/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/18/Data-Science-Visualization-Resources/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>This post is aimed at collecting the visualization Resources so as to assist illustrating the data features and research results</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/09/18/Data-Science-Visualization-Resources/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -349,71 +461,12 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>Convolutional Neural Network 由两部分组成：convolution 和 neural network。想要深入了解CNN，我们首先需要了解什么事convolution，以及如何将convolution引入到neural network中。</p>
-<h2 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h2><p>在数学上，convolution 定义为：</p>
-<blockquote>
-<p>In mathematics (and, in particular, functional analysis) convolution is a mathematical operation on two functions (f and g) to produce a third function that expresses how the shape of one is modified by the other</p>
-</blockquote>
-<p>卷积可以看作是两个函数 $f$ 和 $g$ 生成第三个函数的一种数学算子，表征函数（不动的）$f$ 与经过反转或者平移 $g$ 的乘积所生成的新函数围成的曲边梯形面积。上述文字的确很难理解，我们首先观察convolution的数学表达式：</p>
-<script type="math/tex; mode=display">
-\int^{\infty}_{-\infty} f(\tau)g(x-\tau)d\tau = (f*g)(x) = h(x)</script><p>简单来说，我们固定一个“不动”的函数$f$ , 我们想要知道如果另一个函数$g$“路过”这个$f$函数，这两个相互作用会发生什么奇怪的行为。真实的例子比如我们想从一段音频中，提取出一些对我们有用的音频信息。</p>
-<p><img src="\pic\pig\Convolution_of_box_signal_with_itself2.gif" alt="onvolution_of_box_signal_with_itself"> </p>
-<p>简单来说，就是让 $g$ “走过整”个 $f$ (用某种滤波函数遍历音频资料)，看两者交叠地方的面积变化情况，不同的$g$ 作用在 $f$ 上会有不同的结果。某种程度上来说，我用不同的滤波函数 $g$ 可以从 $f$ 中提取不同方面的信息或特点。比如，上图所展示的就是用正方形 $g$ 来遍历 $f$，得到的是一个新的三角形卷积函数。如果我们用三角形，或者半圆形，那么我们得到的自然是不同的卷积函数。</p>
-<p>接下来的问题可能是为何新的卷积函数是三角形的呢？而且为何是从”-1”这个点开始的呢？为回答上述问题，我们首先 从卷积的定义出发，卷积相当于两个函数相乘得到一个新的函数，但不是简单的 $f(3)<em>g(2)$, 而是给定某个点，比如 $5$ , 看所有能够到达5的新函数($f(\tau)g(5-\tau)$)乘积加总，从而构成新函数在$5$的上面的值，即：$(f</em>g)(5)=\int^{\infty}_{-\infty} f(\tau)g(5-\tau)d\tau $。如果上述解释还是过于抽象，那么下面扔球的小例子可能更有助于理解：</p>
-<p>当我们扔一个球到地上的时候，球到地面的运动距离就是一个简单一维的运动情况。但假如我们固定让小球要运动$c$ 距离，但允许我们扔两次，并且第二次从第一次触碰地方开始扔。我们标记第一次运动落点的密度函数为$f(a)$，第二次落点的密度函数为$g(b)$。</p>
-<p><img src="\pic\pig\ProbConv-fagb.png" alt="robConv-fag"></p>
-<p>那么其两次加起来移动$c$ 距离可以有多种可能。因为如果固定$c=3$,那么 a 和 b 的选择可以是 $a=2,b=1; a=1,b=2; a=0,b=3; … $ </p>
-<p><img src="\pic\pig\ProbConv-OnePath.png" alt="robConv-OnePat"></p>
-<p>因此为了找到所有的可能，我们需要把其全部加总。所以，两次合起来小球移动距离$c$的密度函数应当表达为：</p>
-<script type="math/tex; mode=display">
-\sum_{a+b=c} f(a)\cdot g(b) \ \ \text{or} \ \ \int^{\infty}_{-\infty} f(\tau)g(c-\tau)d\tau</script><p><img src="\pic\pig\ProbConv-SumPaths.png" alt="robConv-SumPath"></p>
-<p>上述讨论的是一维的情况，高维的情况遵循同样的原理，比如一个球落地时我们不仅考虑在一条直线上的运动，进一步，我们考虑在一个平面上的落点：</p>
-<p><img src="\pic\pig\ProbConv-TwoDim.png" alt="robConv-TwoDi"></p>
-<p>而计算convolution还是跟之前一样：</p>
-<script type="math/tex; mode=display">
-(f*g) (c) = \sum_{a+b=c} f(a)\cdot g(b)</script><p>些许不同的地方在于现在 $a$ 和 $b$ 是向量形式， 即：</p>
-<script type="math/tex; mode=display">
-(f*g)(c_1,c_2) = \sum_{a_1, a_2} f(a_1,a_2) \cdot g(c_1 - a_1, c_2 - a_2)</script><p>当我们加总后，从落点$a$出发，到最终$c$位置的密度函数的convolution，可以表示为：</p>
-<p><img src="\pic\pig\ProbConv-Intermediate.png" alt="robConv-Intermediat"></p>
-<p>那么不同位置的新函数可以表示为（第一个为较为稠密的新convolution，第二个为较为稀疏的新convolution）：</p>
-<p><img src="\pic\pig\ProbConv-Intermediate-Align.png" alt="robConv-Intermediate-Alig"></p>
-<p><img src="\pic\pig\ProbConv-Intermediate-Sep.png" alt="robConv-Intermediate-Se"></p>
-<h3 id="图像识别"><a href="#图像识别" class="headerlink" title="图像识别"></a>图像识别</h3><p>convolution 一个主要应用领域就是图像识别。因为图像可以被简单看作二维函数(矩阵)（当然还有不同的色彩），而进行图像的各种变换就是利用可中过滤(filter or kernel)函数来对图像进行各种convolution处理。</p>
-<p><img src="\pic\pig\RiverTrain-ImageConvDiagram.png" alt="iverTrain-ImageConvDiagra"></p>
-<p>例如，对图像进行虚化，我们可以通过平均kernel矩阵上面的像素(pixel)来做到，通过kernel 作用到原图像上，进而生成新图像，我们得到：</p>
-<p><img src="\pic\pig\RiverTrain-ImageConvDiagram.png" alt="iverTrain-ImageConvDiagra"></p>
-<p> 我们同样可以侦测图像的形状边缘，通过设定-1 和 1 在两个相邻像素(pixel)上并且其他位置设定为0，这构成来用来侦测边缘的过滤矩阵。</p>
-<p><img src="\pic\pig\Gimp-Edge.png" alt="imp-Edg"></p>
-<h2 id="Convolutional-Neural-Network"><a href="#Convolutional-Neural-Network" class="headerlink" title="Convolutional Neural Network"></a>Convolutional Neural Network</h2><p>接下来的问题就是convolution如何跟convolutional neural network 联系上的？ </p>
-<p>现在考虑一个一维的convolutional layer, 输入$x_n$，输出$y_n$ ，$A$ 代表着neurons，而neuron在neural network可以被表示为：</p>
-<script type="math/tex; mode=display">
-\sigma(\omega_0 x_0 + \omega_1 x_1 + \omega_2 x_2 + ... + b)</script><p>权重系数$\omega_0, \omega_1, …, $ 描述了每个neuron如何与输入数据进行联系的。值得注意的是权重系数$\omega$是神经网络的核心，控制着每一层神经网络的表现。注意，当我们说每一层中若干个neurons一样，相当于这些neurons 的权重系数（矩阵）都相同。</p>
-<p>用图像表示一般情况下的neural network 则是：</p>
-<p><img src="\pic\pig\Conv-9-Conv2-XY.png" alt="onv-9-Conv2-X"></p>
-<p>但在convolutional neural network 中， 有许多相同的neuron作用于不同的输入数据上，因此，许多相同的权重矩阵重复出现在不同的neuron上。</p>
-<p><img src="\pic\pig\Conv-9-Conv2-XY-W.png" alt="onv-9-Conv2-XY-"></p>
-<p>简单来说，正常的neural network中，权重矩阵用不同的权重系数连接不同的输入数据和输出位置。</p>
-<script type="math/tex; mode=display">
-W = \left[\begin{array}{ccccc} 
-W_{0,0} & W_{0,1} & W_{0,2} & W_{0,3} & ...\\
-W_{1,0} & W_{1,1} & W_{1,2} & W_{1,3} & ...\\
-W_{2,0} & W_{2,1} & W_{2,2} & W_{2,3} & ...\\
-W_{3,0} & W_{3,1} & W_{3,2} & W_{3,3} & ...\\
-...     &   ...   &   ...   &  ...    & ...\\
-\end{array}\right]</script><p>但在convolutional layer 中，同样的权重重复出现在不同的位置，而且每一个neuron不是连接所有的输入数据，因此，其权重矩阵表现为：</p>
-<script type="math/tex; mode=display">
-W = \left[\begin{array}{ccccc} 
-w_0 & w_1 &  0  &  0  & ...\\
- 0  & w_0 & w_1 &  0  & ...\\
- 0  &  0  & w_0 & w_1 & ...\\
- 0  &  0  &  0  & w_0 & ...\\
-... & ... & ... & ... & ...\\
-\end{array}\right]</script><p>当输入数据（向量）与该矩阵相乘时，就相当于被某个函数在进行convolution操作一样。</p>
-
-            
-          </span>
+          <p>Convolutional Neural Network 由两部分组成：convolution 和 neural network。想要深入了解CNN，我们首先需要了解什么事convolution，以及如何将convolution引入到neural network中。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/09/13/understand_CNN/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -560,7 +613,7 @@ w_0 & w_1 &  0  &  0  & ...\\
               
                 
                 <a class="post-title-link" href="/2018/08/16/understanding-decorator/" itemprop="url">
-                  understanding decorator
+                  Understanding Decorator in Python
                 </a>
               
             
@@ -964,7 +1017,8 @@ w_0 & w_1 &  0  &  0  & ...\\
         
           <span itemprop="articleBody">
             
-              <p><strong>How to number the equations</strong></p>
+              <a id="more"></a>
+<p><strong>How to number the equations</strong></p>
 <p>As far as I can see, in mac system, Typora automatically number the equations in <em>Math block</em> . But in windows system, there is no automatically numbering function. whether it has automatically or not, we can always choose to use <code>\tag{}</code> and <code>\nonumber</code> to number or remove the number for certain equations.</p>
 <p><strong>How to cite the equations</strong></p>
 <p>If we want to cite the equations later, we can use <code>\label{name}</code> and <code>\ref{label_name}</code> to cite the particular equation. Of course, we need to add <code>$ $</code> outsides. </p>
@@ -1053,20 +1107,12 @@ w_0 & w_1 &  0  &  0  & ...\\
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-            
-          </span>
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/18/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1296,117 +1342,12 @@ w_0 & w_1 &  0  &  0  & ...\\
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/18/solve-mathjax-display in next/" itemprop="url">
-                  解决next主题和mathjax下划线冲突问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2018-05-18T00:00:00-04:00" content="2018-05-18">
-              2018-05-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; In
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Skills</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2018/05/18/solve-mathjax-display in next/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/18/solve-mathjax-display in next/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>源于网络</p>
-<p>在markdown写技术文章时，经常会用到latex渲染公式，markdwon集成了mathjax用于渲染公式。<br>默认next主题是集成公式的，只需要在每篇博客前面加上mathjax: true即可。</p>
-<p>Hexo默认使用hexo-renderer-marked引擎渲染网页，该引擎会把一些特殊的markdown符号转换为相应的html标签，比如在markdown语法中，下划线_代表斜体，会被渲染引擎处理为<em>标签。<br>因为类Latex格式书写的数学公式下划线 _ 表示下标，有特殊的含义，如果被强制转换为<em>标签，那么MathJax引擎在渲染数学公式的时候就会出错。例如，xi在开始被渲染的时候，处理为$x<em>i</em>$，这样MathJax引擎就认为该公式有语法错误，因为不会渲染。</em></em></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/05/18/solve-mathjax-display in next/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1440,14 +1381,14 @@ w_0 & w_1 &  0  &  0  & ...\\
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/pic/mgx2.png" alt="Glen" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Glen</p>
+          <img class="site-author-image" src="/pic/mgx2.png" alt="Guoxuan Ma" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Guoxuan Ma</p>
         </div>
         <p class="site-description motion-element" itemprop="description">Personal Website</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1522,11 +1463,11 @@ w_0 & w_1 &  0  &  0  & ...\\
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Glen</span>
+  <span class="author" itemprop="copyrightHolder">Guoxuan Ma</span>
 </div>
 
 <div class="powered-by">
